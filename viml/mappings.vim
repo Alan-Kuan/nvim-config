@@ -11,6 +11,12 @@ tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-l> <C-\><C-N><C-w>l
 
+" move lines
+nnoremap <C-S-j> :m .+1<CR>==
+nnoremap <C-S-k> :m .-2<CR>==
+vnoremap <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <C-S-k> :m '<-2<CR>gv=gv
+
 " select all
 nnoremap <silent><leader>a  ggVG
 " copy to the system clipboard
