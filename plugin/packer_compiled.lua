@@ -185,10 +185,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/alan/.local/share/nvim/site/pack/packer/opt/vim-dispatch"
   },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/alan/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
   ["vim-hexokinase"] = {
     config = { "\27LJ\1\2y\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\26:HexokinaseToggle<CR>\n<C-c>\6n\20nvim_set_keymap\bapi\bvim\0" },
     loaded = true,
@@ -211,18 +207,18 @@ time([[Defining packer_plugins]], false)
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2š\1\0\0\6\0\t\0\0144\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\0014\1\0\0007\1\a\1'\2\1\0:\2\b\1G\0\1\0\25nvim_tree_auto_close\6g\1\0\2\vsilent\2\fnoremap\2\24:NvimTreeToggle<CR>\6-\6n\20nvim_set_keymap\bapi\bvim\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: symbols-outline.nvim
 time([[Config for symbols-outline.nvim]], true)
 try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:SymbolsOutline<CR>\6_\6n\20nvim_set_keymap\bapi\bvim\0", "config", "symbols-outline.nvim")
 time([[Config for symbols-outline.nvim]], false)
--- Config for: vim-closetag
-time([[Config for vim-closetag]], true)
-try_loadstring("\27LJ\1\2‹\1\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\29html, php, vue, markdown\23closetag_filetypes\31*.html, *.php, *.vue, *.md\23closetag_filenames\6g\bvim\0", "config", "vim-closetag")
-time([[Config for vim-closetag]], false)
+-- Config for: nvim-tabline
+time([[Config for nvim-tabline]], true)
+try_loadstring("\27LJ\1\2ñ\1\0\0\2\0\a\0\0164\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\0014\0\2\0007\0\3\0%\1\5\0>\0\2\0014\0\2\0007\0\3\0%\1\6\0>\0\2\1G\0\1\0006hi TabLineModifiedSeparatorInactive guifg=#ff7c7e4hi TabLineModifiedSeparatorActive guifg=#ff7c7e,hi TabLineSeparatorActive guifg=SkyBlue\bcmd\bvim\20configs.tabline\frequire\0", "config", "nvim-tabline")
+time([[Config for nvim-tabline]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2˜\1\0\0\3\0\b\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\0013\2\6\0:\2\a\1>\0\2\1G\0\1\0\21filetype_exclude\1\2\0\0\14dashboard\20buftype_exclude\1\0\0\1\3\0\0\rterminal\vnofile\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
@@ -235,10 +231,10 @@ time([[Config for nvim-compe]], false)
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\1\0022\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\23configs.toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
--- Config for: comfortable-motion.vim
-time([[Config for comfortable-motion.vim]], true)
-try_loadstring("\27LJ\1\2ú\1\0\0\6\0\n\0\0164\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1\16\1\0\0%\2\3\0%\3\a\0%\4\b\0003\5\t\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2,:call comfortable_motion#flick(-40)<CR>\20<ScrollWheelUp>\1\0\2\vsilent\2\fnoremap\2+:call comfortable_motion#flick(40)<CR>\22<ScrollWheelDown>\6n\20nvim_set_keymap\bapi\bvim\0", "config", "comfortable-motion.vim")
-time([[Config for comfortable-motion.vim]], false)
+-- Config for: vim-closetag
+time([[Config for vim-closetag]], true)
+try_loadstring("\27LJ\1\2‹\1\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\29html, php, vue, markdown\23closetag_filetypes\31*.html, *.php, *.vue, *.md\23closetag_filenames\6g\bvim\0", "config", "vim-closetag")
+time([[Config for vim-closetag]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\1\2ó\1\0\0\6\0\r\0\0184\0\0\0007\0\1\0007\0\2\0004\1\3\0%\2\4\0>\1\2\0027\1\5\0013\2\a\0003\3\6\0:\3\b\2>\1\2\1\16\1\0\0%\2\t\0%\3\n\0%\4\v\0003\5\f\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\23:TroubleToggle<CR>\15<leader>xx\6n\16action_keys\1\0\2\15auto_close\2\29use_lsp_diagnostic_signs\2\1\0\1\frefresh\6R\nsetup\ftrouble\frequire\20nvim_set_keymap\bapi\bvim\0", "config", "trouble.nvim")
@@ -247,18 +243,18 @@ time([[Config for trouble.nvim]], false)
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20configs.lualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
+-- Config for: comfortable-motion.vim
+time([[Config for comfortable-motion.vim]], true)
+try_loadstring("\27LJ\1\2ú\1\0\0\6\0\n\0\0164\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1\16\1\0\0%\2\3\0%\3\a\0%\4\b\0003\5\t\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2,:call comfortable_motion#flick(-40)<CR>\20<ScrollWheelUp>\1\0\2\vsilent\2\fnoremap\2+:call comfortable_motion#flick(40)<CR>\22<ScrollWheelDown>\6n\20nvim_set_keymap\bapi\bvim\0", "config", "comfortable-motion.vim")
+time([[Config for comfortable-motion.vim]], false)
 -- Config for: dashboard-nvim
 time([[Config for dashboard-nvim]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.dashboard\frequire\0", "config", "dashboard-nvim")
 time([[Config for dashboard-nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-tabline
-time([[Config for nvim-tabline]], true)
-try_loadstring("\27LJ\1\2ñ\1\0\0\2\0\a\0\0164\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\0014\0\2\0007\0\3\0%\1\5\0>\0\2\0014\0\2\0007\0\3\0%\1\6\0>\0\2\1G\0\1\0006hi TabLineModifiedSeparatorInactive guifg=#ff7c7e4hi TabLineModifiedSeparatorActive guifg=#ff7c7e,hi TabLineSeparatorActive guifg=SkyBlue\bcmd\bvim\20configs.tabline\frequire\0", "config", "nvim-tabline")
-time([[Config for nvim-tabline]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.autopairs\frequire\0", "config", "nvim-autopairs")
@@ -270,12 +266,12 @@ time([[Config for vim-hexokinase]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Make lua require("packer.load")({'vim-dispatch'}, { cmd = "Make", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Focus lua require("packer.load")({'vim-dispatch'}, { cmd = "Focus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Start lua require("packer.load")({'vim-dispatch'}, { cmd = "Start", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Make lua require("packer.load")({'vim-dispatch'}, { cmd = "Make", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
