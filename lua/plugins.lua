@@ -83,6 +83,12 @@ require('packer').startup(function (use)
         end
     }
     use {
+        'akinsho/toggleterm.nvim',
+        config = function ()
+            require('configs.toggleterm')
+        end
+    }
+    use {
         'RRethy/vim-hexokinase',
         run = 'make hexokinase',
         config = function ()

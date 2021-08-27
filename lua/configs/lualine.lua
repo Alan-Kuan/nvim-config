@@ -1,6 +1,7 @@
 require('lualine').setup {
     options = {
-        theme = 'everforest'
+        theme = 'everforest',
+        disabled_filetypes = { 'toggleterm' }
     },
     sections = {
         lualine_a = { 'mode' },
