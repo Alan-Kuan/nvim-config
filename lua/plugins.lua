@@ -126,8 +126,14 @@ require('packer').startup(function (use)
             }
         end
     }
+    use {
+        'tomtom/tcomment_vim',
+        config = function ()
+            vim.g.tcomment_mapleader1 = ''
+            vim.g.tcomment_mapleader2 = ''
+        end
+    }
     use 'tpope/vim-surround'
-    use 'tpope/vim-commentary'
     use {
         'tpope/vim-dispatch',
         opt = true,

@@ -155,6 +155,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/alan/.local/share/nvim/site/pack/packer/start/tabular"
   },
+  tcomment_vim = {
+    config = { "\27LJ\1\2Z\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\3\0:\1\4\0G\0\1\0\24tcomment_mapleader2\5\24tcomment_mapleader1\6g\bvim\0" },
+    loaded = true,
+    path = "/home/alan/.local/share/nvim/site/pack/packer/start/tcomment_vim"
+  },
   ["telescope.nvim"] = {
     config = { "\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0" },
     loaded = true,
@@ -174,10 +179,6 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2‹\1\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\29html, php, vue, markdown\23closetag_filetypes\31*.html, *.php, *.vue, *.md\23closetag_filenames\6g\bvim\0" },
     loaded = true,
     path = "/home/alan/.local/share/nvim/site/pack/packer/start/vim-closetag"
-  },
-  ["vim-commentary"] = {
-    loaded = true,
-    path = "/home/alan/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-dispatch"] = {
     commands = { "Dispatch", "Make", "Focus", "Start" },
@@ -211,14 +212,18 @@ time([[Setup for nvim-tree.lua]], false)
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
--- Config for: symbols-outline.nvim
-time([[Config for symbols-outline.nvim]], true)
-try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:SymbolsOutline<CR>\6_\6n\20nvim_set_keymap\bapi\bvim\0", "config", "symbols-outline.nvim")
-time([[Config for symbols-outline.nvim]], false)
 -- Config for: nvim-tabline
 time([[Config for nvim-tabline]], true)
 try_loadstring("\27LJ\1\2ñ\1\0\0\2\0\a\0\0164\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\0014\0\2\0007\0\3\0%\1\5\0>\0\2\0014\0\2\0007\0\3\0%\1\6\0>\0\2\1G\0\1\0006hi TabLineModifiedSeparatorInactive guifg=#ff7c7e4hi TabLineModifiedSeparatorActive guifg=#ff7c7e,hi TabLineSeparatorActive guifg=SkyBlue\bcmd\bvim\20configs.tabline\frequire\0", "config", "nvim-tabline")
 time([[Config for nvim-tabline]], false)
+-- Config for: symbols-outline.nvim
+time([[Config for symbols-outline.nvim]], true)
+try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:SymbolsOutline<CR>\6_\6n\20nvim_set_keymap\bapi\bvim\0", "config", "symbols-outline.nvim")
+time([[Config for symbols-outline.nvim]], false)
+-- Config for: tcomment_vim
+time([[Config for tcomment_vim]], true)
+try_loadstring("\27LJ\1\2Z\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\3\0:\1\4\0G\0\1\0\24tcomment_mapleader2\5\24tcomment_mapleader1\6g\bvim\0", "config", "tcomment_vim")
+time([[Config for tcomment_vim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2˜\1\0\0\3\0\b\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\0013\2\6\0:\2\a\1>\0\2\1G\0\1\0\21filetype_exclude\1\2\0\0\14dashboard\20buftype_exclude\1\0\0\1\3\0\0\rterminal\vnofile\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
