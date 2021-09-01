@@ -23,11 +23,6 @@ local hterm = Terminal:new {
     hidden = true
 }
 
-local vterm = Terminal:new {
-    direction = 'vertical',
-    hidden = true
-}
-
 local lazygit = Terminal:new {
     cmd = 'lazygit',
     dir = 'git_dir',
@@ -43,21 +38,15 @@ function HtermToggle()
     hterm:toggle()
 end
 
-function VtermToggle()
-    vterm:toggle()
-end
-
 function LazygitToggle()
     lazygit:toggle()
 end
 
-local noremap = { noremap = true }
+local option = { noremap = true, silent = true }
 -- this is actually <C-/>; however, vim recognized it as <C-_>
-map('n', '<C-_>', ':lua HtermToggle()<CR>', noremap)
-map('n', '<C-\\>', ':lua VtermToggle()<CR>', noremap)
-map('t', '<C-_>', '<C-\\><C-n>:lua HtermToggle()<CR>', noremap)
-map('t', '<C-\\>', '<C-\\><C-n>:lua VtermToggle()<CR>', noremap)
-map('n', '<leader>g', ':lua LazygitToggle()<CR>', { noremap = true, silent = true })
+map('n', '<C-_>', ':lua HtermToggle()<CR>', option)
+map('t', '<C-_>', '<C-\\><C-n>:lua HtermToggle()<CR>', option)
+map('n', '<leader>g', ':lua LazygitToggle()<CR>', option)
 
 -- Key bindings for compiling the current file
 cmd([[
