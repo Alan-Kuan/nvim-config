@@ -135,11 +135,6 @@ require('packer').startup(function (use)
     }
     use 'tpope/vim-surround'
     use {
-        'tpope/vim-dispatch',
-        opt = true,
-        cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
-    }
-    use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
