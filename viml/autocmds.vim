@@ -21,19 +21,3 @@ augroup im_fallback
     autocmd!
     autocmd InsertLeave * if(executable('fcitx5-remote')) | call system('fcitx5-remote -s keyboard-us') | endif
 augroup END
-
-augroup compile_and_run
-    autocmd!
-    " Key bindings for compiling the current file
-    autocmd filetype c nmap <F4> :w <bar> :Dispatch! gcc % -o %:r<CR>
-    autocmd filetype cpp nmap <F4> :w <bar> :Dispatch! g++ % -o %:r<CR>
-    autocmd filetype go nmap <F4> :w <bar> :Dispatch! go build %<CR>
-    autocmd filetype markdown nmap <F4> :w <bar> :Dispatch! mdpdf %<CR>
-    " Key bindings for (compiling and) running the current file
-    autocmd filetype javascript,typescript nmap <F5> :w <bar> :Start echo 'Program starts running.' && node %<CR>
-    autocmd filetype python nmap <F5> :w <bar> :Start echo 'Program starts running.' && python3 %<CR>
-    autocmd filetype c nmap <F5> :w <bar> :Start gcc % -o %:r && echo 'Program starts running.' && ./%:r<CR>
-    autocmd filetype cpp nmap <F5> :w <bar> :Start g++ % -o %:r && echo 'Program starts running.' && ./%:r<CR>
-    autocmd filetype go nmap <F5> :w <bar> :Start echo 'Program starts running.' && go run %<CR>
-    autocmd filetype markdown nmap <F5> :w <bar> :Dispatch! mdpdf % && xdg-open %:r.pdf<CR>
-augroup END
