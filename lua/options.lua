@@ -17,4 +17,6 @@ opt.expandtab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.scrolloff = 3
-vim.o.hidden = true  -- required by NvimTree and Toggleterm
+opt.hidden = true  -- required by NvimTree and Toggleterm
+opt.splitbelow = true
+opt.splitright = true
