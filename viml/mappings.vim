@@ -1,3 +1,6 @@
+nnoremap <space> <nop>
+let mapleader = ' '
+
 " clear search buffer
 nnoremap <silent><C-n> :let @/=""<CR>
 

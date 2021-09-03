@@ -4,13 +4,13 @@ local map = vim.api.nvim_set_keymap
 g.dashboard_default_executive = 'telescope'
 
 g.dashboard_custom_shortcut = {
-    book_marks         = '\\fb',
-    change_colorscheme = '\\tc',
-    find_file          = '\\ff',
-    find_history       = '\\fH',
-    find_word          = '\\fg',
-    last_session       = '\\sl',
-    new_file           = '\\cn'
+    book_marks         = '<leader>fb',
+    change_colorscheme = '<leader>tc',
+    find_file          = '<leader>ff',
+    find_history       = '<leader>fH',
+    find_word          = '<leader>fg',
+    last_session       = '<leader>sl',
+    new_file           = '<leader>cn'
 }
 
 local silent = { silent = true }
