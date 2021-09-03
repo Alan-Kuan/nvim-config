@@ -6,10 +6,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-l> <C-\><C-n><C-w>l
+" resize split
+nnoremap <M-j> <C-w>+
+nnoremap <M-k> <C-w>-
+nnoremap <M-h> <C-w><
+nnoremap <M-l> <C-w>>
 
 " move lines
 nnoremap <C-S-j> :m .+1<CR>==
