@@ -31,7 +31,10 @@ local lazygit = Terminal:new {
     float_opts = {
         border = 'curved',
         height = 30
-    }
+    },
+    on_exit = function ()
+        cmd(':NvimTreeRefresh')
+    end
 }
 
 function HtermToggle()
