@@ -202,6 +202,10 @@ time([[Defining packer_plugins]], false)
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2š\1\0\0\6\0\t\0\0144\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\0014\1\0\0007\1\a\1'\2\1\0:\2\b\1G\0\1\0\25nvim_tree_auto_close\6g\1\0\2\vsilent\2\fnoremap\2\24:NvimTreeToggle<CR>\6-\6n\20nvim_set_keymap\bapi\bvim\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
+-- Setup for: markdown-preview.nvim
+time([[Setup for markdown-preview.nvim]], true)
+try_loadstring("\27LJ\1\2ç\1\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0Ç\1                augroup md_preview\n                    autocmd!\n                    autocmd filetype markdown nnoremap <buffer><C-m> :MarkdownPreview<CR>\n                augroup END\n            \bcmd\bvim\0", "setup", "markdown-preview.nvim")
+time([[Setup for markdown-preview.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")

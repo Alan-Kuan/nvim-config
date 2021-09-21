@@ -138,7 +138,16 @@ require('packer').startup(function (use)
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
-        ft = 'markdown'
+        ft = 'markdown',
+        setup = function ()
+            -- Start Markdown Preview
+            vim.cmd([[
+                augroup md_preview
+                    autocmd!
+                    autocmd filetype markdown nnoremap <buffer><C-m> :MarkdownPreview<CR>
+                augroup END
+            ]])
+        end
     }
     use {
         'plasticboy/vim-markdown',
