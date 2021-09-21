@@ -147,6 +147,9 @@ require('packer').startup(function (use)
                     autocmd filetype markdown nnoremap <buffer><C-m> :MarkdownPreview<CR>
                 augroup END
             ]])
+        end,
+        config = function ()
+            vim.g.mkdp_page_title = '${name} - Preview'
         end
     }
     use {
