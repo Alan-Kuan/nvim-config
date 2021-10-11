@@ -99,7 +99,7 @@ _G.packer_plugins = {
   },
   ["markdown-preview.nvim"] = {
     commands = { "MarkdownPreview" },
-    config = { "\27LJ\1\2C\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\22${name} - Preview\20mkdp_page_title\6g\bvim\0" },
+    config = { "\27LJ\1\2i\0\0\2\0\5\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0'\1\1\0:\1\4\0G\0\1\0\26mkdp_echo_preview_url\22${name} - Preview\20mkdp_page_title\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
     path = "/home/alan/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"

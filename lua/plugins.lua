@@ -149,6 +149,7 @@ require('packer').startup(function (use)
         end,
         config = function ()
             vim.g.mkdp_page_title = '${name} - Preview'
+            vim.g.mkdp_echo_preview_url = 1
         end
     }
     use {

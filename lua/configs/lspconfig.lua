@@ -57,7 +57,7 @@ require('lspinstall').post_install_hook = function ()
     vim.cmd('bufdo e')   -- this triggers the FileType autocmd that starts the server
 end
 
-vim.fn.sign_define('LspDiagnosticsSignError', { text = '' })
-vim.fn.sign_define('LspDiagnosticsSignWarning', { text = '' })
-vim.fn.sign_define('LspDiagnosticsSignInformation', { text = '' })
-vim.fn.sign_define('LspDiagnosticsSignHint', { text = '' })
+vim.fn.sign_define('LspDiagnosticsSignError', { text = ' ▐' })
+vim.fn.sign_define('LspDiagnosticsSignWarning', { text = ' ▐' })
+vim.fn.sign_define('LspDiagnosticsSignInformation', { text = ' ▐' })
+vim.fn.sign_define('LspDiagnosticsSignHint', { text = ' ▐' })
