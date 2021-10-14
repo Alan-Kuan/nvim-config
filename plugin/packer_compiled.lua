@@ -130,7 +130,7 @@ _G.packer_plugins = {
   },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle" },
-    config = { "\27LJ\1\2j\0\0\2\0\5\0\b4\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\1G\0\1\0&hi NvimTreeRootFolder guifg=white\bcmd\bvim\21configs.nvimtree\frequire\0" },
+    config = { "\27LJ\1\2š\1\0\0\2\0\6\0\f4\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\0014\0\2\0007\0\3\0%\1\5\0>\0\2\1G\0\1\0$hi NvimTreeNormal guibg=#272727&hi NvimTreeRootFolder guifg=white\bcmd\bvim\21configs.nvimtree\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/home/alan/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
@@ -201,7 +201,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Setup for: nvim-tree.lua
 time([[Setup for nvim-tree.lua]], true)
-try_loadstring("\27LJ\1\2š\1\0\0\6\0\t\0\0144\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\0014\1\0\0007\1\a\1'\2\1\0:\2\b\1G\0\1\0\25nvim_tree_auto_close\6g\1\0\2\vsilent\2\fnoremap\2\24:NvimTreeToggle<CR>\6-\6n\20nvim_set_keymap\bapi\bvim\0", "setup", "nvim-tree.lua")
+try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:NvimTreeToggle<CR>\6-\6n\20nvim_set_keymap\bapi\bvim\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
 -- Setup for: markdown-preview.nvim
 time([[Setup for markdown-preview.nvim]], true)
@@ -270,8 +270,8 @@ time([[Config for vim-hexokinase]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

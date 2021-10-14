@@ -33,11 +33,11 @@ require('packer').startup(function (use)
         setup = function ()
             local map = vim.api.nvim_set_keymap
             map('n', '-', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-            vim.g.nvim_tree_auto_close = 1  -- currently, it should be here, see https://github.com/kyazdani42/nvim-tree.lua/issues/547
         end,
         config = function ()
             require('configs.nvimtree')
             vim.cmd('hi NvimTreeRootFolder guifg=white')
+            vim.cmd('hi NvimTreeNormal guibg=#272727')
         end
     }
     use {
