@@ -22,7 +22,7 @@ local list = {
     { key = {'<S-CR>', 'x', '<2-RightMouse'},   cb = tree_cb('close_node') },
     { key = 'S',                                cb = tree_cb('system_open') },
     { key = 'v',                                cb = tree_cb('vsplit') },
-    { key = 'h',                                cb = tree_cb('split') },
+    { key = 'i',                                cb = tree_cb('split') },
     { key = 't',                                cb = tree_cb('tabnew') },
     { key = 'C',                                cb = tree_cb('cd') },
     { key = 'P',                                cb = tree_cb('parent_node') },
