@@ -81,10 +81,10 @@ _G.packer_plugins = {
     path = "/home/alan/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
-  despacio = {
+  ["gruvbox.nvim"] = {
     loaded = true,
-    path = "/home/alan/.local/share/nvim/site/pack/packer/start/despacio",
-    url = "https://github.com/alessandroyorba/despacio"
+    path = "/home/alan/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["indent-blankline.nvim"] = {
     config = { "\27LJ\1\2˜\1\0\0\3\0\b\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\0013\2\6\0:\2\a\1>\0\2\1G\0\1\0\21filetype_exclude\1\2\0\0\14dashboard\20buftype_exclude\1\0\0\1\3\0\0\rterminal\vnofile\nsetup\21indent_blankline\frequire\0" },
@@ -102,6 +102,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/alan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/hoob3rt/lualine.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/alan/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["markdown-preview.nvim"] = {
     commands = { "MarkdownPreview" },
@@ -237,26 +242,26 @@ time([[Setup for nvim-tree.lua]], false)
 time([[Setup for markdown-preview.nvim]], true)
 try_loadstring("\27LJ\1\2ç\1\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0Ç\1                augroup md_preview\n                    autocmd!\n                    autocmd filetype markdown nnoremap <buffer><C-m> :MarkdownPreview<CR>\n                augroup END\n            \bcmd\bvim\0", "setup", "markdown-preview.nvim")
 time([[Setup for markdown-preview.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: vim-closetag
-time([[Config for vim-closetag]], true)
-try_loadstring("\27LJ\1\2‹\1\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\29html, php, vue, markdown\23closetag_filetypes\31*.html, *.php, *.vue, *.md\23closetag_filenames\6g\bvim\0", "config", "vim-closetag")
-time([[Config for vim-closetag]], false)
 -- Config for: dashboard-nvim
 time([[Config for dashboard-nvim]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.dashboard\frequire\0", "config", "dashboard-nvim")
 time([[Config for dashboard-nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
+-- Config for: symbols-outline.nvim
+time([[Config for symbols-outline.nvim]], true)
+try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:SymbolsOutline<CR>\6_\6n\20nvim_set_keymap\bapi\bvim\0", "config", "symbols-outline.nvim")
+time([[Config for symbols-outline.nvim]], false)
+-- Config for: vim-closetag
+time([[Config for vim-closetag]], true)
+try_loadstring("\27LJ\1\2‹\1\0\0\2\0\6\0\t4\0\0\0007\0\1\0%\1\3\0:\1\2\0004\0\0\0007\0\1\0%\1\5\0:\1\4\0G\0\1\0\29html, php, vue, markdown\23closetag_filetypes\31*.html, *.php, *.vue, *.md\23closetag_filenames\6g\bvim\0", "config", "vim-closetag")
+time([[Config for vim-closetag]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2˜\1\0\0\3\0\b\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\0013\2\6\0:\2\a\1>\0\2\1G\0\1\0\21filetype_exclude\1\2\0\0\14dashboard\20buftype_exclude\1\0\0\1\3\0\0\rterminal\vnofile\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
@@ -289,10 +294,10 @@ time([[Config for comfortable-motion.vim]], false)
 time([[Config for nvim-lsp-installer]], true)
 try_loadstring("\27LJ\1\0025\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\26configs.lsp_installer\frequire\0", "config", "nvim-lsp-installer")
 time([[Config for nvim-lsp-installer]], false)
--- Config for: symbols-outline.nvim
-time([[Config for symbols-outline.nvim]], true)
-try_loadstring("\27LJ\1\2s\0\0\6\0\a\0\n4\0\0\0007\0\1\0007\0\2\0\16\1\0\0%\2\3\0%\3\4\0%\4\5\0003\5\6\0>\1\5\1G\0\1\0\1\0\2\vsilent\2\fnoremap\2\24:SymbolsOutline<CR>\6_\6n\20nvim_set_keymap\bapi\bvim\0", "config", "symbols-outline.nvim")
-time([[Config for symbols-outline.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22configs.lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-tabline
 time([[Config for nvim-tabline]], true)
 try_loadstring("\27LJ\1\2ñ\1\0\0\2\0\a\0\0164\0\0\0%\1\1\0>\0\2\0014\0\2\0007\0\3\0%\1\4\0>\0\2\0014\0\2\0007\0\3\0%\1\5\0>\0\2\0014\0\2\0007\0\3\0%\1\6\0>\0\2\1G\0\1\0006hi TabLineModifiedSeparatorInactive guifg=#ff7c7e4hi TabLineModifiedSeparatorActive guifg=#ff7c7e,hi TabLineSeparatorActive guifg=SkyBlue\bcmd\bvim\20configs.tabline\frequire\0", "config", "nvim-tabline")

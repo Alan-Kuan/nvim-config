@@ -4,6 +4,9 @@ let mapleader = ' '
 " clear search buffer
 nnoremap <silent><C-n> :let @/=""<CR>
 
+" switch light/dark colorscheme
+nnoremap <silent><leader>bg :let &background = (&background == 'dark' ? 'light' : 'dark')<CR>
+
 " for jumping between split screen to be easier
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
