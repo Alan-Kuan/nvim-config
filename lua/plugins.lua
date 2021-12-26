@@ -53,7 +53,12 @@ require('packer').startup(function (use)
             require('configs.lspconfig')
         end
     }
-    use 'kabouzeid/nvim-lspinstall'
+    use {
+        'williamboman/nvim-lsp-installer',
+        config = function ()
+            require('configs.lsp_installer')
+        end
+    }
     use {
         'hrsh7th/nvim-compe',
         config = function ()
@@ -69,7 +74,7 @@ require('packer').startup(function (use)
             require('trouble').setup {
                 action_keys = { refresh = 'R' },
                 auto_close = true, -- automatically close the list when you have no diagnostics
-                use_lsp_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+                use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
             }
             map('n', '<leader>xx', ':TroubleToggle<CR>', { noremap = true, silent = true })
         end

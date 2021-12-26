@@ -18,7 +18,7 @@ require('lualine').setup {
         },
         lualine_c = {
             {
-                'diagnostics', sources = { 'nvim_lsp' }, symbols = {
+                'diagnostics', sources = { 'nvim_diagnostic' }, symbols = {
                     error = ' ',
                     warn = ' ',
                     info = ' ',
