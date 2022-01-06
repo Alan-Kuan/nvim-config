@@ -1,4 +1,5 @@
 local lsp_installer = require('nvim-lsp-installer')
+local util = require('lspconfig').util
 
 local on_attach = function(_, bufnr)
     local function buf_map(...)
@@ -37,6 +38,14 @@ lsp_installer.on_server_ready(function (server)
                     }
                 }
             }
+        },
+        ["denols"] = {
+            on_attach = on_attach,
+            root_dir = util.root_pattern('deno.json')
+        },
+        ["tsserver"] = {
+            on_attach = on_attach,
+            root_dir = util.root_pattern('package.json')
         }
     }
 
