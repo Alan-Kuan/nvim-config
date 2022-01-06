@@ -2,10 +2,7 @@ vim.cmd('packadd packer.nvim')
 
 require('packer').startup(function (use)
     use 'wbthomason/packer.nvim'
-    use {
-        'ellisonleao/gruvbox.nvim',
-        requires = {'rktjmp/lush.nvim'}
-    }
+    use "savq/melange"
     use {
         'glepnir/dashboard-nvim',
         config = function ()
