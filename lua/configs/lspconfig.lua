@@ -1,5 +1,6 @@
 local lsp_installer = require('nvim-lsp-installer')
 local util = require('lspconfig').util
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(_, bufnr)
     local function buf_map(...)
@@ -25,12 +26,14 @@ end
 
 lsp_installer.on_server_ready(function (server)
     local default_opts = {
-        on_attach = on_attach
+        on_attach = on_attach,
+        capabilities = capabilities,
     }
 
     local server_opts = {
         ["sumneko_lua"] = {
             on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
                 Lua = {
                     diagnostics = {
@@ -41,10 +44,12 @@ lsp_installer.on_server_ready(function (server)
         },
         ["denols"] = {
             on_attach = on_attach,
+            capabilities = capabilities,
             root_dir = util.root_pattern('deno.json')
         },
         ["tsserver"] = {
             on_attach = on_attach,
+            capabilities = capabilities,
             root_dir = util.root_pattern('package.json')
         }
     }

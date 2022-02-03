@@ -60,11 +60,19 @@ require('packer').startup(function (use)
         end
     }
     use {
-        'hrsh7th/nvim-compe',
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-calc',
+            'hrsh7th/cmp-emoji',
+        },
         config = function ()
-            require('configs.compe')
+            require('configs.cmp')
         end
     }
+    use 'L3MON4D3/LuaSnip'
     use 'ray-x/lsp_signature.nvim'
     use {
         'folke/trouble.nvim',
