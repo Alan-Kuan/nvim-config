@@ -73,6 +73,7 @@ require('packer').startup(function (use)
         end
     }
     use 'L3MON4D3/LuaSnip'
+    use 'onsails/lspkind-nvim'
     use 'ray-x/lsp_signature.nvim'
     use {
         'folke/trouble.nvim',

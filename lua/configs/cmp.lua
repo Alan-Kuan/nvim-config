@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 local function has_words_before()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -52,6 +53,23 @@ cmp.setup {
             select = true,
         }),
     },
+    formatting = {
+        format = lspkind.cmp_format({
+            with_text = true,
+            maxwidth = 50,
+            before = function (entry, vim_item)
+                vim_item.menu = ({
+                    nvim_lsp = '[LSP]',
+                    luasnip = '[LuaSnip]',
+                    path = '[Path]',
+                    buffer = '[Buffer]',
+                    calc = '[Calc]',
+                    emoji = '[Emoji]',
+                })[entry.source.name]
+                return vim_item
+            end
+        })
+    },
     sources = cmp.config.sources {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
@@ -59,5 +77,5 @@ cmp.setup {
         { name = 'buffer' },
         { name = 'calc' },
         { name = 'emoji' },
-    }
+    },
 }
