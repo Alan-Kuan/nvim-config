@@ -31,15 +31,11 @@ lsp_installer.on_server_ready(function (server)
     }
 
     local server_opts = {
-        ["sumneko_lua"] = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { 'vim' }
-                    }
-                }
+        -- notice: lua-dev is set up for neovim-related lua projects
+        ["sumneko_lua"] = require('lua-dev').setup {
+            lspconfig = {
+                on_attach = on_attach,
+                capabilities = capabilities,
             }
         },
         ["denols"] = {

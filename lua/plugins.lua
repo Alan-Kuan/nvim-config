@@ -95,6 +95,7 @@ require('packer').startup(function (use)
             map('n', '_', ':SymbolsOutline<CR>', { noremap = true, silent = true })
         end
     }
+    use 'folke/lua-dev.nvim'
     use {
         'akinsho/toggleterm.nvim',
         config = function ()
