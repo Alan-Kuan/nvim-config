@@ -14,6 +14,7 @@ require('packer').startup(function (use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function ()
             require('configs.tabline')
+            vim.cmd('hi TabLine guibg=#352f2a')
             vim.cmd('hi TabLineSeparatorActive guifg=SkyBlue')
             vim.cmd('hi TabLineModifiedSeparatorActive guifg=#ff7c7e')
             vim.cmd('hi TabLineModifiedSeparatorInactive guifg=#ff7c7e')
