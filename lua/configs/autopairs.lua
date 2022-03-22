@@ -1,6 +1,5 @@
 local npairs = require('nvim-autopairs')
 local Rule = require('nvim-autopairs.rule')
-local cond = require('nvim-autopairs.conds')
 
 -- auto insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -11,30 +10,46 @@ npairs.setup {
     ignored_next_char = '[a-zA-Z0-9]'
 }
 
+-- add spaces between parentheses
 npairs.add_rules {
-    Rule('(', ')')
-        :use_key('<space>')
-        :replace_endpair(function() return '  <left>' end, true)
-}
-npairs.add_rules {
+    Rule(' ', ' ')
+        :with_pair(function (opts)
+            local pair = opts.line:sub(opts.col - 1, opts.col)
+            return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+        end),
     Rule('( ', ' )')
-        :only_cr(cond.done())
-}
-npairs.add_rules {
-    Rule('[', ']')
-        :use_key('<space>')
-        :replace_endpair(function() return '  <left>' end, true)
-}
-npairs.add_rules {
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%)') ~= nil
+        end)
+        :use_key(')'),
+    Rule('{ ', ' }')
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%}') ~= nil
+        end)
+        :use_key('}'),
     Rule('[ ', ' ]')
-        :only_cr(cond.done())
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%]') ~= nil
+        end)
+        :use_key(']')
 }
+
+-- expand pair only on enter
 npairs.add_rules {
     Rule('{', '}')
-        :use_key('<space>')
-        :replace_endpair(function() return '  <left>' end, true)
+        :end_wise(function() return true end),
+    Rule('(', ')')
+        :end_wise(function() return true end),
+    Rule('[', ']')
+        :end_wise(function() return true end),
 }
+
+-- arrow function in js/ts
 npairs.add_rules {
-    Rule('{ ', ' }')
-        :only_cr(cond.done())
+    Rule('%(.*%)%s*=>$', ' {  }', { 'javascript', 'typescript' })
+        :use_regex(true)
+        :set_end_pair_length(2),
 }
