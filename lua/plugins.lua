@@ -46,7 +46,8 @@ require('packer').startup(function (use)
         config = function ()
             require('configs.nvimtree')
             vim.cmd('hi NvimTreeRootFolder guifg=white')
-            vim.cmd('hi NvimTreeNormal guibg=#161311')
+            -- vim.cmd('hi NvimTreeNormal guibg=#161311')
+            vim.cmd('hi NvimTreeNormal guibg=#413932')
         end
     }
     use {
