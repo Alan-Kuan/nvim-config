@@ -5,7 +5,7 @@ local Terminal = require('toggleterm.terminal').Terminal
 require('toggleterm').setup {
     size = function (term)
         if term.direction == "horizontal" then
-            return 6
+            return 10
         elseif term.direction == "vertical" then
             return 50
         end
@@ -23,33 +23,14 @@ local hterm = Terminal:new {
     hidden = true
 }
 
-local lazygit = Terminal:new {
-    cmd = 'lazygit',
-    dir = 'git_dir',
-    direction = 'float',
-    hidden = true,
-    float_opts = {
-        border = 'curved',
-        height = 30
-    },
-    on_exit = function ()
-        cmd(':NvimTreeRefresh')
-    end
-}
-
 function HtermToggle()
     hterm:toggle()
-end
-
-function LazygitToggle()
-    lazygit:toggle()
 end
 
 local option = { noremap = true, silent = true }
 -- this is actually <C-/>; however, vim recognized it as <C-_>
 map('n', '<C-_>', ':lua HtermToggle()<CR>', option)
 map('t', '<C-_>', '<C-\\><C-n>:lua HtermToggle()<CR>', option)
-map('n', '<leader>g', ':lua LazygitToggle()<CR>', option)
 
 -- Key bindings for compiling the current file
 cmd([[
