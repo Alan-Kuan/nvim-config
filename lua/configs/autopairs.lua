@@ -37,16 +37,6 @@ npairs.add_rules {
         :use_key(']')
 }
 
--- expand pair only on enter
-npairs.add_rules {
-    Rule('{', '}')
-        :end_wise(function() return true end),
-    Rule('(', ')')
-        :end_wise(function() return true end),
-    Rule('[', ']')
-        :end_wise(function() return true end),
-}
-
 -- arrow function in js/ts
 npairs.add_rules {
     Rule('%(.*%)%s*=>$', ' {  }', { 'javascript', 'typescript' })
