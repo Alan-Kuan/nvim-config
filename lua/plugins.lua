@@ -18,6 +18,12 @@ require('packer').startup(function (use)
         end
     }
     use {
+        'rcarriga/nvim-notify',
+        config = function ()
+            vim.notify = require('notify')
+        end
+    }
+    use {
         'seblj/nvim-tabline',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function ()
