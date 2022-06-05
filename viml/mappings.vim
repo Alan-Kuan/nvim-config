@@ -7,6 +7,9 @@ nnoremap <silent><C-n> :let @/=""<CR>
 " switch light/dark colorscheme
 nnoremap <silent><leader>bg :let &background = (&background == 'dark' ? 'light' : 'dark')<CR>
 
+" split window
+nnoremap <C-w>\ <C-w>v
+nnoremap <C-w>/ <C-w>i
 " for jumping between split screen to be easier
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -21,12 +24,6 @@ nnoremap <M-j> <C-w>+
 nnoremap <M-k> <C-w>-
 nnoremap <M-h> <C-w><
 nnoremap <M-l> <C-w>>
-
-" move lines
-nnoremap <C-S-j> :m .+1<CR>==
-nnoremap <C-S-k> :m .-2<CR>==
-vnoremap <C-S-j> :m '>+1<CR>gv=gv
-vnoremap <C-S-k> :m '<-2<CR>gv=gv
 
 " select all
 nnoremap <silent><leader>a  ggVG
