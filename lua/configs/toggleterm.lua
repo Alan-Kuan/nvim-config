@@ -10,7 +10,6 @@ require('toggleterm').setup {
             return 50
         end
     end,
-    hidden = true,
     open_mapping = '<C-p>',
     direction = 'float',
     float_opts = {
@@ -36,22 +35,22 @@ map('t', '<C-_>', '<C-\\><C-n>:lua HtermToggle()<CR>', option)
 cmd([[
 augroup compile_files
     autocmd!
-    autocmd filetype c nmap <F4> :w <bar> :TermExec cmd="gcc % -o %:r" direction="horizontal"<CR>
-    autocmd filetype cpp nmap <F4> :w <bar> :TermExec cmd="g++ % -o %:r" direction="horizontal"<CR>
-    autocmd filetype go nmap <F4> :w <bar> :TermExec cmd="go build %" direction="horizontal"<CR>
-    autocmd filetype markdown nmap <F4> :w <bar> :TermExec cmd="mdpdf %" direction="horizontal"<CR>
+    autocmd filetype c nmap <F4> :w <bar> :TermExec cmd='gcc "%" -o "%:r"' direction="horizontal"<CR>
+    autocmd filetype cpp nmap <F4> :w <bar> :TermExec cmd='g++ "%" -o "%:r"' direction="horizontal"<CR>
+    autocmd filetype go nmap <F4> :w <bar> :TermExec cmd='go build "%"' direction="horizontal"<CR>
+    autocmd filetype markdown nmap <F4> :w <bar> :TermExec cmd='mdpdf "%"' direction="horizontal"<CR>
 augroup END
 ]])
 -- Key bindings for (compiling and) running the current file
 cmd([[
 augroup run_files
     autocmd!
-    autocmd filetype javascript nmap <F5> :w <bar> :TermExec cmd="node %"<CR>
-    autocmd filetype typescript nmap <F5> :w <bar> :TermExec cmd="deno run %"<CR>
-    autocmd filetype python nmap <F5> :w <bar> :TermExec cmd="python3 %"<CR>
-    autocmd filetype c nmap <F5> :w <bar> :TermExec cmd="gcc % -o %:r && ./%:r"<CR>
-    autocmd filetype cpp nmap <F5> :w <bar> :TermExec cmd="g++ % -o %:r && ./%:r"<CR>
-    autocmd filetype go nmap <F5> :w <bar> :TermExec cmd="go run %"<CR>
-    autocmd filetype markdown nmap <F5> :w <bar> :TermExec cmd="mdpdf % && xdg-open %:r.pdf" open=0<CR>
+    autocmd filetype javascript nmap <F5> :w <bar> :TermExec cmd='node "%"'<CR>
+    autocmd filetype typescript nmap <F5> :w <bar> :TermExec cmd='deno run "%"'<CR>
+    autocmd filetype python nmap <F5> :w <bar> :TermExec cmd='python3 "%"'<CR>
+    autocmd filetype c nmap <F5> :w <bar> :TermExec cmd='gcc "%" -o "%:r" && "./%:r"'<CR>
+    autocmd filetype cpp nmap <F5> :w <bar> :TermExec cmd='g++ "%" -o "%:r" && "./%:r"'<CR>
+    autocmd filetype go nmap <F5> :w <bar> :TermExec cmd='go run "%"'<CR>
+    autocmd filetype markdown nmap <F5> :w <bar> :TermExec cmd='mdpdf "%" && xdg-open "%:r.pdf"' open=0<CR>
 augroup END
 ]])
