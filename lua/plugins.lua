@@ -29,9 +29,9 @@ require('packer').startup(function (use)
         config = function ()
             require('configs.tabline')
             vim.cmd('hi TabLine guibg=#352f2a')
-            vim.cmd('hi TabLineSeparatorActive guifg=SkyBlue')
-            vim.cmd('hi TabLineModifiedSeparatorActive guifg=#ff7c7e')
-            vim.cmd('hi TabLineModifiedSeparatorInactive guifg=#ff7c7e')
+            vim.cmd('hi TabLineSeparatorSel guifg=skyblue')
+            vim.cmd('hi TabLineModifiedSel guifg=#fcba03')
+            vim.cmd('hi TabLineModified guifg=#fcba03')
         end
     }
     use {
@@ -112,6 +112,10 @@ require('packer').startup(function (use)
         end
     }
     use 'folke/lua-dev.nvim'
+    use {
+        'ckipp01/stylua-nvim',
+        run = 'cargo install stylua'
+    }
     use {
         'akinsho/toggleterm.nvim',
         tag = 'v1.*',
