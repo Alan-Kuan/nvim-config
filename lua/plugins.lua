@@ -1,14 +1,68 @@
-vim.cmd('packadd packer.nvim')
-
 require('packer').startup(function (use)
-    use 'wbthomason/packer.nvim'
-    use 'lewis6991/impatient.nvim'
-    use 'savq/melange'
+    -- [[ Fundamental ]] --
+	use 'wbthomason/packer.nvim'
+    use {
+        'echasnovski/mini.nvim',
+        branch = 'stable',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function ()
+            require('configs.misc')
+        end
+    }
+    use {
+        'lewis6991/impatient.nvim',
+        config = function ()
+            require('impatient')
+        end
+    }
+
+    -- [[ Colors ]] --
+    use 'morhetz/gruvbox'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function ()
             require('configs.treesitter')
+        end
+    }
+
+    -- [[ UI ]] --
+    use {
+        'seblj/nvim-tabline',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function ()
+            require('configs.tabline')
+        end
+    }
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function ()
+            require('configs.lualine')
+        end
+    }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        cmd = { 'NvimTreeToggle' },
+        setup = function ()
+            vim.keymap.set('n', '-', '<Cmd>NvimTreeToggle<CR>', { silent = true })
+        end,
+        config = function ()
+            require('configs.nvimtree')
+        end
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function ()
+            require('configs.telescope')
+        end
+    }
+    use {
+        'akinsho/toggleterm.nvim',
+        config = function ()
+            require('configs.toggleterm')
         end
     }
     use {
@@ -23,44 +77,12 @@ require('packer').startup(function (use)
             vim.notify = require('notify')
         end
     }
+
+    -- [[ LSP ]] --
     use {
-        'seblj/nvim-tabline',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        'williamboman/nvim-lsp-installer',
         config = function ()
-            require('configs.tabline')
-            vim.cmd('hi TabLine guibg=#352f2a')
-            vim.cmd('hi TabLineSeparatorSel guifg=skyblue')
-            vim.cmd('hi TabLineModifiedSel guifg=#fcba03')
-            vim.cmd('hi TabLineModified guifg=#fcba03')
-        end
-    }
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function ()
-            require('configs.lualine')
-        end
-    }
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        cmd = { 'NvimTreeToggle' },
-        setup = function ()
-            local map = vim.api.nvim_set_keymap
-            map('n', '-', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-        end,
-        config = function ()
-            require('configs.nvimtree')
-            vim.cmd('hi NvimTreeRootFolder guifg=white')
-            -- vim.cmd('hi NvimTreeNormal guibg=#161311')
-            vim.cmd('hi NvimTreeNormal guibg=#413932')
-        end
-    }
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function ()
-            require('configs.telescope')
+            require('configs.lsp_installer')
         end
     }
     use {
@@ -70,9 +92,15 @@ require('packer').startup(function (use)
         end
     }
     use {
-        'williamboman/nvim-lsp-installer',
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function ()
-            require('configs.lsp_installer')
+            require('trouble').setup {
+                action_keys = { refresh = 'R' },
+                auto_close = true, -- automatically close the list when you have no diagnostics
+                use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+            }
+            vim.keymap.set('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', { silent = true })
         end
     }
     use {
@@ -90,97 +118,55 @@ require('packer').startup(function (use)
     }
     use 'L3MON4D3/LuaSnip'
     use 'onsails/lspkind-nvim'
-    use 'ray-x/lsp_signature.nvim'
     use {
-        'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        'ray-x/lsp_signature.nvim',
         config = function ()
-            local map = vim.api.nvim_set_keymap
-            require('trouble').setup {
-                action_keys = { refresh = 'R' },
-                auto_close = true, -- automatically close the list when you have no diagnostics
-                use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
-            }
-            map('n', '<leader>xx', ':TroubleToggle<CR>', { noremap = true, silent = true })
-        end
-    }
-    use {
-        'simrat39/symbols-outline.nvim',
-        config = function ()
-            local map = vim.api.nvim_set_keymap
-            map('n', '_', ':SymbolsOutline<CR>', { noremap = true, silent = true })
+            require('lsp_signature').setup({ hint_prefix = '💡 ' })
         end
     }
     use 'folke/lua-dev.nvim'
-    use {
-        'ckipp01/stylua-nvim',
-        run = 'cargo install stylua'
-    }
-    use {
-        'akinsho/toggleterm.nvim',
-        config = function ()
-            require('configs.toggleterm')
-        end
-    }
+
+    -- [[ Utilities ]] --
+    use 'dstein64/vim-startuptime'
+    use 'h-hg/fcitx.nvim'
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
     use {
         'RRethy/vim-hexokinase',
-        run = 'make hexokinase',
-        config = function ()
-            local map = vim.api.nvim_set_keymap
-            map('n', '<C-c>', ':HexokinaseToggle<CR>', { noremap = true, silent = true })
-        end
+        run = 'make hexokinase'
     }
     use {
-        'yuttie/comfortable-motion.vim',
+        'chentoast/marks.nvim',
         config = function ()
-            local map = vim.api.nvim_set_keymap
-            map('n', '<ScrollWheelDown>', ':call comfortable_motion#flick(40)<CR>', { noremap = true, silent = true })
-            map('n', '<ScrollWheelUp>', ':call comfortable_motion#flick(-40)<CR>', { noremap = true, silent = true })
-        end
-    }
-    use {
-        'windwp/nvim-autopairs',
-        config = function ()
-            require('configs.autopairs');
-        end
-    }
-    use {
-        'alvan/vim-closetag',
-        config = function ()
-            vim.g.closetag_filenames = '*.html, *.php, *.vue, *.md'
-            vim.g.closetag_filetypes = 'html, php, vue, markdown'
+            require('configs.marks')
         end
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = function ()
-            require('indent_blankline').setup {
-                buftype_exclude = { 'terminal', 'nofile' },
-                filetype_exclude = { 'dashboard' }
-            }
+            require('configs.indent')
         end
     }
     use {
-        'tomtom/tcomment_vim',
+        'alvan/vim-closetag',
         config = function ()
-            vim.g.tcomment_mapleader1 = ''
-            vim.g.tcomment_mapleader2 = ''
+            vim.g.closetag_filenames = '*.html, *.php, *.vue, *.svelte, *.md'
+            vim.g.closetag_filetypes = 'html, php, vue, svelte, markdown'
         end
     }
-    use 'tpope/vim-surround'
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
         ft = 'markdown',
         setup = function ()
-            -- Start Markdown Preview
-            vim.cmd([[
-                augroup md_preview
-                    autocmd!
-                    autocmd filetype markdown nnoremap <buffer><C-m> :MarkdownPreview<CR>
-                augroup END
-            ]])
+            vim.api.nvim_create_augroup('MD_Preview', { clear = true })
+            vim.api.nvim_create_autocmd('Filetype', {
+                group = 'MD_Preview',
+                pattern = { 'markdown' },
+                callback = function ()
+                    vim.keymap.set('n', '<C-m>', '<Cmd>MarkdownPreview<CR>', { silent = true, buffer = true })
+                end
+            })
         end,
         config = function ()
             vim.g.mkdp_page_title = '${name} - Preview'
@@ -192,10 +178,7 @@ require('packer').startup(function (use)
         requires = 'godlygeek/tabular',
         ft = 'markdown',
         config = function ()
-            vim.g.vim_markdown_folding_disabled = 1
-            vim.g.vim_markdown_new_list_item_indent = 4
-            vim.g.vim_markdown_math = 1
-            vim.g.vim_markdown_frontmatter = 1
+            require('configs.markdown')
         end
     }
 end)

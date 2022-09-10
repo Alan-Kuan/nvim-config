@@ -1,8 +1,9 @@
 require('lualine').setup {
     options = {
         theme = 'gruvbox',
-        disabled_filetypes = { 'toggleterm' }
+        disabled_filetypes = { 'help', 'qf', 'Trouble', 'toggleterm' }
     },
+    extensions = { 'nvim-tree' },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
@@ -18,18 +19,39 @@ require('lualine').setup {
         },
         lualine_c = {
             {
-                'diagnostics', sources = { 'nvim_diagnostic' }, symbols = {
+                'diagnostics',
+                sources = { 'nvim_diagnostic' },
+                symbols = {
                     error = ' ',
                     warn = ' ',
                     info = ' ',
                     hint = ''
                 }
             },
-            'filename'
+            {
+                'filename',
+                path = 3,
+                symbols = {
+                    modified = ' ',
+                    readonly = '  ',
+                }
+            }
         },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     },
-    extensions = { 'nvim-tree' }
+    inactive_sections = {
+        lualine_c = {
+            {
+                'filename',
+                path = 3,
+                symbols = {
+                    modified = ' ',
+                    readonly = '  ',
+                }
+            }
+        },
+        lualine_x = { 'location' }
+    },
 }

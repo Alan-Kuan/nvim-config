@@ -5,6 +5,7 @@ opt.fileencoding = 'utf-8'
 opt.termguicolors = true
 opt.mouse = 'a'
 opt.showtabline = 2         -- always show the tabline
+opt.showmode = false
 opt.cursorline = true
 opt.ruler = true
 opt.number = true

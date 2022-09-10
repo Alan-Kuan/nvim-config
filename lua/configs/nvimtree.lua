@@ -1,28 +1,28 @@
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
-
 local hotkey_list = {
-    { key = { '<CR>', 'o', '<2-LeftMouse>' },   cb = tree_cb('edit') },
-    { key = { '<S-CR>', 'x' },                  cb = tree_cb('close_node') },
-    { key = 'S',                                cb = tree_cb('system_open') },
-    { key = 'v',                                cb = tree_cb('vsplit') },
-    { key = 'i',                                cb = tree_cb('split') },
-    { key = 't',                                cb = tree_cb('tabnew') },
-    { key = 'C',                                cb = tree_cb('cd') },
-    { key = 'P',                                cb = tree_cb('parent_node') },
-    { key = '<Tab>',                            cb = tree_cb('preview') },
-    { key = 'K',                                cb = tree_cb('first_sibling') },
-    { key = 'J',                                cb = tree_cb('last_sibling') },
-    { key = 'I',                                cb = tree_cb('toggle_ignored') },
-    { key = 'H',                                cb = tree_cb('toggle_dotfiles') },
-    { key = 'R',                                cb = tree_cb('refresh') },
-    { key = 'a',                                cb = tree_cb('create') },
-    { key = 'd',                                cb = tree_cb('remove') },
-    { key = 'r',                                cb = tree_cb('rename') },
-    { key = '<C-r>',                            cb = tree_cb('full_rename') },
-    { key = 'gp',                               cb = tree_cb('prev_git_item') },
-    { key = 'gn',                               cb = tree_cb('next_git_item') },
-    { key = 'q',                                cb = tree_cb('close') },
-    { key = '?',                                cb = tree_cb('toggle_help') },
+    { key = { '<CR>', 'o', '<2-LeftMouse>' },   action = 'edit' },
+    { key = { '<S-CR>', 'x' },                  action = 'close_node' },
+    { key = 'S',                                action = 'system_open' },
+    { key = 'v',                                action = 'vsplit' },
+    { key = 'i',                                action = 'split' },
+    { key = 't',                                action = 'tabnew' },
+    { key = 'C',                                action = 'cd' },
+    { key = 'P',                                action = 'parent_node' },
+    { key = '<Tab>',                            action = 'preview' },
+    { key = 'K',                                action = 'first_sibling' },
+    { key = 'J',                                action = 'last_sibling' },
+    { key = 'I',                                action = 'toggle_ignored' },
+    { key = 'H',                                action = 'toggle_dotfiles' },
+    { key = 'R',                                action = 'refresh' },
+    { key = 'a',                                action = 'create' },
+    { key = 'd',                                action = 'remove' },
+    { key = 'r',                                action = 'rename' },
+    { key = '<C-r>',                            action = 'full_rename' },
+    { key = 'gp',                               action = 'prev_git_item' },
+    { key = 'gn',                               action = 'next_git_item' },
+    { key = 'q',                                action = 'close' },
+    { key = 'f',                                action = 'live_filter' },
+    { key = 'F',                                action = 'clear_live_filter' },
+    { key = '?',                                action = 'toggle_help' },
 }
 
 require('nvim-tree').setup {
@@ -42,6 +42,10 @@ require('nvim-tree').setup {
     filters = {
         dotfiles = true,
         custom = { '.git', 'node_modules' },
+    },
+
+    live_filter = {
+        always_show_folders = false,
     },
 
     actions = {
