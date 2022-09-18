@@ -16,6 +16,8 @@ vim.api.nvim_create_autocmd('Filetype', {
         'lspinfo',
         'lsp-installer',
         'startuptime',
+        'dashboard',
+        'toggleterm'
     },
     callback = function ()
         vim.b.minicursorword_disable = true
@@ -45,9 +47,9 @@ require('mini.surround').setup {
 }
 
 -- NOTE: ':<C-u>' is the key
-vim.keymap.set('x', 'S', ":<C-u>lua MiniSurround.add('visual')<CR>")
-vim.keymap.del('v', 'ys')
+vim.keymap.set('x', 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", { silent = true })
 vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+vim.keymap.del('v', 'ys')
 
 -- [[ Auto Pairs ]] --
 require('mini.pairs').setup {
