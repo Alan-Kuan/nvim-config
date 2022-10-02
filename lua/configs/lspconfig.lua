@@ -19,8 +19,6 @@ local on_attach = function (_, buffer)
     set_map('<leader>ca',   vim.lsp.buf.code_action)
 end
 
-local servers = require('nvim-lsp-installer').get_installed_servers()
-
 local server_opts = {
     -- NOTE: lua-dev is set up for neovim-related lua projects
     ['sumneko_lua'] = require('lua-dev').setup {
@@ -41,16 +39,17 @@ local server_opts = {
     }
 }
 
+local servers = require('mason-lspconfig').get_installed_servers()
 for _, server in pairs(servers) do
     local default_opts = {
         on_attach = on_attach,
         capabilities = capabilities,
     }
 
-    if server_opts[server.name] == nil then
-        lspconfig[server.name].setup(default_opts)
+    if server_opts[server] == nil then
+        lspconfig[server].setup(default_opts)
     else
-        lspconfig[server.name].setup(server_opts[server.name])
+        lspconfig[server].setup(server_opts[server])
     end
 end
 

@@ -81,11 +81,18 @@ require('packer').startup(function (use)
         end
     }
 
-    -- [[ LSP ]] --
+    -- [[ Language ]] --
+    -- NOTE: the order of the following 3 plugins is important
     use {
-        'williamboman/nvim-lsp-installer',
+        'williamboman/mason.nvim',
         config = function ()
-            require('configs.lsp_installer')
+            require('configs.mason')
+        end
+    }
+    use {
+        'williamboman/mason-lspconfig.nvim',
+        config = function ()
+            require('mason-lspconfig').setup()
         end
     }
     use {
