@@ -133,12 +133,6 @@ require('packer').startup(function (use)
         run = 'make hexokinase'
     }
     use {
-        'chentoast/marks.nvim',
-        config = function ()
-            require('configs.marks')
-        end
-    }
-    use {
         'lukas-reineke/indent-blankline.nvim',
         config = function ()
             require('configs.indent')
