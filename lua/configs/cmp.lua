@@ -2,11 +2,6 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
--- local has_words_before = function()
---     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
---     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
--- end
-
 cmp.setup {
     preselect = cmp.PreselectMode.Item,
     completion = {
@@ -23,9 +18,6 @@ cmp.setup {
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            -- TODO: it makes a tab cannot be added right after a word
-            -- elseif has_words_before() then
-            --     cmp.complete()
             else
                 fallback()
             end
@@ -67,8 +59,6 @@ cmp.setup {
                     luasnip = '[LuaSnip]',
                     path = '[Path]',
                     buffer = '[Buffer]',
-                    calc = '[Calc]',
-                    emoji = '[Emoji]',
                 })[entry.source.name]
                 return vim_item
             end
@@ -79,7 +69,8 @@ cmp.setup {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'calc' },
-        { name = 'emoji' },
     },
+    experimental = {
+        ghost_text = true
+    }
 }

@@ -82,7 +82,6 @@ require('packer').startup(function (use)
     }
 
     -- [[ Language ]] --
-    -- NOTE: the order of the following 3 plugins is important
     use {
         'williamboman/mason.nvim',
         config = function ()
@@ -90,14 +89,11 @@ require('packer').startup(function (use)
         end
     }
     use {
-        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        require = 'williamboman/mason-lspconfig.nvim',
+        after = 'mason.nvim',
         config = function ()
             require('mason-lspconfig').setup()
-        end
-    }
-    use {
-        'neovim/nvim-lspconfig',
-        config = function ()
             require('configs.lspconfig')
         end
     }
@@ -119,19 +115,11 @@ require('packer').startup(function (use)
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-calc',
-            'hrsh7th/cmp-emoji',
+            'L3MON4D3/LuaSnip',
+            'onsails/lspkind-nvim'
         },
         config = function ()
             require('configs.cmp')
-        end
-    }
-    use 'L3MON4D3/LuaSnip'
-    use 'onsails/lspkind-nvim'
-    use {
-        'ray-x/lsp_signature.nvim',
-        config = function ()
-            require('lsp_signature').setup({ hint_prefix = '💡 ' })
         end
     }
     use 'folke/lua-dev.nvim'

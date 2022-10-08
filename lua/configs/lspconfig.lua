@@ -1,3 +1,6 @@
+-- NOTE: lua-dev is set up for neovim-related lua projects,
+--       and it should be required before lspconfig
+require('lua-dev').setup {}
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -20,11 +23,15 @@ local on_attach = function (_, buffer)
 end
 
 local server_opts = {
-    -- NOTE: lua-dev is set up for neovim-related lua projects
-    ['sumneko_lua'] = require('lua-dev').setup {
-        lspconfig = {
-            on_attach = on_attach,
-            capabilities = capabilities,
+    ['sumneko_lua'] = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+            Lua = {
+                completion = {
+                    callSnippet = 'Replace'
+                }
+            }
         }
     },
     ['denols'] = {
