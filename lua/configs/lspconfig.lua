@@ -18,7 +18,7 @@ local on_attach = function (_, buffer)
     set_map('<leader>r',    vim.lsp.buf.rename)
     set_map('[d',           vim.diagnostic.goto_prev)
     set_map(']d',           vim.diagnostic.goto_next)
-    set_map('<leader>f',    vim.lsp.buf.formatting)
+    set_map('<leader>f',    function () vim.lsp.buf.format { async = true } end)
     set_map('<leader>ca',   vim.lsp.buf.code_action)
 end
 
