@@ -127,7 +127,12 @@ require('packer').startup(function (use)
     -- [[ Utilities ]] --
     use 'dstein64/vim-startuptime'
     use 'h-hg/fcitx.nvim'
-    use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function ()
+            require('configs.comment')
+        end
+    }
     use {
         'RRethy/vim-hexokinase',
         run = 'make hexokinase'
