@@ -15,7 +15,7 @@ require('packer').startup(function (use)
             require('impatient')
         end
     }
-
+    
     -- [[ Colors ]] --
     use 'morhetz/gruvbox'
     use {
@@ -25,7 +25,7 @@ require('packer').startup(function (use)
             require('configs.treesitter')
         end
     }
-
+    
     -- [[ UI ]] --
     use {
         'seblj/nvim-tabline',
@@ -89,11 +89,16 @@ require('packer').startup(function (use)
         end
     }
     use {
-        'neovim/nvim-lspconfig',
-        require = 'williamboman/mason-lspconfig.nvim',
+        'williamboman/mason-lspconfig.nvim',
         after = 'mason.nvim',
         config = function ()
             require('mason-lspconfig').setup()
+        end
+    }
+    use {
+        'neovim/nvim-lspconfig',
+        after = 'mason-lspconfig.nvim',
+        config = function ()
             require('configs.lspconfig')
         end
     }
@@ -122,8 +127,8 @@ require('packer').startup(function (use)
             require('configs.cmp')
         end
     }
-    use 'folke/lua-dev.nvim'
-
+    use 'folke/neodev.nvim'
+    
     -- [[ Utilities ]] --
     use 'dstein64/vim-startuptime'
     use 'h-hg/fcitx.nvim'

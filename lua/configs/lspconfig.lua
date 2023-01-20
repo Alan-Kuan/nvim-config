@@ -1,8 +1,8 @@
 -- NOTE: lua-dev is set up for neovim-related lua projects,
 --       and it should be required before lspconfig
-require('lua-dev').setup {}
+require('neodev').setup {}
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function (_, buffer)
     local set_map = function (lhs, rhs)
@@ -66,8 +66,7 @@ local signs = {
     Info  = ' ▐',
     Hint  = ' ▐'
 }
-
-for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
+for id, icon in pairs(signs) do
+    local hl = 'DiagnosticSign' .. id
     vim.fn.sign_define(hl, { text = icon, texthl = hl, iconhl = hl })
 end
