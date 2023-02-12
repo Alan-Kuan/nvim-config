@@ -1,77 +1,69 @@
-require('packer').startup(function (use)
-    -- [[ Fundamental ]] --
-	use 'wbthomason/packer.nvim'
-    use {
-        'echasnovski/mini.nvim',
-        branch = 'stable',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function ()
-            require('configs.misc')
-        end
-    }
-    use {
-        'lewis6991/impatient.nvim',
-        config = function ()
-            require('impatient')
-        end
-    }
-    
+require('lazy').setup({
     -- [[ Colors ]] --
-    use 'morhetz/gruvbox'
-    use {
+    {
+        'morhetz/gruvbox',
+        lazy = false,
+        priority = 1000,
+        init = function ()
+            vim.cmd('colorscheme gruvbox')
+        end
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        build = ':TSUpdate',
         config = function ()
             require('configs.treesitter')
         end
-    }
-    
+    },
+
     -- [[ UI ]] --
-    use {
+    {
         'seblj/nvim-tabline',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function ()
             require('configs.tabline')
         end
-    }
-    use {
+    },
+    {
         'hoob3rt/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function ()
             require('configs.lualine')
         end
-    }
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        cmd = { 'NvimTreeToggle' },
-        setup = function ()
+    },
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        cmd = 'NvimTreeToggle',
+        init = function ()
             vim.keymap.set('n', '-', '<Cmd>NvimTreeToggle<CR>', { silent = true })
         end,
         config = function ()
             require('configs.nvimtree')
         end
-    }
-    use {
+    },
+    {
         'nvim-telescope/telescope.nvim',
-        requires = 'nvim-lua/plenary.nvim',
+        dependencies = 'nvim-lua/plenary.nvim',
         config = function ()
             require('configs.telescope')
         end
-    }
-    use {
+    },
+    {
         'akinsho/toggleterm.nvim',
         config = function ()
             require('configs.toggleterm')
         end
-    }
-    use {
+    },
+    {
         'glepnir/dashboard-nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        event = 'VimEnter',
         config = function ()
             require('configs.dashboard')
         end
-    }
-    use {
+    },
+    {
         'rcarriga/nvim-notify',
         config = function ()
             require('notify').setup {
@@ -79,32 +71,30 @@ require('packer').startup(function (use)
             }
             vim.notify = require('notify')
         end
-    }
+    },
 
     -- [[ Language ]] --
-    use {
+    {
         'williamboman/mason.nvim',
         config = function ()
             require('configs.mason')
         end
-    }
-    use {
+    },
+    {
         'williamboman/mason-lspconfig.nvim',
-        after = 'mason.nvim',
         config = function ()
             require('mason-lspconfig').setup()
         end
-    }
-    use {
+    },
+    {
         'neovim/nvim-lspconfig',
-        after = 'mason-lspconfig.nvim',
         config = function ()
             require('configs.lspconfig')
         end
-    }
-    use {
+    },
+    {
         'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function ()
             require('trouble').setup {
                 action_keys = { refresh = 'R' },
@@ -113,10 +103,10 @@ require('packer').startup(function (use)
             }
             vim.keymap.set('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', { silent = true })
         end
-    }
-    use {
+    },
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
+        dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-buffer',
@@ -126,41 +116,48 @@ require('packer').startup(function (use)
         config = function ()
             require('configs.cmp')
         end
-    }
-    use 'folke/neodev.nvim'
-    
+    },
+    'folke/neodev.nvim',
+
     -- [[ Utilities ]] --
-    use 'dstein64/vim-startuptime'
-    use 'h-hg/fcitx.nvim'
-    use {
+    'h-hg/fcitx.nvim',
+    {
+        'echasnovski/mini.nvim',
+        branch = 'stable',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function ()
+            require('configs.misc')
+        end
+    },
+    {
         'JoosepAlviste/nvim-ts-context-commentstring',
         config = function ()
             require('configs.comment')
         end
-    }
-    use {
+    },
+    {
         'RRethy/vim-hexokinase',
-        run = 'make hexokinase'
-    }
-    use {
+        build = 'make hexokinase'
+    },
+    {
         'lukas-reineke/indent-blankline.nvim',
         config = function ()
             require('configs.indent')
         end
-    }
-    use {
+    },
+    {
         'alvan/vim-closetag',
         config = function ()
             vim.g.closetag_filenames = '*.html, *.php, *.vue, *.svelte, *.md'
             vim.g.closetag_filetypes = 'html, php, vue, svelte, markdown'
         end
-    }
-    use {
+    },
+    {
         'iamcco/markdown-preview.nvim',
-        run = 'cd app && yarn install',
+        build = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
         ft = 'markdown',
-        setup = function ()
+        init = function ()
             vim.api.nvim_create_augroup('MD_Preview', { clear = true })
             vim.api.nvim_create_autocmd('Filetype', {
                 group = 'MD_Preview',
@@ -174,13 +171,13 @@ require('packer').startup(function (use)
             vim.g.mkdp_page_title = '${name} - Preview'
             vim.g.mkdp_echo_preview_url = 1
         end
-    }
-    use {
+    },
+    {
         'plasticboy/vim-markdown',
-        requires = 'godlygeek/tabular',
+        dependencies = 'godlygeek/tabular',
         ft = 'markdown',
         config = function ()
             require('configs.markdown')
         end
     }
-end)
+})
