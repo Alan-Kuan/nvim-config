@@ -125,8 +125,9 @@ require('lazy').setup({
         'echasnovski/mini.nvim',
         branch = 'stable',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        event = 'VeryLazy',
         config = function ()
-            require('configs.misc')
+            require('configs.mini')
         end
     },
     {
