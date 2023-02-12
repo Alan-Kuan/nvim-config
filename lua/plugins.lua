@@ -20,6 +20,7 @@ require('lazy').setup({
     {
         'seblj/nvim-tabline',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        event = 'VeryLazy',
         config = function ()
             require('configs.tabline')
         end
@@ -27,6 +28,7 @@ require('lazy').setup({
     {
         'hoob3rt/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        event = 'VeryLazy',
         config = function ()
             require('configs.lualine')
         end
@@ -35,9 +37,9 @@ require('lazy').setup({
         'nvim-tree/nvim-tree.lua',
         dependencies = 'nvim-tree/nvim-web-devicons',
         cmd = 'NvimTreeToggle',
-        init = function ()
-            vim.keymap.set('n', '-', '<Cmd>NvimTreeToggle<CR>', { silent = true })
-        end,
+        keys ={
+            { '-', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle the file explorer' },
+        },
         config = function ()
             require('configs.nvimtree')
         end
@@ -76,18 +78,19 @@ require('lazy').setup({
     -- [[ Language ]] --
     {
         'williamboman/mason.nvim',
+        cmd = 'Mason',
         config = function ()
             require('configs.mason')
         end
     },
     {
-        'williamboman/mason-lspconfig.nvim',
-        config = function ()
-            require('mason-lspconfig').setup()
-        end
-    },
-    {
         'neovim/nvim-lspconfig',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            'folke/neodev.nvim',
+        },
         config = function ()
             require('configs.lspconfig')
         end
@@ -95,13 +98,17 @@ require('lazy').setup({
     {
         'folke/trouble.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
+        cmd = { 'TroubleToggle', 'Trouble' },
+        keys = {
+            { '<leader>xx', '<Cmd>TroubleToggle document_diagnostics<CR>' },
+            { '<leader>xX', '<Cmd>TroubleToggle workspace_diagnostics<CR>' },
+        },
         config = function ()
             require('trouble').setup {
                 action_keys = { refresh = 'R' },
                 auto_close = true, -- automatically close the list when you have no diagnostics
                 use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
             }
-            vim.keymap.set('n', '<leader>xx', '<Cmd>TroubleToggle<CR>', { silent = true })
         end
     },
     {
@@ -113,14 +120,14 @@ require('lazy').setup({
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim'
         },
+        event = 'InsertEnter',
         config = function ()
             require('configs.cmp')
         end
     },
-    'folke/neodev.nvim',
 
     -- [[ Utilities ]] --
-    'h-hg/fcitx.nvim',
+    { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
     {
         'echasnovski/mini.nvim',
         branch = 'stable',
@@ -132,22 +139,26 @@ require('lazy').setup({
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
+        event = 'VeryLazy',
         config = function ()
             require('configs.comment')
         end
     },
     {
         'RRethy/vim-hexokinase',
-        build = 'make hexokinase'
+        build = 'make hexokinase',
+        event = 'VeryLazy'
     },
     {
         'lukas-reineke/indent-blankline.nvim',
+        event = { 'BufReadPost', 'BufNewFile' },
         config = function ()
             require('configs.indent')
         end
     },
     {
         'alvan/vim-closetag',
+        event = 'VeryLazy',
         config = function ()
             vim.g.closetag_filenames = '*.html, *.php, *.vue, *.svelte, *.md'
             vim.g.closetag_filetypes = 'html, php, vue, svelte, markdown'
@@ -158,6 +169,7 @@ require('lazy').setup({
         build = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
         ft = 'markdown',
+        event = 'VeryLazy',
         init = function ()
             vim.api.nvim_create_augroup('MD_Preview', { clear = true })
             vim.api.nvim_create_autocmd('Filetype', {

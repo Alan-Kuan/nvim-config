@@ -1,6 +1,6 @@
--- NOTE: lua-dev is set up for neovim-related lua projects,
---       and it should be required before lspconfig
-require('neodev').setup {}
+-- NOTE: neodev is set up for neovim-related lua projects, and it should be required before lspconfig
+require('neodev').setup()
+
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -70,3 +70,5 @@ for id, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. id
     vim.fn.sign_define(hl, { text = icon, texthl = hl, iconhl = hl })
 end
+
+require('mason-lspconfig').setup()
