@@ -1,4 +1,4 @@
--- NOTE: neodev is set up for neovim-related lua projects, and it should be required before lspconfig
+-- NOTE: neodev is set up for neovim-related lua projects, and it should be setup before lspconfig
 require('neodev').setup()
 
 local lspconfig = require('lspconfig')
@@ -23,7 +23,7 @@ local on_attach = function (_, buffer)
 end
 
 local server_opts = {
-    ['sumneko_lua'] = {
+    ['lua_ls'] = {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -70,5 +70,3 @@ for id, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. id
     vim.fn.sign_define(hl, { text = icon, texthl = hl, iconhl = hl })
 end
-
-require('mason-lspconfig').setup()

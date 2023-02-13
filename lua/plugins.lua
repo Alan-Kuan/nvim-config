@@ -84,11 +84,36 @@ require('lazy').setup({
         end
     },
     {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = 'mason.nvim',
+        config = function ()
+            require('mason-lspconfig').setup {
+                ensure_installed = {
+                    'bashls',
+                    'clangd',
+                    'cssls',
+                    'denols',
+                    'dockerls',
+                    'gopls',
+                    'html',
+                    'jsonls',
+                    'lua_ls',
+                    'marksman',
+                    'pyright',
+                    'rust_analyzer',
+                    'svelte',
+                    'tsserver',
+                    'volar',
+                    'yamlls'
+                }
+            }
+        end
+    },
+    {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            'mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            'mason-lspconfig.nvim',
             'folke/neodev.nvim',
         },
         config = function ()
