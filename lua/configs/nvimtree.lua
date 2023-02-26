@@ -41,7 +41,7 @@ require('nvim-tree').setup {
 
     filters = {
         dotfiles = true,
-        custom = { '.git', 'node_modules' },
+        custom = { 'node_modules' },
     },
 
     live_filter = {
