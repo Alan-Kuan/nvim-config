@@ -9,7 +9,7 @@ require('indent_blankline').setup {
         'help',
         'notify',
         'TelescopePrompt',
-        'NvimTree',
+        'neo-tree',
         'Trouble',
         'lspinfo',
         'lsp-installer',

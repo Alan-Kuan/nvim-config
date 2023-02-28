@@ -34,14 +34,28 @@ require('lazy').setup({
         end
     },
     {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        cmd = 'NvimTreeToggle',
-        keys ={
-            { '-', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle the file explorer' },
+        's1n7ax/nvim-window-picker',
+        tag = 'v1.5',
+        config = function ()
+            require('configs.window-picker')
+        end
+    },
+    {
+        'nvim-neo-tree/neo-tree.nvim',
+        enabled = true,
+        branch = 'v2.x',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'MunifTanjim/nui.nvim',
+            'nvim-window-picker',
+        },
+        cmd = 'Neotree',
+        keys = {
+            { '-', '<Cmd>Neotree toggle<CR>', desc = 'Toggle the file explorer' },
         },
         config = function ()
-            require('configs.nvimtree')
+            require('configs.neotree')
         end
     },
     {

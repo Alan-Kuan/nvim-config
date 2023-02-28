@@ -3,7 +3,7 @@ require('lualine').setup {
         theme = 'gruvbox',
         disabled_filetypes = { 'help', 'qf', 'Trouble', 'toggleterm' }
     },
-    extensions = { 'nvim-tree' },
+    extensions = { 'neo-tree' },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {

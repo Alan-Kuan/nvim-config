@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('Filetype', {
         'qf',  -- quickfix
         'notify',
         'TelescopePrompt',
-        'NvimTree',
+        'neo-tree',
         'Trouble',
         'lspinfo',
         'lsp-installer',
