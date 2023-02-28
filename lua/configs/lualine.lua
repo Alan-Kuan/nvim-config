@@ -1,9 +1,9 @@
 require('lualine').setup {
     options = {
         theme = 'gruvbox',
-        disabled_filetypes = { 'help', 'qf', 'Trouble', 'toggleterm' }
+        disabled_filetypes = { 'help', 'qf', 'Trouble' }
     },
-    extensions = { 'neo-tree' },
+    extensions = { 'neo-tree', 'toggleterm' },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = {
