@@ -63,7 +63,9 @@ require('neo-tree').setup {
         window = {
             mappings = {
                 ['H'] = 'toggle_hidden',
-                ['/'] = 'fuzzy_finder',
+                ['/'] = 'filter_on_submit',
+                ['f'] = 'filter_on_submit',
+                ['F'] = 'clear_filter',
                 ['D'] = 'fuzzy_finder_directory',
                 ['<bs>'] = 'navigate_up',
                 ['.'] = 'set_root',
