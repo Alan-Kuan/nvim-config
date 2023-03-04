@@ -85,3 +85,6 @@ require('neo-tree').setup {
         }
     },
 }
+
+vim.api.nvim_set_hl(0, 'NeoTreeGitConflict', { bold = true, fg = '#ff8700' })
+vim.api.nvim_set_hl(0, 'NeoTreeGitUntracked', { fg = '#ff8700' })
