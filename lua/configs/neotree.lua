@@ -75,13 +75,15 @@ require('neo-tree').setup {
         },
     },
     git_status = {
-        mappings = {
-            ['A'] = 'git_add_all',
-            ['ga'] = 'git_add_file',
-            ['gu'] = 'git_unstage_file',
-            ['gr'] = 'git_revert_file',
-            ['gc'] = 'git_commit',
-            ['gp'] = 'git_push',
+        window = {
+            mappings = {
+                ['A'] = 'git_add_all',
+                ['ga'] = 'git_add_file',
+                ['gu'] = 'git_unstage_file',
+                ['gr'] = 'git_revert_file',
+                ['gc'] = 'git_commit',
+                ['gp'] = 'git_push',
+            }
         }
     },
 }
