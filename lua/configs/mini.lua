@@ -2,6 +2,8 @@
 require('mini.cursorword').setup {}
 
 vim.api.nvim_create_augroup('MiniCursorWord', { clear = true })
+vim.api.nvim_set_hl(0, 'MiniCursorWord', { bg = '#4d4531' })
+
 vim.api.nvim_create_autocmd('Filetype', {
     group = 'MiniCursorWord',
     pattern = {
