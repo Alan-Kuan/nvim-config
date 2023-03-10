@@ -184,9 +184,10 @@ require('lazy').setup({
         end
     },
     {
-        'RRethy/vim-hexokinase',
-        build = 'make hexokinase',
-        event = 'VeryLazy'
+        'NvChad/nvim-colorizer.lua',
+        config = function ()
+            require('configs.colorizer')
+        end
     },
     {
         'lukas-reineke/indent-blankline.nvim',
