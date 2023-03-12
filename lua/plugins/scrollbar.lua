@@ -16,6 +16,10 @@ return {
             marks = {
                 Search = { color = 'orange' }
             },
+            excluded_buftypes = {
+                'terminal',
+                'prompt',
+            },
             excluded_filetypes = {
                 'notify',
                 'TelescopePrompt',
