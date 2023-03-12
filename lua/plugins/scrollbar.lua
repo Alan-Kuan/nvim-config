@@ -15,7 +15,15 @@ return {
         opts = {
             marks = {
                 Search = { color = 'orange' }
-            }
+            },
+            excluded_filetypes = {
+                'notify',
+                'TelescopePrompt',
+                'neo-tree',
+                'Trouble',
+                'lspinfo',
+                'startuptime',
+            },
         },
         config = true
     }
