@@ -139,6 +139,25 @@ return {
         end
     },
     {
+        'jose-elias-alvarez/null-ls.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'mason.nvim'
+        },
+        event = { 'BufReadPre', 'BufNewFile' },
+        opts = function ()
+            local null_ls = require('null-ls')
+
+            return {
+                sources = {
+                    null_ls.builtins.completion.spell,
+                    null_ls.builtins.diagnostics.actionlint,
+                    null_ls.builtins.diagnostics.editorconfig_checker,
+                }
+            }
+        end,
+    },
+    {
         'folke/trouble.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
         cmd = { 'TroubleToggle', 'Trouble' },
