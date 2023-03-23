@@ -106,7 +106,16 @@ return {
                     on_attach = on_attach,
                     capabilities = capabilities,
                     root_dir = lspconfig.util.root_pattern(opts.tsserver.root_pattern)
-                }
+                },
+                ['yamlls'] = {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    settings = {
+                        yaml = {
+                            keyOrdering = false
+                        }
+                    }
+                },
             }
 
             local servers = require('mason-lspconfig').get_installed_servers()
