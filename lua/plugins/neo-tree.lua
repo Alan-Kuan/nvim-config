@@ -21,7 +21,6 @@ return {
                     },
                     other_win_hl_color = '#a95721',
                 },
-                config = true,
             },
         },
         cmd = 'Neotree',

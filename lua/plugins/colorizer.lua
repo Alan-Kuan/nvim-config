@@ -20,6 +20,5 @@ return {
                 tailwind = true,
             },
         },
-        config = true,
     }
 }

@@ -11,7 +11,6 @@ return {
                 }
             }
         },
-        config = true
     },
     {
         'williamboman/mason-lspconfig.nvim',
@@ -36,7 +35,6 @@ return {
                 'yamlls'
             }
         },
-        config = true
     },
     {
         'neovim/nvim-lspconfig',
@@ -170,7 +168,6 @@ return {
             auto_close = true, -- automatically close the list when you have no diagnostics
             use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
         },
-        config = true
     },
     {
         'hrsh7th/nvim-cmp',

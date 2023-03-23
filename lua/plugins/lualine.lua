@@ -60,6 +60,5 @@ return {
                 lualine_x = { 'location' }
             },
         },
-        config = true,
     }
 }
