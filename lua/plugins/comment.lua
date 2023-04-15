@@ -12,7 +12,7 @@ return {
             },
         },
         config = function (_, opts)
-            require('mini.comment').setup(opt)
+            require('mini.comment').setup(opts)
         end,
     },
     {
