@@ -148,7 +148,6 @@ return {
 
             return {
                 sources = {
-                    null_ls.builtins.completion.spell,
                     null_ls.builtins.diagnostics.actionlint,
                     null_ls.builtins.diagnostics.editorconfig_checker,
                 }
