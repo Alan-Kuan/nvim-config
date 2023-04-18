@@ -119,8 +119,13 @@ return {
         config = function (_, opts)
             require('neo-tree').setup(opts)
 
-            vim.api.nvim_set_hl(0, 'NeoTreeGitConflict', { bold = true, fg = '#ff8700' })
-            vim.api.nvim_set_hl(0, 'NeoTreeGitUntracked', { fg = '#ff8700' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitAdded', { link = 'GruvboxGreen' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitDeleted', { link = 'GruvboxRed' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitModified', { link = 'GruvboxOrange' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitConflict', { link = 'GruvboxOrange' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitStaged', { link = 'GruvboxBlue' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitUnstaged', { link = 'GruvboxBlue' })
+            vim.api.nvim_set_hl(0, 'NeoTreeGitUntracked', { link = 'GruvboxYellow' })
         end
     }
 }
