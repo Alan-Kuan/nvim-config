@@ -45,6 +45,13 @@ return {
             'hrsh7th/nvim-cmp',
         },
         opts = {
+            clangd = {
+                cmd = {
+                    'clangd',
+                    '--background-index',
+                    '--header-insertion=never',
+                }
+            },
             denols = {
                 root_pattern = 'deno.json'
             },
@@ -84,6 +91,11 @@ return {
             end
 
             local server_opts = {
+                ['clangd'] = {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    cmd = opts.clangd.cmd,
+                },
                 ['lua_ls'] = {
                     on_attach = on_attach,
                     capabilities = capabilities,
