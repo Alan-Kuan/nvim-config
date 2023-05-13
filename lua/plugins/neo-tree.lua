@@ -56,6 +56,38 @@ return {
                 },
             },
 
+            renderers = {
+                directory = {
+                    { 'indent' },
+                    { 'icon' },
+                    { 'current_filter' },
+                    {
+                        'container',
+                        content = {
+                            { 'name', zindex = 10 },
+                            { 'clipboard', zindex = 10 },
+                            { 'git_status', zindex = 20, align = 'right', hide_when_expanded = true },
+                            { 'diagnostics', errors_only = true, zindex = 20, align = 'right', hide_when_expanded = true },
+                        },
+                    },
+                },
+                file = {
+                    { 'indent' },
+                    { 'icon' },
+                    {
+                        'container',
+                        content = {
+                            { 'name', zindex = 10 },
+                            { 'clipboard', zindex = 10 },
+                            { 'bufnr', zindex = 10 },
+                            { 'modified', zindex = 20, align = 'right' },
+                            { 'git_status', zindex = 20, align = 'right' },
+                            { 'diagnostics',  zindex = 20, align = 'right' },
+                        },
+                    },
+                },
+            },
+
             use_default_mappings = false,
             window = {
                 mappings = {
