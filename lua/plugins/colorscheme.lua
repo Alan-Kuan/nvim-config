@@ -7,7 +7,7 @@ return {
             vim.cmd('colorscheme gruvbox')
 
             local function update_highlight(name, hl)
-                local old_hl = vim.api.nvim_get_hl_by_name(name, true)
+                local old_hl = vim.api.nvim_get_hl(0, { name = name })
                 local new_hl = vim.tbl_extend('force', old_hl, hl)
                 vim.api.nvim_set_hl(0, name, new_hl)
             end
@@ -19,6 +19,9 @@ return {
 
             -- Comment
             update_highlight('Comment', { italic = true })
+
+            -- Sign Column
+            vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })
 
             -- HTML/Markdown
             update_highlight('htmlItalic', { italic = true })

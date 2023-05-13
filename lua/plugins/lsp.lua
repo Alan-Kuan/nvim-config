@@ -62,7 +62,7 @@ return {
                 Error = ' ▐',
                 Warn  = ' ▐',
                 Info  = ' ▐',
-                Hint  = ' ▐'
+                Hint  = ' ▐',
             }
         },
         config = function (_, opts)
