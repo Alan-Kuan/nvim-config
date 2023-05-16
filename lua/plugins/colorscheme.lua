@@ -1,10 +1,19 @@
 return {
     {
-        'morhetz/gruvbox',
+        '2nthony/vitesse.nvim',
+        dependencies = 'tjdevries/colorbuddy.nvim',
         lazy = false,
         priority = 1000,
-        init = function ()
-            vim.cmd('colorscheme gruvbox')
+        opts = {
+            comment_italics = true,
+            transparent_background = false,
+            transparent_float_background = false,
+            reverse_visual = false,
+            dim_nc = true,
+            cmp_cmdline_disable_search_highlight_group = true,
+        },
+        config = function (_, opts)
+            require('vitesse').setup(opts)
 
             local function update_highlight(name, hl)
                 local old_hl = vim.api.nvim_get_hl(0, { name = name })
@@ -16,9 +25,6 @@ return {
             vim.api.nvim_set_hl(0, 'Visual', { bg = '#31474d' })
             vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25' })
             vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
-
-            -- Comment
-            update_highlight('Comment', { italic = true })
 
             -- Sign Column
             vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })

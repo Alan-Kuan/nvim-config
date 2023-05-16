@@ -5,7 +5,7 @@ return {
         event = 'VeryLazy',
         opts = {
             options = {
-                theme = 'gruvbox',
+                theme = 'vitesse',
                 disabled_filetypes = { 'help', 'qf', 'Trouble' }
             },
             extensions = { 'neo-tree', 'toggleterm' },
