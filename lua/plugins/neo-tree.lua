@@ -64,10 +64,11 @@ return {
                     {
                         'container',
                         content = {
-                            { 'name', zindex = 10 },
-                            { 'clipboard', zindex = 10 },
-                            { 'git_status', zindex = 20, align = 'right', hide_when_expanded = true },
-                            { 'diagnostics', errors_only = true, zindex = 20, align = 'right', hide_when_expanded = true },
+                            { 'name',        zindex = 10 },
+                            { 'clipboard',   zindex = 10 },
+                            { 'git_status',  zindex = 20,        align = 'right', hide_when_expanded = true },
+                            { 'diagnostics', errors_only = true, zindex = 20,     align = 'right',
+                                                                                                                hide_when_expanded = true },
                         },
                     },
                 },
@@ -77,12 +78,12 @@ return {
                     {
                         'container',
                         content = {
-                            { 'name', zindex = 10 },
-                            { 'clipboard', zindex = 10 },
-                            { 'bufnr', zindex = 10 },
-                            { 'modified', zindex = 20, align = 'right' },
-                            { 'git_status', zindex = 20, align = 'right' },
-                            { 'diagnostics',  zindex = 20, align = 'right' },
+                            { 'name',        zindex = 10 },
+                            { 'clipboard',   zindex = 10 },
+                            { 'bufnr',       zindex = 10 },
+                            { 'modified',    zindex = 20, align = 'right' },
+                            { 'git_status',  zindex = 20, align = 'right' },
+                            { 'diagnostics', zindex = 20, align = 'right' },
                         },
                     },
                 },
@@ -147,6 +148,13 @@ return {
                     }
                 }
             },
-        }
+        },
+        config = function(_, opts)
+            require('neo-tree').setup(opts)
+
+            local neotree_bg = '#333333'
+            vim.api.nvim_set_hl(0, 'NeotreeNormal', { bg = neotree_bg })
+            vim.api.nvim_set_hl(0, 'NeotreeNormalNC', { bg = neotree_bg })
+        end
     }
 }
