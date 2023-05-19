@@ -15,16 +15,22 @@ return {
         config = function (_, opts)
             require('vitesse').setup(opts)
 
+            vim.cmd('colorscheme vitesse')
+
             local function update_highlight(name, hl)
                 local old_hl = vim.api.nvim_get_hl(0, { name = name })
                 local new_hl = vim.tbl_extend('force', old_hl, hl)
                 vim.api.nvim_set_hl(0, name, new_hl)
             end
 
+            -- Editor
+            update_highlight('Normal', { bg = '#222222' })
+            update_highlight('NormalNC', { bg = '#222222' })
+
             -- Word
             vim.api.nvim_set_hl(0, 'Visual', { bg = '#31474d' })
-            vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25' })
-            vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
+            -- vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25', reverse = false })
+            -- vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
 
             -- Sign Column
             vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })

@@ -41,7 +41,7 @@
   "trouble.nvim": { "branch": "main", "commit": "d56bfc0c501ced4002a57cb60433362fb2ce9c4d" },
   "vim-closetag": { "branch": "master", "commit": "d0a562f8bdb107a50595aefe53b1a690460c3822" },
   "vim-markdown": { "branch": "master", "commit": "cc82d88e2a791f54d2b6e2b26e41f743351ac947" },
-  "vitesse.nvim": { "branch": "main", "commit": "ac123ad9b6df575a581f2acbc94d040487cfe0f1" },
+  "vitesse.nvim": { "branch": "main", "commit": "a3b6e33c65297169be46e2d0dfe13f5894f84154" },
   "which-key.nvim": { "branch": "main", "commit": "4acffc92953a90a790603bfdab7c92319ab167b1" },
   "yuck.vim": { "branch": "master", "commit": "9b5e0370f70cc30383e1dabd6c215475915fe5c3" }
 }

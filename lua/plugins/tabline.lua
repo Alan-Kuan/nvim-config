@@ -15,17 +15,19 @@ return {
             show_icon = true,         -- Shows the devicon
         },
         config = function (_, opts)
-            local tabline_bg = '#33312c'
+            local tabline_bg = '#444444'
+            local tabline_fill_bg = '#555555'
+            local modified_fg = '#fcba03'
             -- get background color of highlight group Normal
             local normal_bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Normal')), 'bg#')
 
-            vim.api.nvim_set_hl(0, 'TabLineFill', { bg = '#474641' })
+            vim.api.nvim_set_hl(0, 'TabLineFill', { bg = tabline_fill_bg })
 
             vim.api.nvim_set_hl(0, 'TabLine', { bg = tabline_bg, underline = false })
-            vim.api.nvim_set_hl(0, 'TabLineModified', { fg = '#fcba03', bg = tabline_bg })
+            vim.api.nvim_set_hl(0, 'TabLineModified', { fg = modified_fg, bg = tabline_bg })
 
             vim.api.nvim_set_hl(0, 'TabLineSel', { bg = normal_bg })
-            vim.api.nvim_set_hl(0, 'TabLineModifiedSel', { fg = '#fcba03', bg = normal_bg })
+            vim.api.nvim_set_hl(0, 'TabLineModifiedSel', { fg = modified_fg, bg = normal_bg })
             vim.api.nvim_set_hl(0, 'TabLineSeparatorSel', { fg = 'skyblue', bg = normal_bg })
 
             require('tabline').setup(opts)

@@ -5,7 +5,6 @@ return {
         event = 'VeryLazy',
         opts = {
             options = {
-                theme = 'vitesse',
                 disabled_filetypes = { 'help', 'qf', 'Trouble' }
             },
             extensions = { 'neo-tree', 'toggleterm' },
@@ -60,5 +59,24 @@ return {
                 lualine_x = { 'location' }
             },
         },
+        config = function (_, opts)
+            local custom_vitesse = require('lualine.themes.vitesse')
+            local dark_soft_bg = '#222222'
+            local dark_softer_bg = '#333333'
+
+            custom_vitesse.normal.b.bg = dark_softer_bg
+            custom_vitesse.visual.b.bg = dark_softer_bg
+            custom_vitesse.insert.b.bg = dark_softer_bg
+            custom_vitesse.replace.b.bg = dark_softer_bg
+            custom_vitesse.command.b.bg = dark_softer_bg
+            custom_vitesse.terminal.b.bg = dark_softer_bg
+            custom_vitesse.inactive.b.bg = dark_softer_bg
+            custom_vitesse.normal.c.bg = dark_soft_bg
+            custom_vitesse.inactive.c.bg = dark_soft_bg
+
+            opts.options.theme = custom_vitesse
+
+            require('lualine').setup(opts)
+        end
     }
 }
