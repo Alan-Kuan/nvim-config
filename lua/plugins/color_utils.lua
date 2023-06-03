@@ -1,7 +1,7 @@
 return {
     {
         'NvChad/nvim-colorizer.lua',
-        name = 'colorizer',
+        event = 'VeryLazy',
         opts = {
             filetypes = {
                 'html',
@@ -18,6 +18,18 @@ return {
                 mode = 'virtualtext',
                 css = true,
                 tailwind = true,
+            },
+        },
+    },
+    {
+        'uga-rosa/ccc.nvim',
+        cmd = 'CccPick',
+        keys = {
+            { '<leader>cp', '<Cmd>CccPick<CR>', desc = 'Pick color' },
+        },
+        opts = {
+            highlighter = {
+                auto_enable = false,
             },
         },
     }

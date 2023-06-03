@@ -27,6 +27,7 @@ return {
                 'Trouble',
                 'lspinfo',
                 'startuptime',
+                'ccc-ui',
             },
         },
     }
