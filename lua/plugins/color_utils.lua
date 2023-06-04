@@ -31,6 +31,9 @@ return {
             highlighter = {
                 auto_enable = false,
             },
+            point_char = '▮',
+            empty_point_bg = false,
+            point_color_on_light = '#333333',
         },
     }
 }
