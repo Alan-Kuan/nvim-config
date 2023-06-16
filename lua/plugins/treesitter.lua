@@ -1,6 +1,9 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'JoosepAlviste/nvim-ts-context-commentstring'
+        },
         build = ':TSUpdate',
         opts = {
             ensure_installed = {
@@ -44,10 +47,18 @@ return {
             context_commentstring = {
                 enable = true,
                 enable_autocmd = false,
-            },
+                config = {
+                    cpp = {
+                        __default = '// %s'
+                    },
+                    c = {
+                        __default = '// %s'
+                    }
+                }
+            }
         },
         config = function (_, opts)
             require('nvim-treesitter.configs').setup(opts)
         end
-    }
+    },
 }
