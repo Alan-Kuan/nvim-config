@@ -136,4 +136,18 @@ return {
             },
         },
     },
+    {
+        'echasnovski/mini.move',
+        version = '*',
+        opts = {
+            mappings = {
+                left = '<S-Tab>',
+                right = '<Tab>',
+                line_up = '',
+                line_down = '',
+                line_left = '',
+                line_right = '',
+            },
+        },
+    },
 }
