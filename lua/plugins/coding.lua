@@ -127,4 +127,13 @@ return {
             require('mini.comment').setup(opts)
         end,
     },
+    {
+        'echasnovski/mini.splitjoin',
+        version = '*',
+        opts = {
+            mappings = {
+                toggle = '<C-s>',
+            },
+        },
+    },
 }
