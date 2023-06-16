@@ -41,8 +41,9 @@ return {
                     'lspinfo',
                     'lsp-installer',
                     'startuptime',
+                    'toggleterm',
                     'dashboard',
-                    'toggleterm'
+                    'alpha',
                 },
                 callback = function ()
                     vim.b.minicursorword_disable = true
