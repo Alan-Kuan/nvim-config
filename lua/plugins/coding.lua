@@ -153,4 +153,34 @@ return {
             },
         },
     },
+    {
+        'mhartington/formatter.nvim',
+        event = 'VeryLazy',
+        config = function ()
+            local util = require('formatter.util')
+
+            require('formatter').setup {
+                filetype = {
+                    lua = {
+                        require('formatter.filetypes.lua').stylua,
+                        function()
+                            return {
+                                exe = 'stylua',
+                                args = {
+                                    '--search-parent-directories',
+                                    '--stdin-filepath',
+                                    util.escape_path(util.get_current_buffer_file_path()),
+                                    '--',
+                                    '-',
+                                },
+                                stdin = true,
+                            }
+                        end
+                    }
+                }
+            }
+
+            vim.keymap.set('n', '<leader>F', '<Cmd>Format<CR>', { silent = true })
+        end
+    }
 }
