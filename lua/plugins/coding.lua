@@ -131,6 +131,7 @@ return {
     {
         'echasnovski/mini.splitjoin',
         version = '*',
+        event = 'VeryLazy',
         opts = {
             mappings = {
                 toggle = '<C-s>',
@@ -140,6 +141,7 @@ return {
     {
         'echasnovski/mini.move',
         version = '*',
+        event = 'VeryLazy',
         opts = {
             mappings = {
                 left = '<S-Tab>',
