@@ -6,10 +6,6 @@ local vnoremap = function (lhs, rhs)
     vim.keymap.set('v', lhs, rhs, { silent = true })
 end
 
-local tnoremap = function (lhs, rhs)
-    vim.keymap.set('t', lhs, rhs, { silent = true })
-end
-
 -- set mapleader
 vim.g.mapleader = ' '
 
@@ -26,21 +22,6 @@ nnoremap('<leader>bg', function ()
     vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
     -- FIXME: should reload other highlighting
 end)
-
--- for jumping between split screen to be easier
-nnoremap('<C-j>', '<C-w>j')
-nnoremap('<C-k>', '<C-w>k')
-nnoremap('<C-h>', '<C-w>h')
-nnoremap('<C-l>', '<C-w>l')
-tnoremap('<C-j>', '<C-\\><C-n><C-w>j')
-tnoremap('<C-k>', '<C-\\><C-n><C-w>k')
-tnoremap('<C-h>', '<C-\\><C-n><C-w>h')
-tnoremap('<C-l>', '<C-\\><C-n><C-w>l')
--- resize split
-nnoremap('<M-j>', '<C-w>+')
-nnoremap('<M-k>', '<C-w>-')
-nnoremap('<M-h>', '<C-w><')
-nnoremap('<M-l>', '<C-w>>')
 
 -- select all
 nnoremap('<leader>a',   'ggVG')
