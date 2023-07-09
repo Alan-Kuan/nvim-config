@@ -73,20 +73,24 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local on_attach = function(_, buffer)
-        local set_map = function(lhs, rhs)
-          vim.keymap.set('n', lhs, rhs, { buffer = buffer, silent = true })
+        local set_map = function(lhs, rhs, desc)
+          vim.keymap.set('n', lhs, rhs, {
+            buffer = buffer,
+            silent = true,
+            desc = desc,
+          })
         end
 
-        set_map('gD', vim.lsp.buf.declaration)
-        set_map('gd', vim.lsp.buf.definition)
-        set_map('gi', vim.lsp.buf.implementation)
-        set_map('gr', vim.lsp.buf.references)
-        set_map('K', vim.lsp.buf.hover)
-        set_map('<leader>k', vim.lsp.buf.signature_help)
-        set_map('<leader>r', vim.lsp.buf.rename)
-        set_map('[d', vim.diagnostic.goto_prev)
-        set_map(']d', vim.diagnostic.goto_next)
-        set_map('<leader>ca', vim.lsp.buf.code_action)
+        set_map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+        set_map('gd', vim.lsp.buf.definition, 'Go to definition')
+        set_map('gi', vim.lsp.buf.implementation, 'Go to implementation')
+        set_map('gr', vim.lsp.buf.references, 'Go to references')
+        set_map('K', vim.lsp.buf.hover, 'Hover')
+        set_map('<leader>k', vim.lsp.buf.signature_help, 'Show the signature')
+        set_map('<leader>r', vim.lsp.buf.rename, 'Rename the symbol')
+        set_map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
+        set_map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
+        set_map('<leader>ca', vim.lsp.buf.code_action, 'Show code actions')
       end
 
       local server_opts = {
