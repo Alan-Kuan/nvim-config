@@ -1,5 +1,4 @@
 return {
-  { 'elkowar/yuck.vim' },
   { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
   {
     'folke/which-key.nvim',

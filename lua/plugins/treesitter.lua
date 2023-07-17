@@ -34,6 +34,7 @@ return {
         'vim',
         'vue',
         'yaml',
+        'yuck',
       },
       highlight = {
         enable = true,
@@ -53,6 +54,9 @@ return {
           },
           c = {
             __default = '// %s',
+          },
+          yuck = {
+            __default = '; %s',
           },
         },
       },
