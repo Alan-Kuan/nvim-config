@@ -439,7 +439,7 @@ return {
           return vim.o.columns * 0.4
         end
       end,
-      open_mapping = '<C-p>',
+      open_mapping = '<C-`>',
       direction = 'float',
       float_opts = {
         border = 'curved',
