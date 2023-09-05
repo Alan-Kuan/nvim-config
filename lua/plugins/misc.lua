@@ -36,4 +36,9 @@ return {
       vim.keymap.set('n', '<leader><leader>l', '<C-w><S-l>')
     end,
   },
+  {
+    'kaarmu/typst.vim',
+    ft = 'typst',
+    lazy = false,
+  },
 }
