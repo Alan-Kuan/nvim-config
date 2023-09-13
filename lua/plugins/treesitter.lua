@@ -26,6 +26,7 @@ return {
         'markdown',
         'php',
         'python',
+        'rasi',
         'rust',
         'scss',
         'sql',

@@ -41,4 +41,9 @@ return {
     ft = 'typst',
     lazy = false,
   },
+  {
+    'Fymyte/rasi.vim',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    ft = 'rasi',
+  },
 }
