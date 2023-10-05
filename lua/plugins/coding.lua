@@ -1,24 +1,26 @@
 return {
   {
     'lukas-reineke/indent-blankline.nvim',
-    name = 'indent_blankline',
+    main = 'ibl',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
-      buftype_exclude = {
-        'terminal',
-        'nofile',
-      },
-      filetype_exclude = {
-        'markdown',
-        'txt',
-        'help',
-        'notify',
-        'TelescopePrompt',
-        'neo-tree',
-        'Trouble',
-        'lspinfo',
-        'lsp-installer',
-        'startuptime',
+      exclude = {
+        buftypes = {
+          'terminal',
+          'nofile',
+        },
+        filetypes = {
+          'markdown',
+          'txt',
+          'help',
+          'notify',
+          'TelescopePrompt',
+          'neo-tree',
+          'Trouble',
+          'lspinfo',
+          'lsp-installer',
+          'startuptime',
+        },
       },
     },
   },
@@ -119,7 +121,7 @@ return {
     opts = {
       options = {
         custom_commentstring = function()
-          return require('ts_context_commentstring.internal').calculate_commentstring {} or vim.bo.commentstring
+          return require('ts_context_commentstring.internal').calculate_commentstring() or vim.bo.commentstring
         end,
       },
     },
