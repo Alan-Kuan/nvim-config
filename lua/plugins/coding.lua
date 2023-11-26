@@ -130,6 +130,26 @@ return {
     end,
   },
   {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    init = function()
+      vim.g.skip_ts_context_commentstring_module = true
+    end,
+    opts = {
+      enable_autocmd = false,
+      languages = {
+        cpp = {
+          __default = '// %s',
+        },
+        c = {
+          __default = '// %s',
+        },
+        yuck = {
+          __default = '; %s',
+        },
+      },
+    },
+  },
+  {
     'echasnovski/mini.splitjoin',
     version = '*',
     event = 'VeryLazy',
