@@ -45,19 +45,6 @@ return {
       'hrsh7th/nvim-cmp',
     },
     opts = {
-      clangd = {
-        cmd = {
-          'clangd',
-          '--background-index',
-          '--header-insertion=never',
-        },
-      },
-      denols = {
-        root_pattern = 'deno.json',
-      },
-      tsserver = {
-        root_pattern = 'package.json',
-      },
       diagnostic_signs = {
         Error = ' ▐',
         Warn = ' ▐',
@@ -97,7 +84,11 @@ return {
         ['clangd'] = {
           on_attach = on_attach,
           capabilities = capabilities,
-          cmd = opts.clangd.cmd,
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--header-insertion=never',
+          },
         },
         ['lua_ls'] = {
           on_attach = on_attach,
@@ -114,14 +105,21 @@ return {
           },
         },
         ['denols'] = {
-          on_attach = on_attach,
+          on_attach = function (_, buffer)
+            on_attach(_, buffer)
+            for _, client in pairs(vim.lsp.get_active_clients()) do
+              if client.name == 'tsserver' then
+                client.stop()
+              end
+            end
+          end,
           capabilities = capabilities,
-          root_dir = lspconfig.util.root_pattern(opts.denols.root_pattern),
+          root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
         },
         ['tsserver'] = {
           on_attach = on_attach,
           capabilities = capabilities,
-          root_dir = lspconfig.util.root_pattern(opts.tsserver.root_pattern),
+          root_dir = lspconfig.util.root_pattern('package.json'),
         },
         ['yamlls'] = {
           on_attach = on_attach,
