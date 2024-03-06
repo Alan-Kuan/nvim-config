@@ -121,6 +121,15 @@ return {
           capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern('package.json'),
         },
+        ['volar'] = {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          init_options = {
+            typescript = {
+              tsdk = vim.env.HOME .. '/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib',
+            },
+          },
+        },
         ['yamlls'] = {
           on_attach = on_attach,
           capabilities = capabilities,
