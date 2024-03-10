@@ -2,11 +2,15 @@ return {
   { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
   {
     'folke/which-key.nvim',
-    config = function()
+    event = 'VeryLazy',
+    init = function ()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require('which-key').setup()
     end,
+    config = function ()
+      require('which-key').setup()
+      vim.keymap.set('n', '<C-/>', '<Cmd>WhichKey<CR>', { desc = 'Show all keymaps' })
+    end
   },
   {
     'gbprod/substitute.nvim',
