@@ -45,7 +45,7 @@ return {
     end
   },
   {
-    'Fymyte/rasi.vim',
+    'Fymyte/rasi.vim',  -- NOTE: rasi is rofi's config file type
     requires = 'nvim-treesitter/nvim-treesitter',
     ft = 'rasi',
   },
