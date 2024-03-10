@@ -131,6 +131,8 @@ return {
     opts = {
       options = {
         disabled_filetypes = { 'help', 'qf', 'Trouble' },
+        component_separators = { left = '/', right = '/' },
+        section_separators = { left = '', right = '' },
       },
       extensions = { 'neo-tree', 'toggleterm' },
       sections = {
