@@ -16,12 +16,6 @@ nnoremap('<C-n>', function()
     vim.fn.setreg('/', '')
   end, 'Clear search register')
 
--- switch between light/dark colorscheme
-nnoremap('<leader>bg', function()
-    vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
-    -- FIXME: should reload other highlighting
-  end, 'Toggle dark/light colorscheme')
-
 -- select all
 nnoremap('<leader>a', 'ggVG', 'Select all')
 -- copy to the system clipboard
