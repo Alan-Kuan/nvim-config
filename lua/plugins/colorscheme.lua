@@ -10,12 +10,11 @@ return {
       transparent_float_background = false,
       reverse_visual = false,
       dim_nc = true,
-      cmp_cmdline_disable_search_highlight_group = true,
     },
     config = function(_, opts)
       require('vitesse').setup(opts)
 
-      vim.cmd('colorscheme vitesse')
+      vim.cmd.colorscheme('vitesse')
 
       local function update_highlight(name, hl)
         local old_hl = vim.api.nvim_get_hl(0, { name = name })
@@ -29,8 +28,8 @@ return {
 
       -- Word
       vim.api.nvim_set_hl(0, 'Visual', { bg = '#31474d' })
-      -- vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25', reverse = false })
-      -- vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
+      vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25' })
+      vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
 
       -- Sign Column
       vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })
