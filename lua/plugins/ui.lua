@@ -386,12 +386,12 @@ return {
       require('telescope').load_extension('notify')
 
       -- stylua: ignore start
-      vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end)
-      vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end)
-      vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').marks() end)
-      vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').oldfiles() end)
-      vim.keymap.set('n', '<leader>cc', function() require('telescope.builtin').colorscheme() end)
-      vim.keymap.set('n', '<leader>nc', function() require('telescope').extensions.notify.notify() end)
+      vim.keymap.set('n', '<leader>tf', require('telescope.builtin').find_files,        { desc = 'Telescope: find files' })
+      vim.keymap.set('n', '<leader>tg', require('telescope.builtin').live_grep,         { desc = 'Telescope: find words' })
+      vim.keymap.set('n', '<leader>tm', require('telescope.builtin').marks,             { desc = 'Telescope: show marks' })
+      vim.keymap.set('n', '<leader>th', require('telescope.builtin').oldfiles,          { desc = 'Telescope: show history of opened files' })
+      vim.keymap.set('n', '<leader>tc', require('telescope.builtin').colorscheme,       { desc = 'Telescope: show colorschemes' })
+      vim.keymap.set('n', '<leader>tn', require('telescope').extensions.notify.notify,  { desc = 'Telescope: show notifications' })
       -- stylua: ignore end
     end,
   },
@@ -458,7 +458,8 @@ return {
           group = 'Toggleterm',
           pattern = { ft },
           callback = function()
-            vim.keymap.set('n', '<F5>', ":w <bar> :TermExec cmd='" .. cmd .. "'<CR>")
+            vim.keymap.set('n', '<F5>', ":w <bar> :TermExec cmd='" .. cmd .. "'<CR>",
+              { desc = 'Run the code' })
           end,
         })
       end
@@ -491,7 +492,8 @@ return {
           group = 'Toggleterm',
           pattern = { ft },
           callback = function()
-            vim.keymap.set('x', '<C-Enter>', ':<C-u>ToggleTermSendVisualLines<CR>', { silent = true })
+            vim.keymap.set('x', '<C-Enter>', ':<C-u>ToggleTermSendVisualLines<CR>',
+              { silent = true, desc = 'Send selection to the terminal' })
           end,
         })
       end

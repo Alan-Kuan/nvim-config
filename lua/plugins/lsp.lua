@@ -63,8 +63,8 @@ return {
         local set_map = function(lhs, rhs, desc)
           vim.keymap.set('n', lhs, rhs, {
             buffer = buffer,
-            silent = true,
             desc = desc,
+            silent = true,
           })
         end
 

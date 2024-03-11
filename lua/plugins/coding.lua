@@ -88,8 +88,10 @@ return {
       require('mini.surround').setup(opts)
 
       -- NOTE: ':' moves the cursor to command line and '<C-u>' clear the command line
-      vim.keymap.set('x', 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", { silent = true })
-      vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+      vim.keymap.set('x', 'S', ":<C-u>lua MiniSurround.add('visual')<CR>",
+        { desc = 'Wrap selection with specified character', silent = true })
+      vim.keymap.set('n', 'yss', 'ys_',
+        { desc = 'Wrap current line with specified character', remap = true })
       vim.keymap.del('v', 'ys')
     end,
   },
@@ -201,7 +203,7 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>F', '<Cmd>Format<CR>', { silent = true })
+      vim.keymap.set('n', '<leader>F', '<Cmd>Format<CR>', { desc = 'Format the code', silent = true })
     end,
   },
 }

@@ -11,7 +11,8 @@ return {
         group = 'MD_Preview',
         pattern = { 'markdown' },
         callback = function()
-          vim.keymap.set('n', '<C-m>', '<Cmd>MarkdownPreview<CR>', { silent = true, buffer = true })
+          vim.keymap.set('n', '<C-m>', '<Cmd>MarkdownPreview<CR>',
+            { buffer = true, silent = true, desc = 'Preview current Markdown file' })
         end,
       })
     end,
@@ -45,7 +46,8 @@ return {
         group = 'Markdown',
         pattern = { 'markdown' },
         callback = function()
-          vim.keymap.set('x', '<C-Enter>', ':<C-U>TableFormat<CR>', { silent = true })
+          vim.keymap.set('x', '<C-Enter>', ':<C-U>TableFormat<CR>',
+            { silent = true, desc = 'Format the Markdown table' })
         end,
       })
     end,
