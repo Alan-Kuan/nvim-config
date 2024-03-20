@@ -108,12 +108,8 @@ return {
     end,
   },
   {
-    'alvan/vim-closetag',
-    event = 'VeryLazy',
-    config = function()
-      vim.g.closetag_filenames = '*.html, *.php, *.vue, *.svelte, *.md'
-      vim.g.closetag_filetypes = 'html, php, vue, svelte, markdown'
-    end,
+    'windwp/nvim-ts-autotag',
+    opts = {},
   },
   {
     'echasnovski/mini.comment',
