@@ -150,7 +150,6 @@ return {
   },
   {
     'echasnovski/mini.splitjoin',
-    version = '*',
     event = 'VeryLazy',
     opts = {
       mappings = {
@@ -160,7 +159,6 @@ return {
   },
   {
     'echasnovski/mini.move',
-    version = '*',
     event = 'VeryLazy',
     opts = {
       mappings = {
