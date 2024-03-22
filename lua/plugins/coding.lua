@@ -48,7 +48,7 @@ return {
           'alpha',
         },
         callback = function()
-          vim.b.minicursorword_disable = true
+          vim.b['minicursorword_disable'] = true
         end,
       })
     end,
