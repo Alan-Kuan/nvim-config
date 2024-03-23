@@ -249,10 +249,7 @@ return {
             c = cmp.mapping.close(),
           },
 
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
+          ['<CR>'] = cmp.mapping.confirm { select = true },
         },
         formatting = {
           format = lspkind.cmp_format {
