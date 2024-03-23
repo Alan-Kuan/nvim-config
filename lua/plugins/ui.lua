@@ -233,7 +233,7 @@ return {
     },
     cmd = 'Neotree',
     keys = {
-      { '-', '<Cmd>Neotree toggle<CR>', desc = 'Toggle the file explorer' },
+      { '-', '<Cmd>Neotree toggle source=last<CR>', desc = 'Toggle Neotree' },
     },
     opts = {
       close_if_last_window = true,
