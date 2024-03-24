@@ -29,6 +29,7 @@ return {
         'scss',
         'sql',
         'svelte',
+        'tsx',
         'typescript',
         'vim',
         'vue',
