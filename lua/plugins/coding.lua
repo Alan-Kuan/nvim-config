@@ -201,4 +201,11 @@ return {
       vim.keymap.set('n', '<leader>F', '<Cmd>Format<CR>', { desc = 'Format the code', silent = true })
     end,
   },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
+    opts = {
+      mode = 'topline',
+    },
+  },
 }
