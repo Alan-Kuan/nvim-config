@@ -46,10 +46,10 @@ return {
     },
     opts = {
       diagnostic_signs = {
-        Error = ' ▐',
-        Warn = ' ▐',
-        Info = ' ▐',
-        Hint = ' ▐',
+        Error = '┃',
+        Warn = '┃',
+        Info = '┃',
+        Hint = '┃',
       },
     },
     config = function(_, opts)
