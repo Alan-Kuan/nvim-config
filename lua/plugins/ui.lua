@@ -424,6 +424,22 @@ return {
     end,
   },
   {
+    'lewis6991/gitsigns.nvim',
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    config = function ()
+      require('gitsigns').setup({
+        on_attach = function (bufnr)
+          local gitsigns = require('gitsigns')
+          vim.keymap.set('n', '<Leader>gb', gitsigns.toggle_current_line_blame, {
+              buffer = bufnr,
+              silent = true,
+              desc = 'Toggle showing git blame on current line',
+          })
+        end
+      })
+    end,
+  },
+  {
     'rcarriga/nvim-notify',
     opts = {
       top_down = false,

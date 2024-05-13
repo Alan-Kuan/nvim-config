@@ -9,6 +9,7 @@
   "colorbuddy.nvim": { "branch": "master", "commit": "9e96ccd88f4510d0a54ce1d5c11119eac9fb217e" },
   "fcitx.nvim": { "branch": "master", "commit": "dcb6b70888aa893d3d223bb777d4117bbdac06a7" },
   "formatter.nvim": { "branch": "master", "commit": "ad246d34ce7a32f752071ed81b09b94e6b127fad" },
+  "gitsigns.nvim": { "branch": "main", "commit": "805610a9393fa231f2c2b49cb521bfa413fadb3d" },
   "headlines.nvim": { "branch": "master", "commit": "618ef1b2502c565c82254ef7d5b04402194d9ce3" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
   "lazy.nvim": { "branch": "main", "commit": "3f13f080434ac942b150679223d54f5ca91e0d52" },
