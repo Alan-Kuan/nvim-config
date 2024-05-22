@@ -104,7 +104,7 @@ return {
         ['denols'] = {
           on_attach = function (_, buffer)
             on_attach(_, buffer)
-            for _, client in pairs(vim.lsp.get_active_clients()) do
+            for _, client in pairs(vim.lsp.get_clients()) do
               if client.name == 'tsserver' then
                 client.stop()
               end
