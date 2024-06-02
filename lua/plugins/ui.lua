@@ -403,6 +403,8 @@ return {
       signs_column = 1,
       signs_max_per_row = 1,
       cursor_symbol = '•',
+      diagnostics_error_symbol = '-',
+      diagnostics_warn_symbol = '-',
       signs_on_startup = {
         'cursor',
         'search',
