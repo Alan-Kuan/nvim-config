@@ -461,6 +461,7 @@ return {
       vim.notify = require('notify')
     end,
   },
+  { 'stevearc/dressing.nvim' },
   {
     'akinsho/toggleterm.nvim',
     opts = {
