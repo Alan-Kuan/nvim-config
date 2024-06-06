@@ -186,25 +186,6 @@ return {
         lualine_x = { 'location' },
       },
     },
-    config = function(_, opts)
-      local custom_vitesse = require('lualine.themes.vitesse')
-      local dark_soft_bg = '#222222'
-      local dark_softer_bg = '#333333'
-
-      custom_vitesse.normal.b.bg = dark_softer_bg
-      custom_vitesse.visual.b.bg = dark_softer_bg
-      custom_vitesse.insert.b.bg = dark_softer_bg
-      custom_vitesse.replace.b.bg = dark_softer_bg
-      custom_vitesse.command.b.bg = dark_softer_bg
-      custom_vitesse.terminal.b.bg = dark_softer_bg
-      custom_vitesse.inactive.b.bg = dark_softer_bg
-      custom_vitesse.normal.c.bg = dark_soft_bg
-      custom_vitesse.inactive.c.bg = dark_soft_bg
-
-      opts.options.theme = custom_vitesse
-
-      require('lualine').setup(opts)
-    end,
   },
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -367,13 +348,6 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require('neo-tree').setup(opts)
-
-      local neotree_bg = '#333333'
-      vim.api.nvim_set_hl(0, 'NeotreeNormal', { bg = neotree_bg })
-      vim.api.nvim_set_hl(0, 'NeotreeNormalNC', { bg = neotree_bg })
-    end,
   },
   {
     'nvim-telescope/telescope.nvim',

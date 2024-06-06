@@ -1,19 +1,8 @@
 return {
   {
-    '2nthony/vitesse.nvim',
-    dependencies = {
-      'tjdevries/colorbuddy.nvim',
-      'nvim-lua/plenary.nvim',
-    },
+    'Shatur/neovim-ayu',
     lazy = false,
     priority = 1000,
-    opts = {
-      comment_italics = true,
-      transparent_background = false,
-      transparent_float_background = false,
-      reverse_visual = false,
-      dim_nc = true,
-    },
     init = function()
       -- Reference: https://mnts.dev/configure-neovim-to-follow-gnome/
       -- Create a job to detect current gnome color scheme and set background
@@ -57,34 +46,17 @@ return {
         group = group,
       })
     end,
+    opts = {
+      mirage = true,
+      overrides = {
+        Search = { bg = '#3d3750' },
+        IncSearch = { bg = '#3d3750' },
+        CurSearch = { bg = '#695380' },
+      },
+    },
     config = function(_, opts)
-      require('vitesse').setup(opts)
-
-      vim.cmd.colorscheme('vitesse')
-
-      local function update_highlight(name, hl)
-        local old_hl = vim.api.nvim_get_hl(0, { name = name })
-        local new_hl = vim.tbl_extend('force', old_hl, hl)
-        vim.api.nvim_set_hl(0, name, new_hl)
-      end
-
-      -- Editor
-      update_highlight('Normal', { bg = '#222222' })
-      update_highlight('NormalNC', { bg = '#222222' })
-
-      -- Word
-      vim.api.nvim_set_hl(0, 'Visual', { bg = '#31474d' })
-      vim.api.nvim_set_hl(0, 'Search', { bg = '#5f3c25' })
-      vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#5f3c25' })
-
-      -- Sign Column
-      vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })
-
-      -- HTML/Markdown
-      update_highlight('htmlItalic', { italic = true })
-      update_highlight('htmlBoldItalic', { italic = true })
-      update_highlight('htmlUnderlineItalic', { italic = true })
-      update_highlight('htmlBoldUnderlineItalic', { italic = true })
+      require('ayu').setup(opts)
+      require('ayu').colorscheme()
     end,
   },
 }
