@@ -52,6 +52,8 @@ return {
         Search = { bg = '#3d3750' },
         IncSearch = { bg = '#3d3750' },
         CurSearch = { bg = '#695380' },
+        LineNr = { fg = 'NvimDarkGray4' },
+        WinSeparator = { fg = 'NvimDarkGray4' },
       },
     },
     config = function(_, opts)
