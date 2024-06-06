@@ -215,19 +215,30 @@ return {
       'MunifTanjim/nui.nvim',
       {
         's1n7ax/nvim-window-picker',
-        version = '1.*',
+        version = '2.*',
         event = 'VeryLazy',
         opts = {
-          autoselect_one = true,
-          include_current = false,
           filter_rules = {
+            autoselect_one = true,
+            include_current_win = false,
             -- ignore windows by buffer options
             bo = {
               filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
-              buftype = { 'terminal', 'quickfix' },
+              buftype = { 'terminal', 'quickfix', 'nofile' },
             },
           },
-          other_win_hl_color = '#a95721',
+          highlights = {
+            statusline = {
+              unfocused = {
+                bg = '#a95721',
+              },
+            },
+            winbar = {
+              unfocused = {
+                bg = '#a95721',
+              },
+            },
+          },
         },
       },
     },
