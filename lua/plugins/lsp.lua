@@ -37,11 +37,19 @@ return {
     },
   },
   {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        'lazy.nvim',
+      },
+    },
+  },
+  {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'mason-lspconfig.nvim',
-      'folke/neodev.nvim',
       'hrsh7th/nvim-cmp',
     },
     opts = {
@@ -53,9 +61,6 @@ return {
       },
     },
     config = function(_, opts)
-      -- NOTE: neodev is set up for neovim-related lua projects, and it should be setup before lspconfig
-      require('neodev').setup()
-
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
