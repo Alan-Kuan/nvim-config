@@ -91,38 +91,60 @@ return {
     end,
   },
   {
-    'seblj/nvim-tabline',
+    'akinsho/bufferline.nvim',
+    version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
     opts = {
-      no_name = '[New File]',
-      modified_icon = '',
-      close_icon = '',
-      separator = '▌',
-      padding = 1,
-      color_all_icons = false,
-      right_separator = false,
-      show_index = false,
-      show_icon = true,
+      options = {
+        mode = 'tabs',
+        indicator = {
+          style = 'underline',
+        },
+        diagnostics = 'nvim_lsp',
+        diagnostics_indicator = function (count, level, _, _)
+          local icon = level:match('error') and ' ' or ' '
+          return ' ' .. icon .. count
+        end,
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'Explorer',
+            text_align = 'center',
+            separator = true,
+          },
+        },
+      },
+      highlights = {
+        indicator_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+        },
+        buffer_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+          italic = false,
+        },
+        error_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+          italic = false,
+        },
+        warning_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+          italic = false,
+        },
+        warning_diagnostic_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+        },
+        error_diagnostic_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+        },
+        modified_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+        },
+        close_button_selected = {
+          sp = { attribute = 'fg', highlight = 'CursorLineNr' },
+        },
+      },
     },
-    config = function(_, opts)
-      local tabline_bg = '#444444'
-      local tabline_fill_bg = '#555555'
-      local modified_fg = '#fcba03'
-      -- get background color of highlight group Normal
-      local normal_bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Normal')), 'bg#')
-
-      vim.api.nvim_set_hl(0, 'TabLineFill', { bg = tabline_fill_bg })
-
-      vim.api.nvim_set_hl(0, 'TabLine', { bg = tabline_bg, underline = false })
-      vim.api.nvim_set_hl(0, 'TabLineModified', { fg = modified_fg, bg = tabline_bg })
-
-      vim.api.nvim_set_hl(0, 'TabLineSel', { bg = normal_bg })
-      vim.api.nvim_set_hl(0, 'TabLineModifiedSel', { fg = modified_fg, bg = normal_bg })
-      vim.api.nvim_set_hl(0, 'TabLineSeparatorSel', { fg = 'skyblue', bg = normal_bg })
-
-      require('tabline').setup(opts)
-    end,
   },
   {
     'b0o/incline.nvim',
