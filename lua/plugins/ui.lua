@@ -258,7 +258,7 @@ return {
             -- ignore windows by buffer options
             bo = {
               filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
-              buftype = { 'terminal', 'quickfix', 'nofile' },
+              buftype = { 'terminal', 'quickfix' },
             },
           },
           highlights = {
