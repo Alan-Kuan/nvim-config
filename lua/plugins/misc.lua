@@ -68,6 +68,13 @@ return {
     end,
   },
   {
+    'famiu/bufdelete.nvim',
+    cmd = 'Bdelete',
+    keys = {
+      { '<Leader>q', '<Cmd>Bdelete<CR>', silent = true, desc = 'Close current buffer without affecting the window layout' },
+    },
+  },
+  {
     'kaarmu/typst.vim',
     ft = 'typst',
     lazy = false,
