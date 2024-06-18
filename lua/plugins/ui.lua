@@ -113,6 +113,12 @@ return {
             text_align = 'center',
             separator = true,
           },
+          {
+            filetype = 'DiffviewFiles',
+            text = 'Git Status',
+            text_align = 'center',
+            separator = true,
+          },
         },
       },
       highlights = {
@@ -491,6 +497,10 @@ return {
         end
       })
     end,
+  },
+  {
+    'sindrets/diffview.nvim',
+    cmd = 'DiffviewOpen',
   },
   {
     'rcarriga/nvim-notify',
