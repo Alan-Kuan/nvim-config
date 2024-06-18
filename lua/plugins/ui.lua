@@ -248,6 +248,19 @@ return {
       'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
       {
+        '3rd/image.nvim',
+        dependencies = {
+          {
+            'vhyrro/luarocks.nvim',
+            priority = 1001,
+            opts = {
+              rocks = { 'magick' },
+            },
+          },
+        },
+        config = true,
+      },
+      {
         's1n7ax/nvim-window-picker',
         version = '2.*',
         event = 'VeryLazy',
