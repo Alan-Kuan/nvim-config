@@ -95,9 +95,12 @@ return {
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
+    keys = {
+      { 'gb', '<Cmd>BufferLineCycleNext<CR>', desc = 'Go to next buffer' },
+      { 'gB', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Go to previous buffer' },
+    },
     opts = {
       options = {
-        mode = 'tabs',
         indicator = {
           style = 'underline',
         },
