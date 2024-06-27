@@ -3,14 +3,14 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
+    keys = {
+      { '<C-/>', '<Cmd>WhichKey<CR>', desc = 'Show all keymaps' },
+    },
     init = function ()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    config = function ()
-      require('which-key').setup()
-      vim.keymap.set('n', '<C-/>', '<Cmd>WhichKey<CR>', { desc = 'Show all keymaps' })
-    end
+    config = true,
   },
   {
     'gbprod/substitute.nvim',

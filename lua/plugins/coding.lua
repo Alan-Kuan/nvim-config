@@ -68,6 +68,11 @@ return {
   {
     'echasnovski/mini.surround',
     event = 'VeryLazy',
+    keys = {
+      -- NOTE: ':' moves the cursor to command line and '<C-u>' clear the command line
+      { 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", mode = 'x', desc = 'Wrap selection with specified character', silent = true },
+      { 'yss', 'ys_', desc = 'Wrap current line with specified character', remap = true },
+    },
     opts = {
       custom_surroundings = {
         ['('] = { output = { left = '( ', right = ' )' } },
@@ -85,16 +90,10 @@ return {
         update_n_lines = '',
       },
     },
-    config = function(_, opts)
+    config = function (_, opts)
       require('mini.surround').setup(opts)
-
-      -- NOTE: ':' moves the cursor to command line and '<C-u>' clear the command line
-      vim.keymap.set('x', 'S', ":<C-u>lua MiniSurround.add('visual')<CR>",
-        { desc = 'Wrap selection with specified character', silent = true })
-      vim.keymap.set('n', 'yss', 'ys_',
-        { desc = 'Wrap current line with specified character', remap = true })
       vim.keymap.del('v', 'ys')
-    end,
+    end
   },
   {
     'echasnovski/mini.pairs',
@@ -174,6 +173,9 @@ return {
   {
     'mhartington/formatter.nvim',
     event = 'VeryLazy',
+    keys = {
+      { '<leader>F', '<Cmd>Format<CR>', desc = 'Format the code', silent = true },
+    },
     config = function()
       local util = require('formatter.util')
 
@@ -197,8 +199,6 @@ return {
           },
         },
       }
-
-      vim.keymap.set('n', '<leader>F', '<Cmd>Format<CR>', { desc = 'Format the code', silent = true })
     end,
   },
 }

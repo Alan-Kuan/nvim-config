@@ -1,21 +1,13 @@
 return {
   {
     'iamcco/markdown-preview.nvim',
-    build = 'cd app && yarn install',
+    build = function() vim.fn['mkdp#util#install']() end,
     cmd = 'MarkdownPreview',
     ft = 'markdown',
     event = 'VeryLazy',
-    init = function()
-      vim.api.nvim_create_augroup('MD_Preview', { clear = true })
-      vim.api.nvim_create_autocmd('Filetype', {
-        group = 'MD_Preview',
-        pattern = { 'markdown' },
-        callback = function()
-          vim.keymap.set('n', '<C-m>', '<Cmd>MarkdownPreview<CR>',
-            { buffer = true, silent = true, desc = 'Preview current Markdown file' })
-        end,
-      })
-    end,
+    keys = {
+      { '<C-m>', '<Cmd>MarkdownPreview<CR>', buffer = true, silent = true, desc = 'Preview current Markdown file' },
+    },
     config = function()
       vim.g.mkdp_page_title = '${name} - Preview'
       vim.g.mkdp_echo_preview_url = 1

@@ -429,6 +429,14 @@ return {
       'rcarriga/nvim-notify',
     },
     event = 'VeryLazy',
+    keys = {
+      { '<leader>tf', '<Cmd>Telescope find_files<CR>', desc = 'Telescope: find files' },
+      { '<leader>tg', '<Cmd>Telescope live_grep<CR>', desc = 'Telescope: find words' },
+      { '<leader>tm', '<Cmd>Telescope marks<CR>', desc = 'Telescope: show marks' },
+      { '<leader>th', '<Cmd>Telescope oldfiles<CR>', desc = 'Telescope: show history of opened files' },
+      { '<leader>tc', '<Cmd>Telescope colorscheme<CR>', desc = 'Telescope: show colorschemes' },
+      { '<leader>tn', '<Cmd>Telescope notify<CR>', desc = 'Telescope: show notifications' },
+    },
     config = function()
       -- NOTE: cannot put setup's argument into the 'opts' field since it contains `require('telescope.actions')`
       require('telescope').setup {
@@ -441,15 +449,6 @@ return {
         },
       }
       require('telescope').load_extension('notify')
-
-      -- stylua: ignore start
-      vim.keymap.set('n', '<leader>tf', require('telescope.builtin').find_files,        { desc = 'Telescope: find files' })
-      vim.keymap.set('n', '<leader>tg', require('telescope.builtin').live_grep,         { desc = 'Telescope: find words' })
-      vim.keymap.set('n', '<leader>tm', require('telescope.builtin').marks,             { desc = 'Telescope: show marks' })
-      vim.keymap.set('n', '<leader>th', require('telescope.builtin').oldfiles,          { desc = 'Telescope: show history of opened files' })
-      vim.keymap.set('n', '<leader>tc', require('telescope.builtin').colorscheme,       { desc = 'Telescope: show colorschemes' })
-      vim.keymap.set('n', '<leader>tn', require('telescope').extensions.notify.notify,  { desc = 'Telescope: show notifications' })
-      -- stylua: ignore end
     end,
   },
   {
@@ -488,8 +487,7 @@ return {
     config = function ()
       require('gitsigns').setup({
         on_attach = function (bufnr)
-          local gitsigns = require('gitsigns')
-          vim.keymap.set('n', '<Leader>gb', gitsigns.toggle_current_line_blame, {
+          vim.keymap.set('n', '<Leader>gb', require('gitsigns').toggle_current_line_blame, {
               buffer = bufnr,
               silent = true,
               desc = 'Toggle showing git blame on current line',
