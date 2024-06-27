@@ -71,7 +71,7 @@ return {
     'famiu/bufdelete.nvim',
     cmd = 'Bdelete',
     keys = {
-      { '<Leader>q', '<Cmd>Bdelete<CR>', silent = true, desc = 'Close current buffer without affecting the window layout' },
+      { '<Leader>q', '<Cmd>Bdelete<CR>', desc = 'Close current buffer without affecting the window layout' },
     },
   },
   {

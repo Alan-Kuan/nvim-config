@@ -6,7 +6,7 @@ return {
     ft = 'markdown',
     event = 'VeryLazy',
     keys = {
-      { '<C-m>', '<Cmd>MarkdownPreview<CR>', buffer = true, silent = true, desc = 'Preview current Markdown file' },
+      { '<C-m>', '<Cmd>MarkdownPreview<CR>', buffer = true, desc = 'Preview current Markdown file' },
     },
     config = function()
       vim.g.mkdp_page_title = '${name} - Preview'

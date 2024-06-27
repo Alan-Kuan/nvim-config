@@ -70,7 +70,7 @@ return {
     event = 'VeryLazy',
     keys = {
       -- NOTE: ':' moves the cursor to command line and '<C-u>' clear the command line
-      { 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", mode = 'x', desc = 'Wrap selection with specified character', silent = true },
+      { 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", mode = 'x', desc = 'Wrap selection with specified character' },
       { 'yss', 'ys_', desc = 'Wrap current line with specified character', remap = true },
     },
     opts = {
@@ -174,7 +174,7 @@ return {
     'mhartington/formatter.nvim',
     event = 'VeryLazy',
     keys = {
-      { '<leader>F', '<Cmd>Format<CR>', desc = 'Format the code', silent = true },
+      { '<leader>F', '<Cmd>Format<CR>', desc = 'Format the code' },
     },
     config = function()
       local util = require('formatter.util')
