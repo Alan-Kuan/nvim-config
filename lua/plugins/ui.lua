@@ -267,7 +267,11 @@ return {
             },
           },
         },
-        config = true,
+        opts = {
+          integrations = {
+            markdown = { enabled = false },
+          },
+        },
       },
       {
         's1n7ax/nvim-window-picker',
