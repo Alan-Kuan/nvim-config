@@ -207,12 +207,12 @@ return {
       'onsails/lspkind-nvim',
     },
     event = 'InsertEnter',
-    config = function()
+    opts = function()
       local cmp = require('cmp')
       local luasnip = require('luasnip')
       local lspkind = require('lspkind')
 
-      cmp.setup {
+      return {
         preselect = cmp.PreselectMode.Item,
         completion = {
           completeopt = 'menuone',

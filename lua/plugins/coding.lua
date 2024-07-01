@@ -103,9 +103,6 @@ return {
         [' '] = { action = 'open', pair = '  ', neigh_pattern = '[%(%[{][%)%]}]' },
       },
     },
-    config = function(_, opts)
-      require('mini.pairs').setup(opts)
-    end,
   },
   {
     'windwp/nvim-ts-autotag',
@@ -124,9 +121,6 @@ return {
         end,
       },
     },
-    config = function(_, opts)
-      require('mini.comment').setup(opts)
-    end,
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
