@@ -24,6 +24,8 @@ return {
         'actionlint',
         'checkmake',
         'editorconfig_checker',
+        -- Formatters
+        'stylua',
       },
     },
   },
@@ -35,10 +37,13 @@ return {
       'jay-babu/mason-null-ls.nvim',
     },
     event = { 'BufReadPre', 'BufNewFile' },
-    opts = function()
+    keys = {
+      { '<Leader>F', function () vim.lsp.buf.format() end, desc = 'Format the code' }
+    },
+    config = function()
       local nls = require('null-ls')
 
-      return {
+      nls.setup {
         sources = {
           -- Code Actions
           nls.builtins.code_actions.proselint,
@@ -46,6 +51,8 @@ return {
           nls.builtins.hover.printenv,
         },
       }
+
+      nls.register(nls.builtins.formatting.stylua)
     end,
   },
   {
@@ -135,7 +142,7 @@ return {
           },
         },
         ['denols'] = {
-          on_attach = function (_, buffer)
+          on_attach = function(_, buffer)
             on_attach(_, buffer)
             for _, client in pairs(vim.lsp.get_clients()) do
               if client.name == 'tsserver' then
@@ -283,7 +290,7 @@ return {
   {
     'L3MON4D3/LuaSnip',
     version = 'v2.*',
-    config = function ()
+    config = function()
       require('luasnip.loaders.from_lua').load({
         paths = { '~/.config/nvim/lua/snippets' }
       })
@@ -299,7 +306,7 @@ return {
     },
     opts = {
       action_keys = { refresh = 'R' },
-      auto_close = true, -- automatically close the list when you have no diagnostics
+      auto_close = true,           -- automatically close the list when you have no diagnostics
       use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
     },
   },

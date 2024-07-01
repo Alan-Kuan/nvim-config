@@ -166,35 +166,4 @@ return {
       },
     },
   },
-  {
-    'mhartington/formatter.nvim',
-    event = 'VeryLazy',
-    keys = {
-      { '<leader>F', '<Cmd>Format<CR>', desc = 'Format the code' },
-    },
-    config = function()
-      local util = require('formatter.util')
-
-      require('formatter').setup {
-        filetype = {
-          lua = {
-            require('formatter.filetypes.lua').stylua,
-            function()
-              return {
-                exe = 'stylua',
-                args = {
-                  '--search-parent-directories',
-                  '--stdin-filepath',
-                  util.escape_path(util.get_current_buffer_file_path()),
-                  '--',
-                  '-',
-                },
-                stdin = true,
-              }
-            end,
-          },
-        },
-      }
-    end,
-  },
 }
