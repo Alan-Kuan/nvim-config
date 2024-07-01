@@ -164,18 +164,18 @@ return {
     end,
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'mason.nvim',
     },
     event = { 'BufReadPre', 'BufNewFile' },
     opts = function()
-      local null_ls = require('null-ls')
+      local nls = require('null-ls')
 
       return {
         sources = {
-          null_ls.builtins.diagnostics.actionlint,
+          nls.builtins.diagnostics.actionlint,
         },
       }
     end,
