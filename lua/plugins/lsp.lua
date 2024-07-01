@@ -25,6 +25,7 @@ return {
         'checkmake',
         'editorconfig_checker',
         -- Formatters
+        'clang-format',
         'stylua',
       },
     },
