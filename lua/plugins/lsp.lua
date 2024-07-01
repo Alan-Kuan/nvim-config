@@ -13,10 +13,47 @@ return {
     },
   },
   {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = 'mason.nvim',
+    'jay-babu/mason-null-ls.nvim',
+    dependencies = 'williamboman/mason.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       ensure_installed = {
+        -- LSPs
+        'cmake-language-server',
+        -- Linters
+        'actionlint',
+        'checkmake',
+        'editorconfig_checker',
+      },
+    },
+  },
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'williamboman/mason.nvim',
+      'jay-babu/mason-null-ls.nvim',
+    },
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = function()
+      local nls = require('null-ls')
+
+      return {
+        sources = {
+          -- Code Actions
+          nls.builtins.code_actions.proselint,
+          -- Hover
+          nls.builtins.hover.printenv,
+        },
+      }
+    end,
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = 'williamboman/mason.nvim',
+    opts = {
+      ensure_installed = {
+        -- LSPs
         'bashls',
         'clangd',
         'cssls',
@@ -33,15 +70,6 @@ return {
         'tsserver',
         'volar',
         'yamlls',
-      },
-    },
-  },
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        'lazy.nvim',
       },
     },
   },
@@ -164,37 +192,6 @@ return {
     end,
   },
   {
-    'nvimtools/none-ls.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'mason.nvim',
-    },
-    event = { 'BufReadPre', 'BufNewFile' },
-    opts = function()
-      local nls = require('null-ls')
-
-      return {
-        sources = {
-          nls.builtins.diagnostics.actionlint,
-        },
-      }
-    end,
-  },
-  {
-    'folke/trouble.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    cmd = { 'TroubleToggle', 'Trouble' },
-    keys = {
-      { '<leader>xx', '<Cmd>TroubleToggle document_diagnostics<CR>' },
-      { '<leader>xX', '<Cmd>TroubleToggle workspace_diagnostics<CR>' },
-    },
-    opts = {
-      action_keys = { refresh = 'R' },
-      auto_close = true, -- automatically close the list when you have no diagnostics
-      use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
-    },
-  },
-  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -291,5 +288,28 @@ return {
         paths = { '~/.config/nvim/lua/snippets' }
       })
     end
+  },
+  {
+    'folke/trouble.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    cmd = { 'TroubleToggle', 'Trouble' },
+    keys = {
+      { '<leader>xx', '<Cmd>TroubleToggle document_diagnostics<CR>' },
+      { '<leader>xX', '<Cmd>TroubleToggle workspace_diagnostics<CR>' },
+    },
+    opts = {
+      action_keys = { refresh = 'R' },
+      auto_close = true, -- automatically close the list when you have no diagnostics
+      use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+    },
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        'lazy.nvim',
+      },
+    },
   },
 }
