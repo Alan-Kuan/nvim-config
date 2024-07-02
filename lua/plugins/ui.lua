@@ -538,7 +538,17 @@ return {
       end
     end,
   },
-  { 'stevearc/dressing.nvim' },
+  {
+    'stevearc/dressing.nvim',
+    dependencies = 'nvim-telescope/telescope.nvim',
+    opts = function ()
+      return {
+        select = {
+          telescope = require('telescope.themes').get_cursor()
+        },
+      }
+    end,
+  },
   {
     'akinsho/toggleterm.nvim',
     opts = {
