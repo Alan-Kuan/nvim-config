@@ -20,6 +20,7 @@ return {
       ensure_installed = {
         -- LSPs
         'cmake-language-server',
+        'unocss-language-server',
         -- Linters
         'actionlint',
         'checkmake',
