@@ -88,6 +88,23 @@ return {
       vim.api.nvim_set_hl(0, 'AlphaAnvilIcon',      { fg = '#bbbbbb' })
       vim.api.nvim_set_hl(0, 'AlphaSleepIcon',      { fg = '#5a85cc' })
       -- stylua: ignore end
+
+      -- Reopen Alpha when last buffer is closed
+      vim.api.nvim_create_augroup('AlphaReopen', { clear = true })
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'BDeletePost *',  -- event of bufdelete.nvim
+        group = 'AlphaReopen',
+        callback = function(event)
+          local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+          local fallback_ft = vim.api.nvim_get_option_value('filetype', { buf = event.buf })
+
+          if fallback_name == '' and fallback_ft == '' then
+            vim.cmd('Alpha | bd#')
+            ---@diagnostic disable-next-line: undefined-global
+            MiniTrailspace.unhighlight()  -- global table set up by mini.trailspace
+          end
+        end,
+      })
     end,
   },
   {
