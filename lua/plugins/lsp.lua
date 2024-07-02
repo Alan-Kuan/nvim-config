@@ -301,10 +301,10 @@ return {
   {
     'folke/trouble.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    cmd = { 'TroubleToggle', 'Trouble' },
+    cmd = 'Trouble',
     keys = {
-      { '<leader>xx', '<Cmd>TroubleToggle document_diagnostics<CR>' },
-      { '<leader>xX', '<Cmd>TroubleToggle workspace_diagnostics<CR>' },
+      { '<leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Show diagnostics of current buffer' },
+      { '<leader>xX', '<Cmd>Trouble diagnostics toggle<CR>', 'Show diagnostics of current workspace' },
     },
     opts = {
       action_keys = { refresh = 'R' },
