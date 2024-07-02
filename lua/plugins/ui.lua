@@ -522,8 +522,20 @@ return {
     opts = {
       top_down = false,
     },
-    init = function()
-      vim.notify = require('notify')
+    config = function(_, opts)
+      require('notify').setup(opts)
+
+      local banned_msgs = {
+        'No information available',
+      }
+      vim.notify = function (msg, ...)
+        for _, banned in ipairs(banned_msgs) do
+          if msg == banned then
+            return
+          end
+        end
+        return require('notify')(msg, ...)
+      end
     end,
   },
   { 'stevearc/dressing.nvim' },
