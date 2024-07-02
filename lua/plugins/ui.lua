@@ -17,16 +17,15 @@ return {
       }
       -- stylua: ignore
       dashboard.section.buttons.val = {
-        dashboard.button('N', ' ' .. ' New File',      '<Cmd>enew <Bar> startinsert<CR>'),
-        dashboard.button('b', ' ' .. ' Bookmarks',     '<Cmd>Telescope marks<CR>'),
-        dashboard.button('f', ' ' .. ' Find File',     '<Cmd>Telescope find_files<CR>'),
-        dashboard.button('r', ' ' .. ' Recent Files',  '<Cmd>Telescope oldfiles<CR>'),
-        dashboard.button('g', ' ' .. ' Find text',     '<Cmd>Telescope live_grep<CR>'),
-        dashboard.button('n', ' ' .. ' Notifications', '<Cmd>Telescope notify<CR>'),
-        dashboard.button('c', ' ' .. ' Colorschemes',  '<Cmd>Telescope colorscheme<CR>'),
-        dashboard.button('m', '󰢛 ' .. ' Mason',         '<Cmd>Mason<CR>'),
-        dashboard.button('l', '󰒲 ' .. ' Lazy',          '<Cmd>Lazy<CR>'),
-        dashboard.button('q', ' ' .. ' Quit',          '<Cmd>qa<CR>'),
+        dashboard.button('N', '  New File',      '<Cmd>enew <Bar> startinsert<CR>'),
+        dashboard.button('f', '  Find File',     '<Cmd>Telescope find_files<CR>'),
+        dashboard.button('r', '  Recent Files',  '<Cmd>Telescope oldfiles<CR>'),
+        dashboard.button('g', '󰦨  Find Text',     '<Cmd>Telescope live_grep<CR>'),
+        dashboard.button('b', '  Bookmarks',     '<Cmd>Telescope marks<CR>'),
+        dashboard.button('c', '  Colorschemes',  '<Cmd>Telescope colorscheme<CR>'),
+        dashboard.button('m', '󰢛  Mason',         '<Cmd>Mason<CR>'),
+        dashboard.button('l', '󰒲  Lazy',          '<Cmd>Lazy<CR>'),
+        dashboard.button('q', '  Quit',          '<Cmd>qa<CR>'),
       }
       dashboard.section.footer.val = {
         '',
@@ -39,11 +38,10 @@ return {
 
       local icon_highlights = {
         'AlphaIcon',
-        'AlphaBookmarkIcon',
-        'AlphaIcon',
+        'AlphaMagnifierIcon',
         'AlphaClockIcon',
         'AlphaWordIcon',
-        'AlphaBellIcon',
+        'AlphaBookmarkIcon',
         'AlphaPaletteIcon',
         'AlphaAnvilIcon',
         'AlphaSleepIcon',
@@ -63,6 +61,7 @@ return {
       if vim.o.filetype == 'lazy' then
         vim.cmd.close()
         vim.api.nvim_create_autocmd('User', {
+          once = true,
           pattern = 'AlphaReady',
           callback = function()
             require('lazy').show()
@@ -75,18 +74,19 @@ return {
       -- stylua: ignore start
       -- Main Colors
       vim.api.nvim_set_hl(0, 'AlphaHeader',   { fg = '#42ff7b' })
+      vim.api.nvim_set_hl(0, 'AlphaNormal',   { fg = '#fff0cd' })
       vim.api.nvim_set_hl(0, 'AlphaShortcut', { fg = '#ffc0cb' })
       vim.api.nvim_set_hl(0, 'AlphaFooter',   { fg = '#ffd062' })
 
       -- Icon Colors
-      vim.api.nvim_set_hl(0, 'AlphaIcon',         { fg = '#ffffff' })
-      vim.api.nvim_set_hl(0, 'AlphaBookmarkIcon', { fg = '#ee8438' })
-      vim.api.nvim_set_hl(0, 'AlphaClockIcon',    { fg = '#b3ee8f' })
-      vim.api.nvim_set_hl(0, 'AlphaWordIcon',     { fg = '#34b5d9' })
-      vim.api.nvim_set_hl(0, 'AlphaBellIcon',     { fg = '#ffee30' })
-      vim.api.nvim_set_hl(0, 'AlphaPaletteIcon',  { fg = '#c7ae84' })
-      vim.api.nvim_set_hl(0, 'AlphaAnvilIcon',    { fg = '#bbbbbb' })
-      vim.api.nvim_set_hl(0, 'AlphaSleepIcon',    { fg = '#5a85cc' })
+      vim.api.nvim_set_hl(0, 'AlphaIcon',           { fg = '#ffffff' })
+      vim.api.nvim_set_hl(0, 'AlphaMagnifierIcon',  { fg = '#91cbff' })
+      vim.api.nvim_set_hl(0, 'AlphaClockIcon',      { fg = '#b3ee8f' })
+      vim.api.nvim_set_hl(0, 'AlphaWordIcon',       { fg = '#eebf38' })
+      vim.api.nvim_set_hl(0, 'AlphaBookmarkIcon',   { fg = '#f27438' })
+      vim.api.nvim_set_hl(0, 'AlphaPaletteIcon',    { fg = '#c7ae84' })
+      vim.api.nvim_set_hl(0, 'AlphaAnvilIcon',      { fg = '#bbbbbb' })
+      vim.api.nvim_set_hl(0, 'AlphaSleepIcon',      { fg = '#5a85cc' })
       -- stylua: ignore end
     end,
   },
