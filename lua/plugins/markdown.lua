@@ -1,7 +1,9 @@
 return {
   {
     'iamcco/markdown-preview.nvim',
-    build = function() vim.fn['mkdp#util#install']() end,
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
     cmd = 'MarkdownPreview',
     ft = 'markdown',
     event = 'VeryLazy',
@@ -14,90 +16,71 @@ return {
     end,
   },
   {
-    'plasticboy/vim-markdown',
-    dependencies = 'godlygeek/tabular',
+    'MeanderingProgrammer/markdown.nvim',
+    enabled = true,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
     ft = 'markdown',
     event = 'VeryLazy',
-    config = function()
-      vim.g.vim_markdown_folding_disabled = 1
-      vim.g.vim_markdown_toc_autofit = 1
-      vim.g.vim_markdown_follow_anchor = 1
-      vim.g.vim_markdown_conceal = 1
-      vim.g.vim_markdown_conceal_code_blocks = 1
-      vim.g.vim_markdown_math = 1
-      vim.g.vim_markdown_frontmatter = 1
-      vim.g.vim_markdown_strikethrough = 1
-      vim.g.vim_markdown_new_list_item_indent = 4
-      vim.g.vim_markdown_edit_url_in = 'tab'
+    opts = function()
+      vim.api.nvim_set_hl(0, 'MarkdownH1', { fg = '#8ebf6b', bg = '#486335' })
+      vim.api.nvim_set_hl(0, 'MarkdownH2', { fg = '#6abfb5', bg = '#36635e' })
+      vim.api.nvim_set_hl(0, 'MarkdownH3', { fg = '#6893bf', bg = '#354c63' })
+      vim.api.nvim_set_hl(0, 'MarkdownH4', { fg = '#bf8267', bg = '#634335' })
+      vim.api.nvim_set_hl(0, 'MarkdownH5', { fg = '#bf6969', bg = '#643636' })
+      vim.api.nvim_set_hl(0, 'MarkdownH6', { fg = '#be687d', bg = '#623540' })
+      vim.api.nvim_set_hl(0, 'CodeBlock', { bg = '#434343' })
 
-      vim.o.conceallevel = 3
-      vim.g.tex_conceal = ''
-
-      vim.api.nvim_create_augroup('Markdown', { clear = true })
-      vim.api.nvim_create_autocmd('Filetype', {
-        group = 'Markdown',
-        pattern = { 'markdown' },
-        callback = function()
-          vim.keymap.set('x', '<C-Enter>', ':<C-U>TableFormat<CR>',
-            { silent = true, desc = 'Format the Markdown table' })
-        end,
-      })
+      return {
+        headings = { '✱ ', '✲ ', '✤ ', '✣ ', '✸ ', '✳ ' },
+        quote = '┃',
+        highlights = {
+          heading = {
+            backgrounds = {
+              'MarkdownH1',
+              'MarkdownH2',
+              'MarkdownH3',
+              'MarkdownH4',
+              'MarkdownH5',
+              'MarkdownH6',
+            },
+          },
+          code = 'CodeBlock',
+        },
+      }
     end,
   },
   {
-    'lukas-reineke/headlines.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    ft = 'markdown',
-    event = 'VeryLazy',
-    config = function()
-      require('headlines').setup {
-        markdown = {
-          query = vim.treesitter.query.parse(
-            'markdown',
-            [[
-              (atx_heading [
-                (atx_h1_marker)
-                (atx_h2_marker)
-                (atx_h3_marker)
-                (atx_h4_marker)
-                (atx_h5_marker)
-                (atx_h6_marker)
-              ] @headline)
-
-              (thematic_break) @dash
-
-              (fenced_code_block) @codeblock
-
-              (block_quote_marker) @quote
-              (block_quote (paragraph (inline (block_continuation) @quote)))
-            ]]
-          ),
-          headline_highlights = {
-            'Headline1',
-            'Headline2',
-            'Headline3',
-            'Headline4',
-            'Headline5',
-            'Headline6',
-          },
-          codeblock_highlight = 'CodeBlock',
-          dash_highlight = 'Dash',
-          dash_string = '-',
-          quote_highlight = 'Quote',
-          quote_string = '┃',
-          fat_headlines = true,
-          fat_headline_upper_string = '▃',
-          fat_headline_lower_string = '🬂',
+    'gaoDean/autolist.nvim',
+    ft = {
+      'markdown',
+      'tex',
+      'typst',
+      'text',
+    },
+    keys = {
+      { '<Tab>', '<Cmd>AutolistTab<CR>', mode = 'i' },
+      { '<S-Tab>', '<Cmd>AutolistShiftTab<CR>', mode = 'i' },
+      { '<CR>', '<CR><Cmd>AutolistNewBullet<CR>', mode = 'i' },
+      { 'o', 'o<Cmd>AutolistNewBullet<CR>' },
+      { 'O', 'O<Cmd>AutolistNewBulletBefore<CR>' },
+      { '<CR>', '<Cmd>AutolistToggleCheckbox<CR>' },
+      { '>>', '>><Cmd>AutolistRecalculate<CR>' },
+      { '<<', '<<<Cmd>AutolistRecalculate<CR>' },
+      { 'dd', 'dd<Cmd>AutolistRecalculate<CR>' },
+      { 'd', 'd<Cmd>AutolistRecalculate<CR>', mode = 'v' },
+    },
+    opts = {
+      lists = {
+        typst = {
+          '[-+*]', -- unordered
+          '%d+[.)]', -- digit
+          '%a[.)]', -- ascii
+          '%u*[.)]', -- roman
         },
-      }
-
-      vim.api.nvim_set_hl(0, 'Headline1', { fg = '#cb7676', bg = '#402626', italic = false })
-      vim.api.nvim_set_hl(0, 'Headline2', { fg = '#c99076', bg = '#66493c', italic = false })
-      vim.api.nvim_set_hl(0, 'Headline3', { fg = '#80a665', bg = '#3d4f2f', italic = false })
-      vim.api.nvim_set_hl(0, 'Headline4', { fg = '#4c9a91', bg = '#224541', italic = false })
-      vim.api.nvim_set_hl(0, 'Headline5', { fg = '#6893bf', bg = '#2b3d4f', italic = false })
-      vim.api.nvim_set_hl(0, 'Headline6', { fg = '#d3869b', bg = '#6b454f', italic = false })
-      vim.api.nvim_set_hl(0, 'CodeBlock', { bg = '#444444' })
-    end,
+      },
+    },
   },
 }
