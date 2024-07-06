@@ -38,9 +38,7 @@ return {
       },
       highlight = {
         enable = true,
-        disable = {
-          'markdown',
-        },
+        additional_vim_regex_highlighting = false,
       },
       indent = {
         enable = true,
