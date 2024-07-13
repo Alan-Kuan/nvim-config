@@ -303,6 +303,7 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     cmd = 'Trouble',
     keys = {
+      { '<leader>x', '', desc = '+diagnostic' },
       { '<leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Show diagnostics of current buffer' },
       { '<leader>xX', '<Cmd>Trouble diagnostics toggle<CR>', 'Show diagnostics of current workspace' },
     },

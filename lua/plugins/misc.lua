@@ -4,13 +4,19 @@ return {
     'folke/which-key.nvim',
     event = 'VeryLazy',
     keys = {
-      { '<C-/>', '<Cmd>WhichKey<CR>', desc = 'Show all keymaps' },
+      {
+        '<Leader>?',
+        function () require('which-key').show({ global = false }) end,
+        desc = 'Show buffer local keymaps'
+      },
     },
     init = function ()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    config = true,
+    opts = {
+      preset = 'modern',
+    },
   },
   {
     'gbprod/substitute.nvim',

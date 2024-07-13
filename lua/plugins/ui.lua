@@ -468,12 +468,13 @@ return {
     },
     event = 'VeryLazy',
     keys = {
-      { '<leader>tf', '<Cmd>Telescope find_files<CR>', desc = 'Telescope: find files' },
-      { '<leader>tg', '<Cmd>Telescope live_grep<CR>', desc = 'Telescope: find words' },
-      { '<leader>tm', '<Cmd>Telescope marks<CR>', desc = 'Telescope: show marks' },
-      { '<leader>th', '<Cmd>Telescope oldfiles<CR>', desc = 'Telescope: show history of opened files' },
-      { '<leader>tc', '<Cmd>Telescope colorscheme<CR>', desc = 'Telescope: show colorschemes' },
-      { '<leader>tn', '<Cmd>Telescope notify<CR>', desc = 'Telescope: show notifications' },
+      { '<leader>t', '', desc = '+telescope' },
+      { '<leader>tf', '<Cmd>Telescope find_files<CR>', desc = 'Find files' },
+      { '<leader>tg', '<Cmd>Telescope live_grep<CR>', desc = 'Find words' },
+      { '<leader>tm', '<Cmd>Telescope marks<CR>', desc = 'Show marks' },
+      { '<leader>th', '<Cmd>Telescope oldfiles<CR>', desc = 'Show history of opened files' },
+      { '<leader>tc', '<Cmd>Telescope colorscheme<CR>', desc = 'Show colorschemes' },
+      { '<leader>tn', '<Cmd>Telescope notify<CR>', desc = 'Show notifications' },
     },
     config = function()
       -- NOTE: cannot put setup's argument into the 'opts' field since it contains `require('telescope.actions')`
@@ -522,8 +523,8 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    config = function ()
-      require('gitsigns').setup({
+    opts = function ()
+      return {
         on_attach = function (bufnr)
           vim.keymap.set('n', '<Leader>gb', require('gitsigns').toggle_current_line_blame, {
               buffer = bufnr,
@@ -531,8 +532,8 @@ return {
               desc = 'Toggle showing git blame on current line',
           })
         end
-      })
-    end,
+      }
+    end
   },
   {
     'sindrets/diffview.nvim',
