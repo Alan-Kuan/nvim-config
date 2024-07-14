@@ -116,38 +116,32 @@ return {
     config = true,
   },
   {
-    'echasnovski/mini.comment',
-    version = false,
-    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
-    event = 'VeryLazy',
-    opts = {
-      options = {
-        custom_commentstring = function()
-          return require('ts_context_commentstring.internal').calculate_commentstring() or vim.bo.commentstring
-        end,
-      },
-    },
-  },
-  {
     'JoosepAlviste/nvim-ts-context-commentstring',
     dependencies = 'nvim-treesitter/nvim-treesitter',
-    init = function()
+    opts = function ()
       vim.g.skip_ts_context_commentstring_module = true
+
+      vim.filetype.get_option = function (ft, opt)
+        return opt == 'commentstring'
+          and require('ts_context_commentstring.internal').calculate_commentstring()
+          or vim.filetype.get_option(ft, opt)
+      end
+
+      return {
+        enable_autocmd = false,
+        languages = {
+          cpp = {
+            __default = '// %s',
+          },
+          c = {
+            __default = '// %s',
+          },
+          yuck = {
+            __default = '; %s',
+          },
+        },
+      }
     end,
-    opts = {
-      enable_autocmd = false,
-      languages = {
-        cpp = {
-          __default = '// %s',
-        },
-        c = {
-          __default = '// %s',
-        },
-        yuck = {
-          __default = '; %s',
-        },
-      },
-    },
   },
   {
     'echasnovski/mini.splitjoin',
