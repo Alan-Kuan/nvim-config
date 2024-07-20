@@ -93,4 +93,9 @@ return {
     requires = 'nvim-treesitter/nvim-treesitter',
     ft = 'rasi',
   },
+  {
+    'davidmh/mdx.nvim',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    opts = {},
+  }
 }
