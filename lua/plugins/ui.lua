@@ -424,8 +424,8 @@ return {
 
           ['R'] = 'refresh',
           ['q'] = 'close_window',
-          ['<'] = 'prev_source',
-          ['>'] = 'next_source',
+          ['9'] = 'prev_source',
+          ['0'] = 'next_source',
           ['?'] = 'show_help',
         },
       },
