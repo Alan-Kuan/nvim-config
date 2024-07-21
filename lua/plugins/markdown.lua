@@ -25,29 +25,33 @@ return {
     ft = 'markdown',
     event = 'VeryLazy',
     opts = function()
-      vim.api.nvim_set_hl(0, 'MarkdownH1', { fg = '#8ebf6b', bg = '#486335' })
-      vim.api.nvim_set_hl(0, 'MarkdownH2', { fg = '#6abfb5', bg = '#36635e' })
-      vim.api.nvim_set_hl(0, 'MarkdownH3', { fg = '#6893bf', bg = '#354c63' })
-      vim.api.nvim_set_hl(0, 'MarkdownH4', { fg = '#bf8267', bg = '#634335' })
-      vim.api.nvim_set_hl(0, 'MarkdownH5', { fg = '#bf6969', bg = '#643636' })
-      vim.api.nvim_set_hl(0, 'MarkdownH6', { fg = '#be687d', bg = '#623540' })
-      vim.api.nvim_set_hl(0, 'CodeBlock', { bg = '#434343' })
+      vim.api.nvim_set_hl(0, 'RMdH1', { fg = '#8ebf6b', bg = '#486335' })
+      vim.api.nvim_set_hl(0, 'RMdH2', { fg = '#6abfb5', bg = '#36635e' })
+      vim.api.nvim_set_hl(0, 'RMdH3', { fg = '#6893bf', bg = '#354c63' })
+      vim.api.nvim_set_hl(0, 'RMdH4', { fg = '#bf8267', bg = '#634335' })
+      vim.api.nvim_set_hl(0, 'RMdH5', { fg = '#bf6969', bg = '#643636' })
+      vim.api.nvim_set_hl(0, 'RMdH6', { fg = '#be687d', bg = '#623540' })
+      vim.api.nvim_set_hl(0, 'RMdCodeBlock', { bg = '#434343' })
 
       return {
-        headings = { '✱ ', '✲ ', '✤ ', '✣ ', '✸ ', '✳ ' },
-        quote = '┃',
-        highlights = {
-          heading = {
-            backgrounds = {
-              'MarkdownH1',
-              'MarkdownH2',
-              'MarkdownH3',
-              'MarkdownH4',
-              'MarkdownH5',
-              'MarkdownH6',
-            },
+        heading = {
+          icons = { '✱ ', '✲ ', '✤ ', '✣ ', '✸ ', '✳ ' },
+          backgrounds = {
+            'RMdH1',
+            'RMdH2',
+            'RMdH3',
+            'RMdH4',
+            'RMdH5',
+            'RMdH6',
           },
-          code = 'CodeBlock',
+        },
+        code = {
+          sign = false,
+          left_pad = 1,
+          highlight = 'RMdCodeBlock',
+        },
+        quote = {
+          icon = '┃',
         },
       }
     end,
