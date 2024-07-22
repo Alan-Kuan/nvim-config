@@ -148,7 +148,7 @@ return {
     event = 'VeryLazy',
     opts = {
       mappings = {
-        toggle = '<C-s>',
+        toggle = '<Leader>s',
       },
     },
   },
