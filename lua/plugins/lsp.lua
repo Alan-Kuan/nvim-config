@@ -89,15 +89,7 @@ return {
       'mason-lspconfig.nvim',
       'hrsh7th/nvim-cmp',
     },
-    opts = {
-      diagnostic_signs = {
-        Error = '┃',
-        Warn = '┃',
-        Info = '┃',
-        Hint = '┃',
-      },
-    },
-    config = function(_, opts)
+    config = function()
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -194,10 +186,16 @@ return {
         end
       end
 
-      for id, icon in pairs(opts.diagnostic_signs) do
-        local hl = 'DiagnosticSign' .. id
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, iconhl = hl })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = ' ',
+            [vim.diagnostic.severity.WARN] = ' ',
+            [vim.diagnostic.severity.INFO] = ' ',
+            [vim.diagnostic.severity.HINT] = '󰌵 ',
+          },
+        },
+      })
     end,
   },
   {
