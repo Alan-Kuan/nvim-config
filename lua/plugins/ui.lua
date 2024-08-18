@@ -360,8 +360,9 @@ return {
         },
         git_status = {
           symbols = {
-            modified = '',
-            renamed = '󰘎 ',
+            modified = ' 󱈸',
+            renamed = ' 󰘎 ',
+            deleted = '  ',
           },
         },
       },
@@ -391,8 +392,8 @@ return {
               { 'clipboard', zindex = 10 },
               { 'bufnr', zindex = 10 },
               { 'modified', zindex = 20, align = 'right' },
-              { 'git_status', zindex = 20, align = 'right' },
               { 'diagnostics', zindex = 20, align = 'right' },
+              { 'git_status', zindex = 20, align = 'right' },
             },
           },
         },
