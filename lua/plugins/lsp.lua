@@ -204,6 +204,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
+      'micangl/cmp-vimtex',
       {
         'saadparwaiz1/cmp_luasnip',
         dependencies = 'L3MON4D3/LuaSnip',
@@ -262,7 +263,7 @@ return {
         },
         formatting = {
           format = lspkind.cmp_format {
-            with_text = true,
+            mode = 'symbol_text',
             maxwidth = 50,
             before = function(entry, vim_item)
               vim_item.menu = ({
@@ -270,6 +271,7 @@ return {
                 luasnip = '[LuaSnip]',
                 path = '[Path]',
                 buffer = '[Buffer]',
+                vimtex = vim_item.menu,
               })[entry.source.name]
               return vim_item
             end,
@@ -280,6 +282,7 @@ return {
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'buffer' },
+          { name = 'vimtex' },
         },
         experimental = {
           ghost_text = true,
