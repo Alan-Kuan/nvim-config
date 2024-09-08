@@ -502,7 +502,9 @@ return {
       diagnostics_error_symbol = '-',
       diagnostics_warn_symbol = '-',
       signs_on_startup = {
+        'conflicts',
         'cursor',
+        'diagnostics',
         'search',
         'diagnostics',
       },
@@ -518,6 +520,7 @@ return {
     },
     config = function(_, opts)
       require('scrollview').setup(opts)
+      require('scrollview.contrib.gitsigns').setup()
       vim.api.nvim_set_hl(0, 'ScrollViewSearch', { fg = 'orange' })
     end,
   },
