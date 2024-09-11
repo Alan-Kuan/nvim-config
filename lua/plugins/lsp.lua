@@ -47,8 +47,6 @@ return {
 
       nls.setup {
         sources = {
-          -- Code Actions
-          nls.builtins.code_actions.proselint,
           -- Hover
           nls.builtins.hover.printenv,
         },
