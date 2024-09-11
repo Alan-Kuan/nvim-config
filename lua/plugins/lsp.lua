@@ -57,6 +57,7 @@ return {
       nls.register(nls.builtins.formatting.stylua)
     end,
   },
+  { 'barreiroleo/ltex-extra.nvim' },
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = 'williamboman/mason.nvim',
@@ -169,6 +170,13 @@ return {
               keyOrdering = false,
             },
           },
+        },
+        ['ltex'] = {
+          on_attach = function (client, bufnr)
+            on_attach(client, bufnr)
+            require('ltex_extra').setup()
+          end,
+          capabilities = capabilities,
         },
       }
 
