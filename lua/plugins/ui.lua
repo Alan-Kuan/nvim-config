@@ -180,6 +180,9 @@ return {
     'b0o/incline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
+    keys = {
+      { '<Leader>ui', function () require('incline').toggle() end, desc = 'Toggle Incline' },
+    },
     config = function()
       local helpers = require('incline.helpers')
       local devicons = require('nvim-web-devicons')
@@ -494,6 +497,9 @@ return {
   {
     'dstein64/nvim-scrollview',
     event = 'VeryLazy',
+    keys = {
+      { '<Leader>us', '<Cmd>ScrollViewToggle<Cr>', desc = 'Toggle ScrollView' },
+    },
     opts = {
       winblend = 25,
       signs_column = 1,
