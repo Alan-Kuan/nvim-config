@@ -106,6 +106,11 @@ return {
     event = 'VeryLazy',
     opts = {
       mappings = {
+        -- don't trigger when typing '\(' or when next character is alphanumeric
+        ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][^A-Za-z0-9]' },
+        ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][^A-Za-z0-9]' },
+        ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][^A-Za-z0-9]' },
+        -- surround cursor by a space when typing a space in a pair of closed parentheses, brackets, or curly brackets
         [' '] = { action = 'open', pair = '  ', neigh_pattern = '[%(%[{][%)%]}]' },
       },
     },
