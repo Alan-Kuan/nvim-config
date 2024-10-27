@@ -75,7 +75,7 @@ return {
         'ruff',
         'rust_analyzer',
         'svelte',
-        'tsserver',
+        'ts_ls',
         'volar',
         'yamlls',
       },
