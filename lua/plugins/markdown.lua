@@ -34,6 +34,7 @@ return {
 
       return {
         heading = {
+          sign = false,
           icons = { '✱ ', '✲ ', '✤ ', '✣ ', '✸ ', '✳ ' },
           backgrounds = {
             'RMdH1',
