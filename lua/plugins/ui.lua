@@ -473,8 +473,8 @@ return {
     event = 'VeryLazy',
     keys = {
       { '<leader>t', '', desc = '+telescope' },
-      { '<leader>tf', '<Cmd>Telescope find_files<CR>', desc = 'Find files' },
-      { '<leader>tg', '<Cmd>Telescope live_grep<CR>', desc = 'Find words' },
+      { '<C-p>', '<Cmd>Telescope find_files<CR>', desc = 'Find files' },
+      { '<C-/>', '<Cmd>Telescope live_grep<CR>', desc = 'Find words' },
       { '<leader>tm', '<Cmd>Telescope marks<CR>', desc = 'Show marks' },
       { '<leader>th', '<Cmd>Telescope oldfiles<CR>', desc = 'Show history of opened files' },
       { '<leader>tc', '<Cmd>Telescope colorscheme<CR>', desc = 'Show colorschemes' },

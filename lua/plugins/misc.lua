@@ -28,8 +28,6 @@ return {
     },
     config = function (_, opts)
       require('substitute').setup(opts)
-
-      vim.keymap.set('n', '<C-p>', require('substitute').operator, { desc = 'Substitute operator' })
       vim.keymap.set('x', '<C-p>', require('substitute').visual, { desc = 'Substitute selection without overwriting the buffer' })
     end
   },
