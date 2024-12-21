@@ -70,8 +70,14 @@ return {
 
       -- Signs
       vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DapBreakpointCondition' })
-      vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DapBreakpointRejected' })
+      vim.fn.sign_define(
+        'DapBreakpointCondition',
+        { text = '', texthl = 'DapBreakpointCondition' }
+      )
+      vim.fn.sign_define(
+        'DapBreakpointRejected',
+        { text = '', texthl = 'DapBreakpointRejected' }
+      )
       vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint' })
 
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#fc6644' })

@@ -12,9 +12,7 @@ vim.g.mapleader = ' '
 nnoremap('<space>', '<nop>')
 
 -- clear search register
-nnoremap('<C-n>', function()
-    vim.fn.setreg('/', '')
-  end, 'Clear search register')
+nnoremap('<C-n>', function() vim.fn.setreg('/', '') end, 'Clear search register')
 
 -- select all
 nnoremap('<leader>a', 'ggVG', 'Select all')

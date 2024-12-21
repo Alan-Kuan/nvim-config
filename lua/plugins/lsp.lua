@@ -40,7 +40,11 @@ return {
     },
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
-      { '<Leader>F', function () vim.lsp.buf.format() end, desc = 'Format the code' }
+      {
+        '<Leader>F',
+        function() vim.lsp.buf.format() end,
+        desc = 'Format the code',
+      },
     },
     config = function()
       local nls = require('null-ls')
@@ -138,9 +142,7 @@ return {
           on_attach = function(client, buffer)
             on_attach(client, buffer)
             for _, other_client in pairs(vim.lsp.get_clients()) do
-              if other_client.name == 'tsserver' then
-                other_client.stop()
-              end
+              if other_client.name == 'tsserver' then other_client.stop() end
             end
           end,
           capabilities = capabilities,
@@ -156,7 +158,8 @@ return {
           capabilities = capabilities,
           init_options = {
             typescript = {
-              tsdk = vim.env.HOME .. '/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib',
+              tsdk = vim.env.HOME
+                .. '/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib',
             },
           },
         },
@@ -170,7 +173,7 @@ return {
           },
         },
         ['ltex'] = {
-          on_attach = function (client, bufnr)
+          on_attach = function(client, bufnr)
             on_attach(client, bufnr)
             require('ltex_extra').setup()
           end,
@@ -192,7 +195,7 @@ return {
         end
       end
 
-      vim.diagnostic.config({
+      vim.diagnostic.config {
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = ' ',
@@ -201,7 +204,7 @@ return {
             [vim.diagnostic.severity.HINT] = '󰌵 ',
           },
         },
-      })
+      }
     end,
   },
   {
@@ -229,9 +232,7 @@ return {
           completeopt = 'menuone',
         },
         snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
+          expand = function(args) luasnip.lsp_expand(args.body) end,
         },
         mapping = {
           ['<Tab>'] = cmp.mapping(function(fallback)
@@ -254,8 +255,14 @@ return {
             end
           end, { 'i', 's' }),
 
-          ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i' }),
-          ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { 'i' }),
+          ['<Down>'] = cmp.mapping(
+            cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+            { 'i' }
+          ),
+          ['<Up>'] = cmp.mapping(
+            cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+            { 'i' }
+          ),
 
           ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
           ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -300,10 +307,10 @@ return {
     'L3MON4D3/LuaSnip',
     version = 'v2.*',
     config = function()
-      require('luasnip.loaders.from_lua').load({
-        paths = { '~/.config/nvim/lua/snippets' }
-      })
-    end
+      require('luasnip.loaders.from_lua').load {
+        paths = { '~/.config/nvim/lua/snippets' },
+      }
+    end,
   },
   {
     'folke/trouble.nvim',
@@ -311,12 +318,20 @@ return {
     cmd = 'Trouble',
     keys = {
       { '<leader>x', '', desc = '+diagnostic' },
-      { '<leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Show diagnostics of current buffer' },
-      { '<leader>xX', '<Cmd>Trouble diagnostics toggle<CR>', 'Show diagnostics of current workspace' },
+      {
+        '<leader>xx',
+        '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>',
+        desc = 'Show diagnostics of current buffer',
+      },
+      {
+        '<leader>xX',
+        '<Cmd>Trouble diagnostics toggle<CR>',
+        'Show diagnostics of current workspace',
+      },
     },
     opts = {
       action_keys = { refresh = 'R' },
-      auto_close = true,           -- automatically close the list when you have no diagnostics
+      auto_close = true, -- automatically close the list when you have no diagnostics
       use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
     },
   },

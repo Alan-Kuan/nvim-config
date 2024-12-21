@@ -7,10 +7,10 @@ return {
       -- Reference: https://mnts.dev/configure-neovim-to-follow-gnome/
       -- Create a job to detect current gnome color scheme and set background
       local function set_background()
-        local job = require('plenary.job'):new({
+        local job = require('plenary.job'):new {
           command = 'gsettings',
-          args = { 'get', 'org.gnome.desktop.interface', 'color-scheme' }
-        })
+          args = { 'get', 'org.gnome.desktop.interface', 'color-scheme' },
+        }
         job:sync()
         if job:result()[1] == "'default'" then
           vim.o.background = 'light'
@@ -27,12 +27,10 @@ return {
       local function debounce(ms, fn)
         local running = false
 
-        return function ()
-          if running then
-            return
-          end
+        return function()
+          if running then return end
 
-          vim.defer_fn(function () running = false end, ms)
+          vim.defer_fn(function() running = false end, ms)
           running = true
           vim.schedule(fn)
         end

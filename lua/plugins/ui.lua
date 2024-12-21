@@ -63,9 +63,7 @@ return {
         vim.api.nvim_create_autocmd('User', {
           once = true,
           pattern = 'AlphaReady',
-          callback = function()
-            require('lazy').show()
-          end,
+          callback = function() require('lazy').show() end,
         })
       end
 
@@ -92,7 +90,7 @@ return {
       -- Reopen Alpha when last buffer is closed
       vim.api.nvim_create_augroup('AlphaReopen', { clear = true })
       vim.api.nvim_create_autocmd('User', {
-        pattern = 'BDeletePost *',  -- event of bufdelete.nvim
+        pattern = 'BDeletePost *', -- event of bufdelete.nvim
         group = 'AlphaReopen',
         callback = function(event)
           local fallback_name = vim.api.nvim_buf_get_name(event.buf)
@@ -101,7 +99,7 @@ return {
           if fallback_name == '' and fallback_ft == '' then
             vim.cmd('Alpha | bd#')
             ---@diagnostic disable-next-line: undefined-global
-            MiniTrailspace.unhighlight()  -- global table set up by mini.trailspace
+            MiniTrailspace.unhighlight() -- global table set up by mini.trailspace
           end
         end,
       })
@@ -122,7 +120,7 @@ return {
           style = 'underline',
         },
         diagnostics = 'nvim_lsp',
-        diagnostics_indicator = function (count, level, _, _)
+        diagnostics_indicator = function(count, level, _, _)
           local icon = level:match('error') and ' ' or ' '
           return ' ' .. icon .. count
         end,
@@ -142,7 +140,7 @@ return {
           {
             filetype = 'dapui_scopes',
             separator = true,
-          }
+          },
         },
       },
       highlights = {
@@ -181,34 +179,42 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
     keys = {
-      { '<Leader>ui', function () require('incline').toggle() end, desc = 'Toggle Incline' },
+      {
+        '<Leader>ui',
+        function() require('incline').toggle() end,
+        desc = 'Toggle Incline',
+      },
     },
     config = function()
       local helpers = require('incline.helpers')
       local devicons = require('nvim-web-devicons')
 
-      require('incline').setup({
+      require('incline').setup {
         window = {
           padding = 0,
           margin = { horizontal = 0 },
         },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-          if filename == '' then
-            filename = '[No Name]'
-          end
+          if filename == '' then filename = '[No Name]' end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local modified = vim.bo[props.buf].modified
           return {
-            ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+            ft_icon and {
+              ' ',
+              ft_icon,
+              ' ',
+              guibg = ft_color,
+              guifg = helpers.contrast_color(ft_color),
+            } or '',
             ' ',
             { filename, gui = modified and 'bold,italic' or 'bold' },
             ' ',
             guibg = '#44406e',
           }
         end,
-      })
-    end
+      }
+    end,
   },
   {
     'hoob3rt/lualine.nvim',
@@ -380,8 +386,19 @@ return {
             content = {
               { 'name', zindex = 10 },
               { 'clipboard', zindex = 10 },
-              { 'git_status', zindex = 20, align = 'right', hide_when_expanded = true },
-              { 'diagnostics', errors_only = true, zindex = 20, align = 'right', hide_when_expanded = true },
+              {
+                'git_status',
+                zindex = 20,
+                align = 'right',
+                hide_when_expanded = true,
+              },
+              {
+                'diagnostics',
+                errors_only = true,
+                zindex = 20,
+                align = 'right',
+                hide_when_expanded = true,
+              },
             },
           },
         },
@@ -476,9 +493,21 @@ return {
       { '<C-p>', '<Cmd>Telescope find_files<CR>', desc = 'Find files' },
       { '<C-/>', '<Cmd>Telescope live_grep<CR>', desc = 'Find words' },
       { '<leader>tm', '<Cmd>Telescope marks<CR>', desc = 'Show marks' },
-      { '<leader>th', '<Cmd>Telescope oldfiles<CR>', desc = 'Show history of opened files' },
-      { '<leader>tc', '<Cmd>Telescope colorscheme<CR>', desc = 'Show colorschemes' },
-      { '<leader>tn', '<Cmd>Telescope notify<CR>', desc = 'Show notifications' },
+      {
+        '<leader>th',
+        '<Cmd>Telescope oldfiles<CR>',
+        desc = 'Show history of opened files',
+      },
+      {
+        '<leader>tc',
+        '<Cmd>Telescope colorscheme<CR>',
+        desc = 'Show colorschemes',
+      },
+      {
+        '<leader>tn',
+        '<Cmd>Telescope notify<CR>',
+        desc = 'Show notifications',
+      },
     },
     config = function()
       -- NOTE: cannot put setup's argument into the 'opts' field since it contains `require('telescope.actions')`
@@ -533,17 +562,17 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    opts = function ()
+    opts = function()
       return {
-        on_attach = function (bufnr)
+        on_attach = function(bufnr)
           vim.keymap.set('n', '<Leader>gb', require('gitsigns').toggle_current_line_blame, {
-              buffer = bufnr,
-              silent = true,
-              desc = 'Toggle showing git blame on current line',
+            buffer = bufnr,
+            silent = true,
+            desc = 'Toggle showing git blame on current line',
           })
-        end
+        end,
       }
-    end
+    end,
   },
   {
     'sindrets/diffview.nvim',
@@ -560,11 +589,9 @@ return {
       local banned_msgs = {
         'No information available',
       }
-      vim.notify = function (msg, ...)
+      vim.notify = function(msg, ...)
         for _, banned in ipairs(banned_msgs) do
-          if msg == banned then
-            return
-          end
+          if msg == banned then return end
         end
         return require('notify')(msg, ...)
       end
@@ -573,10 +600,10 @@ return {
   {
     'stevearc/dressing.nvim',
     dependencies = 'nvim-telescope/telescope.nvim',
-    opts = function ()
+    opts = function()
       return {
         select = {
-          telescope = require('telescope.themes').get_cursor()
+          telescope = require('telescope.themes').get_cursor(),
         },
       }
     end,
@@ -607,8 +634,12 @@ return {
           group = 'Toggleterm',
           pattern = { ft },
           callback = function()
-            vim.keymap.set('n', '<F5>', ":w <bar> :TermExec cmd='" .. cmd .. "'<CR>",
-              { desc = 'Run the code' })
+            vim.keymap.set(
+              'n',
+              '<F5>',
+              ":w <bar> :TermExec cmd='" .. cmd .. "'<CR>",
+              { desc = 'Run the code' }
+            )
           end,
         })
       end
@@ -641,8 +672,12 @@ return {
           group = 'Toggleterm',
           pattern = { ft },
           callback = function()
-            vim.keymap.set('x', '<C-Enter>', ':<C-u>ToggleTermSendVisualLines<CR>',
-              { silent = true, desc = 'Send selection to the terminal' })
+            vim.keymap.set(
+              'x',
+              '<C-Enter>',
+              ':<C-u>ToggleTermSendVisualLines<CR>',
+              { silent = true, desc = 'Send selection to the terminal' }
+            )
           end,
         })
       end

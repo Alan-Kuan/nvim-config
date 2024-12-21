@@ -53,9 +53,7 @@ return {
           'dashboard',
           'alpha',
         },
-        callback = function()
-          vim.b['minicursorword_disable'] = true
-        end,
+        callback = function() vim.b['minicursorword_disable'] = true end,
       })
     end,
     config = function()
@@ -76,8 +74,18 @@ return {
     event = 'VeryLazy',
     keys = {
       -- NOTE: ':' moves the cursor to command line and '<C-u>' clear the command line
-      { 'S', ":<C-u>lua MiniSurround.add('visual')<CR>", mode = 'x', desc = 'Wrap selection with specified character' },
-      { 'yss', 'ys_', desc = 'Wrap current line with specified character', remap = true },
+      {
+        'S',
+        ":<C-u>lua MiniSurround.add('visual')<CR>",
+        mode = 'x',
+        desc = 'Wrap selection with specified character',
+      },
+      {
+        'yss',
+        'ys_',
+        desc = 'Wrap current line with specified character',
+        remap = true,
+      },
     },
     opts = {
       custom_surroundings = {
@@ -96,10 +104,10 @@ return {
         update_n_lines = '',
       },
     },
-    config = function (_, opts)
+    config = function(_, opts)
       require('mini.surround').setup(opts)
       vim.keymap.del('v', 'ys')
-    end
+    end,
   },
   {
     'windwp/nvim-autopairs',
@@ -116,7 +124,9 @@ return {
       --  - https://github.com/gaoDean/autolist.nvim/issues/77#issuecomment-1627898407
       --  - https://github.com/windwp/nvim-autopairs/issues/445#issuecomment-2033012353
       vim.keymap.set('i', '<CR>', function()
-        vim.uv.new_timer():start(0, 0, vim.schedule_wrap(function() require('autolist').new_bullet() end))
+        vim.uv
+          .new_timer()
+          :start(0, 0, vim.schedule_wrap(function() require('autolist').new_bullet() end))
         return vim.api.nvim_feedkeys(require('nvim-autopairs').autopairs_cr(), 'in', true)
       end, { expr = true, noremap = true })
 
@@ -129,27 +139,31 @@ return {
         -- Rule for a pair with left-side ' ' and right side ' '
         Rule(' ', ' ')
           -- Pair will only occur if the conditional function returns true
-          :with_pair(function(opts)
-            -- We are checking if we are inserting a space in (), [], or {}
-            local pair = opts.line:sub(opts.col - 1, opts.col)
-            return vim.tbl_contains({
-              brackets[1][1] .. brackets[1][2],
-              brackets[2][1] .. brackets[2][2],
-              brackets[3][1] .. brackets[3][2]
-            }, pair)
-          end)
+          :with_pair(
+            function(opts)
+              -- We are checking if we are inserting a space in (), [], or {}
+              local pair = opts.line:sub(opts.col - 1, opts.col)
+              return vim.tbl_contains({
+                brackets[1][1] .. brackets[1][2],
+                brackets[2][1] .. brackets[2][2],
+                brackets[3][1] .. brackets[3][2],
+              }, pair)
+            end
+          )
           :with_move(cond.none())
           :with_cr(cond.none())
           -- We only want to delete the pair of spaces when the cursor is as such: ( | )
-          :with_del(function(opts)
-            local col = vim.api.nvim_win_get_cursor(0)[2]
-            local context = opts.line:sub(col - 1, col + 2)
-            return vim.tbl_contains({
-              brackets[1][1] .. '  ' .. brackets[1][2],
-              brackets[2][1] .. '  ' .. brackets[2][2],
-              brackets[3][1] .. '  ' .. brackets[3][2]
-            }, context)
-          end)
+          :with_del(
+            function(opts)
+              local col = vim.api.nvim_win_get_cursor(0)[2]
+              local context = opts.line:sub(col - 1, col + 2)
+              return vim.tbl_contains({
+                brackets[1][1] .. '  ' .. brackets[1][2],
+                brackets[2][1] .. '  ' .. brackets[2][2],
+                brackets[3][1] .. '  ' .. brackets[3][2],
+              }, context)
+            end
+          ),
       }
       -- For each pair of brackets we will add another rule
       for _, bracket in pairs(brackets) do
@@ -161,7 +175,9 @@ return {
             :with_del(cond.none())
             :use_key(bracket[2])
             -- Removes the trailing whitespace that can occur without this
-            :replace_map_cr(function(_) return '<C-c>2xi<CR><C-c>O' end)
+            :replace_map_cr(
+              function(_) return '<C-c>2xi<CR><C-c>O' end
+            ),
         }
       end
 
@@ -179,15 +195,13 @@ return {
           '-svelte',
           '-astro',
           '-xml',
-        })
-          :with_pair(
-            -- regex will make it so that it will auto-pair on
-            -- `a<` but not `a <`
-            -- The `:?:?` part makes it also
-            -- work on Rust generics like `some_func::<T>()`
-            cond.before_regex('%a+:?:?$', 3)
-          )
-          :with_move(function(opts) return opts.char == '>' end)
+        }):with_pair(
+          -- regex will make it so that it will auto-pair on
+          -- `a<` but not `a <`
+          -- The `:?:?` part makes it also
+          -- work on Rust generics like `some_func::<T>()`
+          cond.before_regex('%a+:?:?$', 3)
+        ):with_move(function(opts) return opts.char == '>' end),
       }
     end,
   },
@@ -199,12 +213,12 @@ return {
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     dependencies = 'nvim-treesitter/nvim-treesitter',
-    opts = function ()
+    opts = function()
       vim.g.skip_ts_context_commentstring_module = true
 
-      vim.filetype.get_option = function (ft, opt)
+      vim.filetype.get_option = function(ft, opt)
         return opt == 'commentstring'
-          and require('ts_context_commentstring.internal').calculate_commentstring()
+            and require('ts_context_commentstring.internal').calculate_commentstring()
           or vim.filetype.get_option(ft, opt)
       end
 
