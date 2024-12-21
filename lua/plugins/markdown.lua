@@ -1,19 +1,26 @@
 return {
   {
-    'iamcco/markdown-preview.nvim',
-    build = function()
-      vim.fn['mkdp#util#install']()
-    end,
-    cmd = 'MarkdownPreview',
+    'toppair/peek.nvim',
     ft = 'markdown',
     event = 'VeryLazy',
+    build = 'deno task --quiet build:fast',
     keys = {
-      { '<Leader>m', '<Cmd>MarkdownPreview<CR>', buffer = true, desc = 'Preview current Markdown file' },
+      {
+        '<Leader>m',
+        function()
+          local peek = require('peek')
+          if peek.is_open() then
+            peek.close()
+          else
+            peek.open()
+          end
+        end,
+        buffer = true,
+        desc = 'Toggle Markdown preview',
+        ft = 'markdown',
+      },
     },
-    config = function()
-      vim.g.mkdp_page_title = '${name} - Preview'
-      vim.g.mkdp_echo_preview_url = 1
-    end,
+    config = function() require('peek').setup() end,
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
