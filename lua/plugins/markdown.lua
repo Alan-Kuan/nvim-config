@@ -74,7 +74,6 @@ return {
     keys = {
       { '<Tab>', '<Cmd>AutolistTab<CR>', mode = 'i' },
       { '<S-Tab>', '<Cmd>AutolistShiftTab<CR>', mode = 'i' },
-      { '<CR>', '<CR><Cmd>AutolistNewBullet<CR>', mode = 'i' },
       { 'o', 'o<Cmd>AutolistNewBullet<CR>' },
       { 'O', 'O<Cmd>AutolistNewBulletBefore<CR>' },
       { '<CR>', '<Cmd>AutolistToggleCheckbox<CR>' },
