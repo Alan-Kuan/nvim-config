@@ -26,3 +26,7 @@ require('lazy').setup({
   },
   checker = { enabled = true },
 })
+
+-- it requires nvim-lua/plenary.nvim,
+-- so it should be placed after lazy
+require('colorscheme')
