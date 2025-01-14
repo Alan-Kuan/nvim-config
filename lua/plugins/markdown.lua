@@ -20,7 +20,7 @@ return {
         ft = 'markdown',
       },
     },
-    config = function() require('peek').setup() end,
+    opts = {},
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
