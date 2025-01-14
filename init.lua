@@ -24,7 +24,6 @@ require('lazy').setup({
       'everforest',
     },
   },
-  checker = { enabled = true },
 })
 
 -- it requires nvim-lua/plenary.nvim,
