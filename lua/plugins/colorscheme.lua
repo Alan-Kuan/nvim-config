@@ -7,9 +7,9 @@ return {
     opts = {
       mirage = true,
       overrides = {
-        Search = { bg = '#3d3750' },
-        IncSearch = { bg = '#3d3750' },
-        CurSearch = { bg = '#695380' },
+        Search = { bg = '#3d3750', fg = 'NONE' },
+        IncSearch = { bg = '#3d3750', fg = 'NONE' },
+        CurSearch = { bg = '#695380', fg = 'NONE' },
         LineNr = { fg = 'NvimDarkGray4' },
         WinSeparator = { fg = 'NvimDarkGray4' },
       },
