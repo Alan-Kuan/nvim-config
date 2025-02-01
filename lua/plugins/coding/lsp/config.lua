@@ -59,7 +59,6 @@ return {
       nls.register(nls.builtins.formatting.stylua)
     end,
   },
-  { 'barreiroleo/ltex-extra.nvim' },
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = 'williamboman/mason.nvim',
@@ -190,80 +189,5 @@ return {
         },
       }
     end,
-  },
-  {
-    'saghen/blink.cmp',
-    version = '*',
-    dependencies = 'L3MON4D3/LuaSnip',
-    event = 'InsertEnter',
-    opts = {
-      completion = {
-        list = {
-          selection = { preselect = false, auto_insert = true },
-        },
-        menu = {
-          draw = {
-            columns = {
-              { 'label', gap = 1 },
-              { 'kind_icon', 'kind', gap = 1 },
-              { 'source_name' },
-            },
-          },
-        },
-      },
-      keymap = {
-        preset = 'super-tab',
-        cmdline = { preset = 'default' },
-      },
-      appearance = {
-        use_nvim_cmp_as_default = true,
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-      },
-      snippets = { preset = 'luasnip' },
-    },
-  },
-  {
-    'L3MON4D3/LuaSnip',
-    version = 'v2.*',
-    config = function()
-      require('luasnip.loaders.from_lua').load {
-        paths = { '~/.config/nvim/lua/snippets' },
-      }
-    end,
-  },
-  {
-    'folke/trouble.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    cmd = 'Trouble',
-    keys = {
-      { '<leader>x', '', desc = '+diagnostic' },
-      {
-        '<leader>xx',
-        '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>',
-        desc = 'Show diagnostics of current buffer',
-      },
-      {
-        '<leader>xX',
-        '<Cmd>Trouble diagnostics toggle<CR>',
-        'Show diagnostics of current workspace',
-      },
-    },
-    opts = {
-      action_keys = { refresh = 'R' },
-      auto_close = true, -- automatically close the list when you have no diagnostics
-      use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
-    },
-  },
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        'lazy.nvim',
-        'nvim-dap-ui',
-      },
-    },
   },
 }
