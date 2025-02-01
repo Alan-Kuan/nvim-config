@@ -28,7 +28,3 @@ require('lazy').setup({
     },
   },
 })
-
--- it requires nvim-lua/plenary.nvim,
--- so it should be placed after lazy
-require('colorscheme')

@@ -1,7 +1,5 @@
 return {
   { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
-  -- required by lua/colorscheme.lua
-  { 'nvim-lua/plenary.nvim' },
   {
     'gbprod/substitute.nvim',
     event = 'VeryLazy',
