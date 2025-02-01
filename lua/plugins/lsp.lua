@@ -90,11 +90,10 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
+      'saghen/blink.cmp',
     },
     config = function()
       local lspconfig = require('lspconfig')
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local on_attach = function(_, buffer)
         local set_map = function(lhs, rhs, desc)
@@ -116,17 +115,9 @@ return {
 
       local server_opts = {
         ['clangd'] = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-          cmd = {
-            'clangd',
-            '--background-index',
-            '--header-insertion=never',
-          },
+          cmd = { 'clangd', '--background-index', '--header-insertion=never' },
         },
         ['lua_ls'] = {
-          on_attach = on_attach,
-          capabilities = capabilities,
           settings = {
             Lua = {
               workspace = {
@@ -145,17 +136,12 @@ return {
               if other_client.name == 'tsserver' then other_client.stop() end
             end
           end,
-          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
         },
         ['tsserver'] = {
-          on_attach = on_attach,
-          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern('package.json'),
         },
         ['volar'] = {
-          on_attach = on_attach,
-          capabilities = capabilities,
           init_options = {
             typescript = {
               tsdk = vim.env.HOME
@@ -164,8 +150,6 @@ return {
           },
         },
         ['yamlls'] = {
-          on_attach = on_attach,
-          capabilities = capabilities,
           settings = {
             yaml = {
               keyOrdering = false,
@@ -177,22 +161,22 @@ return {
             on_attach(client, bufnr)
             require('ltex_extra').setup()
           end,
-          capabilities = capabilities,
         },
       }
 
       local servers = require('mason-lspconfig').get_installed_servers()
       for _, server in pairs(servers) do
-        local default_opts = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
+        local server_opt = {}
 
-        if server_opts[server] == nil then
-          lspconfig[server].setup(default_opts)
-        else
-          lspconfig[server].setup(server_opts[server])
+        if server_opts[server] ~= nil then
+          server_opt = server_opts[server]
         end
+        if server_opt.on_attach == nil then
+          server_opt.on_attach = on_attach
+        end
+        server_opt.capabilities = require('blink.cmp').get_lsp_capabilities(server_opt.capabilities)
+
+        lspconfig[server].setup(server_opt)
       end
 
       vim.diagnostic.config {
@@ -208,100 +192,37 @@ return {
     end,
   },
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      'micangl/cmp-vimtex',
-      {
-        'saadparwaiz1/cmp_luasnip',
-        dependencies = 'L3MON4D3/LuaSnip',
-      },
-      'onsails/lspkind-nvim',
-    },
+    'saghen/blink.cmp',
+    version = '*',
+    dependencies = 'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
-    opts = function()
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-      local lspkind = require('lspkind')
-
-      return {
-        preselect = cmp.PreselectMode.Item,
-        completion = {
-          completeopt = 'menuone',
+    opts = {
+      completion = {
+        list = {
+          selection = { preselect = false, auto_insert = true },
         },
-        snippet = {
-          expand = function(args) luasnip.lsp_expand(args.body) end,
-        },
-        mapping = {
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-
-          ['<Down>'] = cmp.mapping(
-            cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-            { 'i' }
-          ),
-          ['<Up>'] = cmp.mapping(
-            cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-            { 'i' }
-          ),
-
-          ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-
-          ['<C-x>'] = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          },
-
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-        },
-        formatting = {
-          format = lspkind.cmp_format {
-            mode = 'symbol_text',
-            maxwidth = 50,
-            before = function(entry, vim_item)
-              vim_item.menu = ({
-                nvim_lsp = '[LSP]',
-                luasnip = '[LuaSnip]',
-                path = '[Path]',
-                buffer = '[Buffer]',
-                vimtex = vim_item.menu,
-              })[entry.source.name]
-              return vim_item
-            end,
+        menu = {
+          draw = {
+            columns = {
+              { 'label', gap = 1 },
+              { 'kind_icon', 'kind', gap = 1 },
+              { 'source_name' },
+            },
           },
         },
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'path' },
-          { name = 'buffer' },
-          { name = 'vimtex' },
-        },
-        experimental = {
-          ghost_text = true,
-        },
-      }
-    end,
+      },
+      keymap = {
+        preset = 'super-tab',
+        cmdline = { preset = 'default' },
+      },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      snippets = { preset = 'luasnip' },
+    },
   },
   {
     'L3MON4D3/LuaSnip',
