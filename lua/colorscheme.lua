@@ -20,7 +20,7 @@ local function set_background()
   -- FIXME: should reload other highlighting
 end
 
--- Call imidiatly to set initially
+-- Call immediatly to set initially
 set_background()
 
 -- Debounce to not call the method too often in case of multiple signals.
