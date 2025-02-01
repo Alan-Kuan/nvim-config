@@ -29,9 +29,6 @@ return {
     lazy = false,
     priority = 999,
     init = function()
-      local LIGHT_THEME = 'everforest'
-      local DARK_THEME = 'ayu'
-
       -- Create a job to detect current gnome color scheme and set background
       local function set_background()
         local job = require('plenary.job'):new {
@@ -41,10 +38,10 @@ return {
         job:sync()
         if job:result()[1] == "'default'" then
           vim.o.background = 'light'
-          vim.cmd.colorscheme(LIGHT_THEME)
+          vim.cmd.colorscheme(_G.NvimConfig.colorscheme.light)
         else
           vim.o.background = 'dark'
-          vim.cmd.colorscheme(DARK_THEME)
+          vim.cmd.colorscheme(_G.NvimConfig.colorscheme.dark)
         end
         -- FIXME: should reload other highlighting
       end
