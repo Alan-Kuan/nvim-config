@@ -2,7 +2,10 @@ return {
   {
     'saghen/blink.cmp',
     version = '*',
-    dependencies = 'L3MON4D3/LuaSnip',
+    dependencies = {
+      'L3MON4D3/LuaSnip',
+      'folke/lazydev.nvim',
+    },
     event = 'InsertEnter',
     opts = {
       completion = {
@@ -27,7 +30,14 @@ return {
         use_nvim_cmp_as_default = true,
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+          },
+        },
       },
       snippets = { preset = 'luasnip' },
     },
