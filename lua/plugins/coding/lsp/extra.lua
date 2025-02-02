@@ -1,4 +1,5 @@
 return {
+  -- used by blink.cmp
   {
     'folke/lazydev.nvim',
     ft = 'lua',

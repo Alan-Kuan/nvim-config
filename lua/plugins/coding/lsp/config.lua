@@ -1,4 +1,5 @@
 return {
+  -- used by mason-null-ls.nvim
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
@@ -14,7 +15,6 @@ return {
   },
   {
     'jay-babu/mason-null-ls.nvim',
-    dependencies = 'williamboman/mason.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     opts = {
       ensure_installed = {
@@ -31,13 +31,9 @@ return {
       },
     },
   },
+  -- used by mason-null-ls.nvim
   {
     'nvimtools/none-ls.nvim',
-    dependencies = {
-      'williamboman/mason.nvim',
-      'jay-babu/mason-null-ls.nvim',
-    },
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     keys = {
       {
         '<Leader>F',
@@ -60,7 +56,8 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = 'williamboman/mason.nvim',
+    dependencies = 'mason.nvim',
+    lazy = true,
     opts = {
       ensure_installed = {
         -- LSPs
@@ -85,11 +82,8 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    dependencies = 'mason-lspconfig.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    dependencies = {
-      'mason-lspconfig.nvim',
-      'saghen/blink.cmp',
-    },
     config = function()
       local lspconfig = require('lspconfig')
 

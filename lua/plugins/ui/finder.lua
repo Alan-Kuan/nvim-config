@@ -2,7 +2,6 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = 'rcarriga/nvim-notify',
     event = 'VeryLazy',
     keys = {
       { '<leader>t', '', desc = '+telescope' },

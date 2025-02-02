@@ -2,7 +2,6 @@ return {
   {
     'akinsho/bufferline.nvim',
     version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
     keys = {
       { 'gb', '<Cmd>BufferLineCycleNext<CR>', desc = 'Go to next buffer' },

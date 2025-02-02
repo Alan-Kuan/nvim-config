@@ -24,12 +24,7 @@ return {
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
     ft = 'markdown',
-    event = 'VeryLazy',
     opts = function()
       vim.api.nvim_set_hl(0, 'RMdH1', { fg = '#8ebf6b', bg = '#486335' })
       vim.api.nvim_set_hl(0, 'RMdH2', { fg = '#6abfb5', bg = '#36635e' })

@@ -1,6 +1,8 @@
 return {
+  -- used by telescope.nvim
   {
     'rcarriga/nvim-notify',
+    event = 'VeryLazy',
     opts = {
       top_down = false,
     },

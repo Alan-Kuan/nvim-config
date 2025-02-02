@@ -24,6 +24,9 @@ require('lazy').setup({
     { import = 'plugins.ui' },
     { import = 'plugins.misc' },
   },
+  rocks = {
+    hererocks = true,
+  },
   install = {
     colorscheme = {
       'ayu',

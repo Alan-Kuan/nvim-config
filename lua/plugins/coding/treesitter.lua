@@ -2,6 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       ensure_installed = {
         'astro',
@@ -47,7 +48,6 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
     event = 'VeryLazy',
     opts = {
       mode = 'topline',

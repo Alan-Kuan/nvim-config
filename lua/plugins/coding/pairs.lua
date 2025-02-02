@@ -97,7 +97,7 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = true,
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
+    opts = {},
   },
 }
