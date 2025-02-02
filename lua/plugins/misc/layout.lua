@@ -1,22 +1,14 @@
 return {
-  { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
   {
-    'gbprod/substitute.nvim',
-    event = 'VeryLazy',
-    opts = {
-      highlight_substituted_text = {
-        enabled = false,
+    'famiu/bufdelete.nvim',
+    cmd = 'Bdelete',
+    keys = {
+      {
+        '<Leader>q',
+        '<Cmd>Bdelete<CR>',
+        desc = 'Close current buffer without affecting the window layout',
       },
     },
-    config = function(_, opts)
-      require('substitute').setup(opts)
-      vim.keymap.set(
-        'x',
-        '<C-p>',
-        require('substitute').visual,
-        { desc = 'Substitute selection without overwriting the buffer' }
-      )
-    end,
   },
   {
     'mrjones2014/smart-splits.nvim',
@@ -105,16 +97,5 @@ return {
         { desc = 'Swap current split with the right split' }
       )
     end,
-  },
-  {
-    'famiu/bufdelete.nvim',
-    cmd = 'Bdelete',
-    keys = {
-      {
-        '<Leader>q',
-        '<Cmd>Bdelete<CR>',
-        desc = 'Close current buffer without affecting the window layout',
-      },
-    },
   },
 }

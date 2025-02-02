@@ -22,6 +22,7 @@ require('lazy').setup({
     { import = 'plugins.coding.lsp' },
     { import = 'plugins.ft' },
     { import = 'plugins.ui' },
+    { import = 'plugins.misc' },
   },
   install = {
     colorscheme = {
