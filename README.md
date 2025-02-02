@@ -16,3 +16,7 @@ return {
   },
 }
 ```
+
+## Credit
+My Neovim config is heavily inspired by [LazyVim](https://github.com/LazyVim/LazyVim).
+I learned a lot from the work.
