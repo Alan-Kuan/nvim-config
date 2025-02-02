@@ -31,3 +31,6 @@ require('lazy').setup({
     },
   },
 })
+
+-- Note: it depends on plenary.nvim, so it should be required after lazy.nvim
+require('follow-system-theme')

@@ -2,10 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'rcarriga/nvim-notify',
-    },
+    dependencies = 'rcarriga/nvim-notify',
     event = 'VeryLazy',
     keys = {
       { '<leader>t', '', desc = '+telescope' },
