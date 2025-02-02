@@ -15,7 +15,7 @@ return {
   {
     'jay-babu/mason-null-ls.nvim',
     dependencies = 'williamboman/mason.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     opts = {
       ensure_installed = {
         -- LSPs
@@ -37,7 +37,7 @@ return {
       'williamboman/mason.nvim',
       'jay-babu/mason-null-ls.nvim',
     },
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     keys = {
       {
         '<Leader>F',
@@ -85,7 +85,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     dependencies = {
       'mason-lspconfig.nvim',
       'saghen/blink.cmp',
