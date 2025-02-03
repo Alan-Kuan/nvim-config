@@ -20,8 +20,16 @@ return {
         },
       },
       keymap = {
-        preset = 'super-tab',
-        cmdline = { preset = 'default' },
+        preset = 'none',
+        ['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-x>'] = { 'cancel', 'hide', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
       },
       appearance = {
         use_nvim_cmp_as_default = true,
