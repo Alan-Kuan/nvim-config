@@ -10,6 +10,9 @@ return {
           selection = { preselect = false, auto_insert = true },
         },
         menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= 'cmdline' or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+          end,
           draw = {
             columns = function(ctx)
               if ctx.mode == 'cmdline' then
