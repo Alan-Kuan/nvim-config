@@ -11,11 +11,17 @@ return {
         },
         menu = {
           draw = {
-            columns = {
-              { 'label', gap = 1 },
-              { 'kind_icon', 'kind', gap = 1 },
-              { 'source_name' },
-            },
+            columns = function(ctx)
+              if ctx.mode == 'cmdline' then
+                return {
+                  { 'label' },
+                }
+              else
+                return {
+                  { 'kind_icon', 'label', gap = 1 },
+                }
+              end
+            end,
           },
         },
       },
