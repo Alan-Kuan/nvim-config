@@ -59,7 +59,9 @@ return {
     end,
   },
   {
-    'gaoDean/autolist.nvim',
+    -- temporarily switched to mcauley-penney's version with a fix
+    -- to the issue https://github.com/gaoDean/autolist.nvim/issues/79
+    'mcauley-penney/autolist.nvim',
     ft = {
       'markdown',
       'tex',
