@@ -7,6 +7,7 @@ return {
       library = {
         'lazy.nvim',
         'nvim-dap-ui',
+        { path = 'snacks.nvim', words = { 'Snacks' } },
       },
     },
   },
