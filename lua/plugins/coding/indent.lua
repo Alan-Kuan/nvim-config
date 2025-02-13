@@ -1,27 +1,8 @@
 return {
   {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    'snacks.nvim',
     opts = {
-      exclude = {
-        buftypes = {
-          'terminal',
-          'nofile',
-        },
-        filetypes = {
-          'markdown',
-          'txt',
-          'help',
-          'notify',
-          'TelescopePrompt',
-          'neo-tree',
-          'Trouble',
-          'lspinfo',
-          'lsp-installer',
-          'startuptime',
-        },
-      },
+      indent = { enabled = true },
     },
   },
 }
