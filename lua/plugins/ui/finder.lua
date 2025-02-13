@@ -18,11 +18,6 @@ return {
         '<Cmd>Telescope colorscheme<CR>',
         desc = 'Show colorschemes',
       },
-      {
-        '<leader>tn',
-        '<Cmd>Telescope notify<CR>',
-        desc = 'Show notifications',
-      },
     },
     config = function()
       -- NOTE: cannot put setup's argument into the 'opts' field since it contains `require('telescope.actions')`
@@ -35,7 +30,6 @@ return {
           },
         },
       }
-      require('telescope').load_extension('notify')
     end,
   },
 }

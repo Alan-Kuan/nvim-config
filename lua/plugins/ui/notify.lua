@@ -1,23 +1,25 @@
 return {
-  -- used by telescope.nvim
   {
-    'rcarriga/nvim-notify',
-    event = 'VeryLazy',
-    opts = {
-      top_down = false,
+    'snacks.nvim',
+    keys = {
+      {
+        '<Leader>n',
+        function() Snacks.notifier.show_history() end,
+        desc = 'Show notification history',
+      },
     },
-    config = function(_, opts)
-      require('notify').setup(opts)
-
-      local banned_msgs = {
-        'No information available',
-      }
-      vim.notify = function(msg, ...)
-        for _, banned in ipairs(banned_msgs) do
-          if msg == banned then return end
-        end
-        return require('notify')(msg, ...)
-      end
-    end,
+    ---@type snacks.Config
+    opts = {
+      notifier = {
+        enabled = true,
+        ---@type snacks.notifier.style
+        style = 'fancy',
+        top_down = false,
+        filter = function(n)
+          if n.msg == 'No information available' then return false end
+          return true
+        end,
+      },
+    },
   },
 }
