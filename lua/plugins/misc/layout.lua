@@ -1,11 +1,10 @@
 return {
   {
-    'famiu/bufdelete.nvim',
-    cmd = 'Bdelete',
+    'snacks.nvim',
     keys = {
       {
         '<Leader>q',
-        '<Cmd>Bdelete<CR>',
+        function() Snacks.bufdelete() end,
         desc = 'Close current buffer without affecting the window layout',
       },
     },

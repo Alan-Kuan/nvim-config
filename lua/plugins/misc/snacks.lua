@@ -4,8 +4,6 @@ return {
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
-    opts = {
-
-    },
+    opts = {},
   }
 }
