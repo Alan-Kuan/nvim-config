@@ -96,7 +96,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
           { section = 'header' },
           { section = 'keys', gap = 1, padding = 2, align = 'center' },
           { section = 'startup', padding = 1 },
-          { footer = ' Enjoy your day.' },
+          { footer = '☕️ Enjoy your day.' },
         },
       },
     },
