@@ -1,107 +1,113 @@
 return {
   {
-    'goolord/alpha-nvim',
-    event = 'VimEnter',
-    opts = function()
-      local dashboard = require('alpha.themes.dashboard')
+    'snacks.nvim',
+    opts = {
+      dashboard = {
+        config = function()
+          vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#42ff7b' })
 
-      -- Content
-      dashboard.section.header.val = {
-        [[   _  _                              _            ]],
-        [[  | \| |    ___     ___    __ __    (_)    _ __   ]],
-        [[  | .` |   / -_)   / _ \   \ V /    | |   | '  \  ]],
-        [[  |_|\_|   \___|   \___/   _\_/_   _|_|_  |_|_|_| ]],
-        [[ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| ]],
-        [[ "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' ]],
-      }
-      -- stylua: ignore
-      dashboard.section.buttons.val = {
-        dashboard.button('N', '  New File', '<Cmd>enew <Bar> startinsert<CR>'),
-        dashboard.button('f', '  Find File', '<Cmd>lua Snacks.picker.smart()<CR>'),
-        dashboard.button('r', '  Recent Files', '<Cmd>lua Snacks.picker.recent()<CR>'),
-        dashboard.button('g', '󰦨  Find Text', '<Cmd>lua Snacks.picker.grep()<CR>'),
-        dashboard.button('b', '  Bookmarks', '<Cmd>lua Snacks.picker.marks()<CR>'),
-        dashboard.button('c', '  Colorschemes', '<Cmd>lua Snacks.picker.colorschemes()<CR>'),
-        dashboard.button('m', '󰢛  Mason', '<Cmd>Mason<CR>'),
-        dashboard.button('l', '󰒲  Lazy', '<Cmd>Lazy<CR>'),
-        dashboard.button('q', '  Quit', '<Cmd>qa<CR>'),
-      }
-      dashboard.section.footer.val = {
-        '',
-        '',
-        ' Enjoy your day.',
-      }
+          vim.api.nvim_set_hl(0, 'WelcomeNormal', { fg = '#ffffff' })
+          vim.api.nvim_set_hl(0, 'WelcomeFindFiles', { fg = '#91cbff' })
+          vim.api.nvim_set_hl(0, 'WelcomeRecentFiles', { fg = '#b3ee8f' })
+          vim.api.nvim_set_hl(0, 'WelcomeFindText', { fg = '#eebf38' })
+          vim.api.nvim_set_hl(0, 'WelcomeFindMarks', { fg = '#f27438' })
+          vim.api.nvim_set_hl(0, 'WelcomeFindColor', { fg = '#c7ae84' })
+          vim.api.nvim_set_hl(0, 'WelcomeMason', { fg = '#bbbbbb' })
+          vim.api.nvim_set_hl(0, 'WelcomeLazy', { fg = '#5a85cc' })
 
-      -- Highlightings
-      dashboard.section.header.opts.hl = 'AlphaHeader'
-
-      local icon_highlights = {
-        'AlphaIcon',
-        'AlphaMagnifierIcon',
-        'AlphaClockIcon',
-        'AlphaWordIcon',
-        'AlphaBookmarkIcon',
-        'AlphaPaletteIcon',
-        'AlphaAnvilIcon',
-        'AlphaSleepIcon',
-        'AlphaIcon',
-      }
-      for idx, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = icon_highlights[idx]
-        button.opts.hl_shortcut = 'AlphaShortcut'
-      end
-
-      dashboard.section.footer.opts.hl = 'AlphaFooter'
-
-      return dashboard
-    end,
-    config = function(_, dashboard)
-      -- close Lazy and re-open when the dashboard is ready
-      if vim.o.filetype == 'lazy' then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd('User', {
-          once = true,
-          pattern = 'AlphaReady',
-          callback = function() require('lazy').show() end,
-        })
-      end
-
-      require('alpha').setup(dashboard.opts)
-
-      -- stylua: ignore start
-      -- Main Colors
-      vim.api.nvim_set_hl(0, 'AlphaHeader', { fg = '#42ff7b' })
-      vim.api.nvim_set_hl(0, 'AlphaNormal', { fg = '#fff0cd' })
-      vim.api.nvim_set_hl(0, 'AlphaShortcut', { fg = '#ffc0cb' })
-      vim.api.nvim_set_hl(0, 'AlphaFooter', { fg = '#ffd062' })
-
-      -- Icon Colors
-      vim.api.nvim_set_hl(0, 'AlphaIcon', { fg = '#ffffff' })
-      vim.api.nvim_set_hl(0, 'AlphaMagnifierIcon', { fg = '#91cbff' })
-      vim.api.nvim_set_hl(0, 'AlphaClockIcon', { fg = '#b3ee8f' })
-      vim.api.nvim_set_hl(0, 'AlphaWordIcon', { fg = '#eebf38' })
-      vim.api.nvim_set_hl(0, 'AlphaBookmarkIcon', { fg = '#f27438' })
-      vim.api.nvim_set_hl(0, 'AlphaPaletteIcon', { fg = '#c7ae84' })
-      vim.api.nvim_set_hl(0, 'AlphaAnvilIcon', { fg = '#bbbbbb' })
-      vim.api.nvim_set_hl(0, 'AlphaSleepIcon', { fg = '#5a85cc' })
-      -- stylua: ignore end
-
-      -- Reopen Alpha when last buffer is closed
-      vim.api.nvim_create_augroup('AlphaReopen', { clear = true })
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'BDeletePost *', -- event of bufdelete.nvim
-        group = 'AlphaReopen',
-        callback = function(event)
-          local fallback_name = vim.api.nvim_buf_get_name(event.buf)
-          local fallback_ft = vim.api.nvim_get_option_value('filetype', { buf = event.buf })
-
-          if fallback_name == '' and fallback_ft == '' then
-            vim.cmd('Alpha | bd#')
-            ---@diagnostic disable-next-line: undefined-global
-            MiniTrailspace.unhighlight() -- global table set up by mini.trailspace
-          end
+          vim.api.nvim_set_hl(0, 'WelcomeShortcut', { fg = '#ffc0cb' })
         end,
-      })
-    end,
+        enabled = true,
+        preset = {
+          header = [[
+  _  _                              _           
+ | \| |    ___     ___    __ __    (_)    _ __  
+ | .` |   / -_)   / _ \   \ V /    | |   | '  \ 
+ |_|\_|   \___|   \___/   _\_/_   _|_|_  |_|_|_|
+_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-']],
+          keys = {
+            {
+              text = {
+                { '  New File', hl = 'WelcomeNormal', width = 48 },
+                { 'N', hl = 'WelcomeShortcut' },
+              },
+              key = 'N',
+              action = '<Cmd>enew <Bar> startinsert<CR>',
+            },
+            {
+              text = {
+                { '  Find Files', hl = 'WelcomeFindFiles', width = 48 },
+                { 'f', hl = 'WelcomeShortcut' },
+              },
+              key = 'f',
+              action = function() Snacks.picker.smart() end,
+            },
+            {
+              text = {
+                { '  Recent Files', hl = 'WelcomeRecentFiles', width = 48 },
+                { 'r', hl = 'WelcomeShortcut' },
+              },
+              key = 'r',
+              action = function() Snacks.picker.recent() end,
+            },
+            {
+              text = {
+                { '󰦨  Find Text', hl = 'WelcomeFindText', width = 48 },
+                { 'g', hl = 'WelcomeShortcut' },
+              },
+              key = 'g',
+              action = function() Snacks.picker.grep() end,
+            },
+            {
+              text = {
+                { '  Find marks', hl = 'WelcomeFindMarks', width = 48 },
+                { 'm', hl = 'WelcomeShortcut' },
+              },
+              key = 'm',
+              action = function() Snacks.picker.marks() end,
+            },
+            {
+              text = {
+                { '  Colorschemes', hl = 'WelcomeFindColor', width = 48 },
+                { 'c', hl = 'WelcomeShortcut' },
+              },
+              key = 'c',
+              action = function() Snacks.picker.colorschemes() end,
+            },
+            {
+              text = {
+                { '󰢛  Mason', hl = 'WelcomeMason', width = 48 },
+                { 'M', hl = 'WelcomeShortcut' },
+              },
+              key = 'M',
+              action = '<Cmd>Mason<CR>',
+            },
+            {
+              text = {
+                { '󰒲  Lazy', hl = 'WelcomeLazy', width = 48 },
+                { 'L', hl = 'WelcomeShortcut' },
+              },
+              key = 'L',
+              action = '<Cmd>Lazy<CR>',
+            },
+            {
+              text = {
+                { '  Quit', hl = 'WelcomeNormal', width = 48 },
+                { 'q', hl = 'WelcomeShortcut' },
+              },
+              key = 'q',
+              action = '<Cmd>qa<CR>',
+            },
+          },
+        },
+        sections = {
+          { section = 'header' },
+          { section = 'keys', gap = 1, padding = 2, align = 'center' },
+          { section = 'startup', padding = 1 },
+          { footer = ' Enjoy your day.' },
+        },
+      },
+    },
   },
 }
