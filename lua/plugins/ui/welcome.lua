@@ -10,7 +10,6 @@ return {
           vim.api.nvim_set_hl(0, 'WelcomeFindFiles', { fg = '#91cbff' })
           vim.api.nvim_set_hl(0, 'WelcomeRecentFiles', { fg = '#b3ee8f' })
           vim.api.nvim_set_hl(0, 'WelcomeFindText', { fg = '#eebf38' })
-          vim.api.nvim_set_hl(0, 'WelcomeFindMarks', { fg = '#f27438' })
           vim.api.nvim_set_hl(0, 'WelcomeFindColor', { fg = '#c7ae84' })
           vim.api.nvim_set_hl(0, 'WelcomeMason', { fg = '#bbbbbb' })
           vim.api.nvim_set_hl(0, 'WelcomeLazy', { fg = '#5a85cc' })
@@ -61,14 +60,6 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '  Find marks', hl = 'WelcomeFindMarks', width = 48 },
-                { 'm', hl = 'WelcomeShortcut' },
-              },
-              key = 'm',
-              action = function() Snacks.picker.marks() end,
-            },
-            {
-              text = {
                 { '  Colorschemes', hl = 'WelcomeFindColor', width = 48 },
                 { 'c', hl = 'WelcomeShortcut' },
               },
@@ -78,17 +69,17 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             {
               text = {
                 { '󰢛  Mason', hl = 'WelcomeMason', width = 48 },
-                { 'M', hl = 'WelcomeShortcut' },
+                { 'm', hl = 'WelcomeShortcut' },
               },
-              key = 'M',
+              key = 'm',
               action = '<Cmd>Mason<CR>',
             },
             {
               text = {
                 { '󰒲  Lazy', hl = 'WelcomeLazy', width = 48 },
-                { 'L', hl = 'WelcomeShortcut' },
+                { 'l', hl = 'WelcomeShortcut' },
               },
-              key = 'L',
+              key = 'l',
               action = '<Cmd>Lazy<CR>',
             },
             {
