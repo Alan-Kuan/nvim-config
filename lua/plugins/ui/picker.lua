@@ -9,7 +9,7 @@ return {
         function() Snacks.picker.recent() end,
         desc = 'Find recently opened files',
       },
-      { '<Leader>fg', function() Snacks.picker.grep() end,         desc = 'Find words' },
+      { '<Leader>fg', function() Snacks.picker.grep() end,         desc = 'Find text' },
       { '<Leader>fm', function() Snacks.picker.marks() end,        desc = 'Find marks' },
       { '<Leader>fc', function() Snacks.picker.colorschemes() end, desc = 'Find colorschemes' },
       -- alternatives
