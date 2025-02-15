@@ -28,7 +28,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
           keys = {
             {
               text = {
-                { '  New File', hl = 'WelcomeNormal', width = 48 },
+                { '  New File', hl = 'WelcomeNormal', width = 49 },
                 { 'N', hl = 'WelcomeShortcut' },
               },
               key = 'N',
@@ -36,7 +36,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '  Find Files', hl = 'WelcomeFindFiles', width = 48 },
+                { '  Find Files', hl = 'WelcomeFindFiles', width = 49 },
                 { 'f', hl = 'WelcomeShortcut' },
               },
               key = 'f',
@@ -44,7 +44,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '  Recent Files', hl = 'WelcomeRecentFiles', width = 48 },
+                { '  Recent Files', hl = 'WelcomeRecentFiles', width = 49 },
                 { 'r', hl = 'WelcomeShortcut' },
               },
               key = 'r',
@@ -52,7 +52,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '󰦨  Find Text', hl = 'WelcomeFindText', width = 48 },
+                { '󰦨  Find Text', hl = 'WelcomeFindText', width = 49 },
                 { 'g', hl = 'WelcomeShortcut' },
               },
               key = 'g',
@@ -60,7 +60,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '  Colorschemes', hl = 'WelcomeFindColor', width = 48 },
+                { '  Colorschemes', hl = 'WelcomeFindColor', width = 49 },
                 { 'c', hl = 'WelcomeShortcut' },
               },
               key = 'c',
@@ -68,7 +68,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '󰢛  Mason', hl = 'WelcomeMason', width = 48 },
+                { '󰢛  Mason', hl = 'WelcomeMason', width = 49 },
                 { 'm', hl = 'WelcomeShortcut' },
               },
               key = 'm',
@@ -76,7 +76,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '󰒲  Lazy', hl = 'WelcomeLazy', width = 48 },
+                { '󰒲  Lazy', hl = 'WelcomeLazy', width = 49 },
                 { 'l', hl = 'WelcomeShortcut' },
               },
               key = 'l',
@@ -84,7 +84,7 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
             },
             {
               text = {
-                { '  Quit', hl = 'WelcomeNormal', width = 48 },
+                { '  Quit', hl = 'WelcomeNormal', width = 49 },
                 { 'q', hl = 'WelcomeShortcut' },
               },
               key = 'q',
