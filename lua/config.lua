@@ -1,7 +1,7 @@
 local config = {
   colorscheme = {
     dark = 'ayu',
-    light = 'everforest',
+    light = 'rose-pine',
   },
 }
 
