@@ -2,23 +2,20 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    opts = function()
-      return {
-        on_attach = function(bufnr)
-          vim.keymap.set('n', '<Leader>gb', require('gitsigns').toggle_current_line_blame, {
-            buffer = bufnr,
-            silent = true,
-            desc = 'Toggle showing git blame on current line',
-          })
-        end,
-      }
-    end,
+    keys = {
+      { '<Leader>g', '', desc = '+git' },
+      {
+        '<Leader>gb',
+        function() require('gitsigns').blame_line() end,
+        desc = 'Git blame this line',
+      },
+    },
+    opts = {},
   },
   {
     'sindrets/diffview.nvim',
     cmd = 'DiffviewOpen',
     keys = {
-      { '<Leader>g', '', desc = '+git' },
       { '<Leader>gd', '<Cmd>DiffviewOpen<CR>', desc = 'Open Git diff view' },
     },
   },
