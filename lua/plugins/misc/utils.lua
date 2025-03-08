@@ -1,5 +1,5 @@
 return {
-  { 'h-hg/fcitx.nvim', event = 'VeryLazy' },
+  { 'h-hg/fcitx.nvim', event = 'InsertEnter' },
   -- used by:
   --  neo-tree.nvim
   --  none-ls.nvim
