@@ -80,6 +80,10 @@ return {
       { 'd', 'd<Cmd>AutolistRecalculate<CR>', mode = 'v' },
     },
     opts = {
+      colon = {
+        indent = false,
+        indent_raw = false,
+      },
       lists = {
         typst = {
           '[-+*]', -- unordered
