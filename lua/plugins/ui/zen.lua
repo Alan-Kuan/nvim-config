@@ -5,7 +5,11 @@ return {
       { '<Leader>z', function () Snacks.zen() end, desc = 'Open zen mode' }
     },
     opts = {
-      zen = {},
+      zen = {
+        toggles = {
+          diagnostics = false,
+        },
+      },
     },
   },
 }
