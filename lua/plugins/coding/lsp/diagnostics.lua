@@ -21,4 +21,10 @@ return {
       use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
     },
   },
+  {
+    'snacks.nvim',
+    opts = function ()
+      Snacks.toggle.diagnostics():map('<Leader>td')
+    end
+  },
 }
