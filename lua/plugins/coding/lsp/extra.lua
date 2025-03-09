@@ -11,5 +11,15 @@ return {
       },
     },
   },
-  { 'barreiroleo/ltex_extra.nvim' },
+  {
+    'barreiroleo/ltex_extra.nvim',
+    ft = {
+      'text',
+      'tex',
+      'bib',
+      'markdown',
+      'html',
+      'gitcommit',
+    },
+  },
 }

@@ -1,9 +1,8 @@
 return {
   {
     'toppair/peek.nvim',
-    ft = 'markdown',
-    event = 'VeryLazy',
     build = 'deno task --quiet build:fast',
+    ft = 'markdown',
     keys = {
       {
         '<LocalLeader>m',

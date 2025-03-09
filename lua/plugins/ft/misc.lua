@@ -2,12 +2,14 @@ return {
   {
     'kaarmu/typst.vim',
     ft = 'typst',
-    lazy = false,
-    init = function() vim.g.typst_pdf_viewer = 'zathura' end,
+    keys = {
+      { '<LocalLeader>t', '<Cmd>TypstWatch<CR>', desc = 'Start Typst Preview' },
+    },
+    config = function() vim.g.typst_pdf_viewer = 'zathura' end,
   },
   {
     'davidmh/mdx.nvim',
-    event = 'VeryLazy',
+    event = 'BufEnter *.mdx',
     opts = {},
   },
 }
