@@ -30,6 +30,7 @@ return {
         'svelte',
         'tsx',
         'typescript',
+        'typst',
         'vim',
         'vimdoc',
         'vue',

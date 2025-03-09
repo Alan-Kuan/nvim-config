@@ -74,6 +74,7 @@ return {
         'ruff',
         'rust_analyzer',
         'svelte',
+        'tinymist',  -- typst
         'ts_ls',
         'volar',
         'yamlls',
