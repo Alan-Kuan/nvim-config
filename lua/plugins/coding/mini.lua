@@ -27,6 +27,8 @@ return {
           'toggleterm',
           'dashboard',
           'alpha',
+          'lazy',
+          'mason',
         },
         callback = function() vim.b['minicursorword_disable'] = true end,
       })
