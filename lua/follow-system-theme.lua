@@ -3,19 +3,16 @@
 
 -- Create a job to detect current gnome color scheme and set background
 local function set_background()
+  ---@diagnostic disable-next-line: missing-fields
   local job = require('plenary.job'):new {
     command = 'gsettings',
     args = { 'get', 'org.gnome.desktop.interface', 'color-scheme' },
   }
   job:sync()
-  if job:result()[1] == "'default'" then
-    vim.o.background = 'light'
-    vim.cmd.colorscheme(_G.NvimConfig.colorscheme.light)
-  else
-    vim.o.background = 'dark'
-    vim.cmd.colorscheme(_G.NvimConfig.colorscheme.dark)
-  end
-  -- FIXME: should reload other highlighting
+  local mode = job:result()[1] == "'default'" and 'light' or 'dark'
+
+  vim.o.background = mode
+  vim.cmd.colorscheme(_G.NvimConfig.colorscheme[mode])
 end
 
 -- Call immediatly to set initially

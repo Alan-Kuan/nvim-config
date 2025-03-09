@@ -33,18 +33,12 @@ return {
         callback = function() vim.b['minicursorword_disable'] = true end,
       })
     end,
-    config = function()
-      require('mini.cursorword').setup {}
-      vim.api.nvim_set_hl(0, 'MiniCursorWord', { bg = '#4d4531' })
-    end,
+    opts = {},
   },
   {
     'echasnovski/mini.trailspace',
     event = 'VeryLazy',
-    config = function()
-      require('mini.trailspace').setup()
-      vim.api.nvim_set_hl(0, 'Minitrailspace', { bg = '#e6a583' })
-    end,
+    opts = {},
   },
   {
     'echasnovski/mini.surround',
