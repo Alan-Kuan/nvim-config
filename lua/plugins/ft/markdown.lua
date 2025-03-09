@@ -6,7 +6,7 @@ return {
     build = 'deno task --quiet build:fast',
     keys = {
       {
-        '<Leader>m',
+        '<LocalLeader>m',
         function()
           local peek = require('peek')
           if peek.is_open() then
