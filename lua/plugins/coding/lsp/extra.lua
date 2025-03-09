@@ -11,5 +11,5 @@ return {
       },
     },
   },
-  { 'barreiroleo/ltex-extra.nvim' },
+  { 'barreiroleo/ltex_extra.nvim' },
 }
