@@ -44,7 +44,7 @@ return {
         use_nvim_cmp_as_default = true,
       },
       sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lazydev', 'lsp', 'omni', 'path', 'snippets', 'buffer' },
         providers = {
           lazydev = {
             name = 'LazyDev',
