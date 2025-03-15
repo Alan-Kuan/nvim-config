@@ -5,7 +5,7 @@ return {
     opts = {
       options = {
         disabled_filetypes = { 'help', 'qf', 'Trouble' },
-        component_separators = { left = '/', right = '/' },
+        component_separators = { left = '·', right = '·' },
         section_separators = { left = '', right = '' },
       },
       extensions = { 'neo-tree', 'toggleterm' },
@@ -37,8 +37,8 @@ return {
             'filename',
             path = 3,
             symbols = {
-              modified = ' ',
-              readonly = '  ',
+              modified = '',
+              readonly = '',
             },
           },
         },
@@ -52,8 +52,8 @@ return {
             'filename',
             path = 3,
             symbols = {
-              modified = ' ',
-              readonly = '  ',
+              modified = '',
+              readonly = '',
             },
           },
         },
