@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     opts = {
       options = {
-        disabled_filetypes = { 'help', 'qf', 'Trouble' },
+        disabled_filetypes = { 'help', 'qf', 'Trouble', 'snacks_dashboard' },
         component_separators = { left = '·', right = '·' },
         section_separators = { left = '', right = '' },
       },
