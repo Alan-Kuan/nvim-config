@@ -2,7 +2,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     version = '*',
-    event = 'VeryLazy',
+    event = 'BufEnter',
     keys = {
       { 'gb', '<Cmd>BufferLineCycleNext<CR>', desc = 'Go to next buffer' },
       { 'gB', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Go to previous buffer' },
