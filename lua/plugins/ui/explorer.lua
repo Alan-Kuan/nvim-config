@@ -93,7 +93,7 @@ return {
           ['o'] = 'open_with_window_picker',
           ['c'] = 'close_node',
 
-          ['<Tab>'] = { 'toggle_preview', config = { use_float = true } },
+          ['<Tab>'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
           ['l'] = 'focus_preview',
 
           ['a'] = { 'add', config = { show_path = 'relative' } },
