@@ -13,3 +13,14 @@ if vim.uv.fs_stat(local_config_path) then
 end
 
 _G.NvimConfig = config
+
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.HINT] = '󰌵 ',
+    },
+  },
+}
