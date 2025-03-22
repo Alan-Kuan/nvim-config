@@ -3,19 +3,6 @@ return {
     'snacks.nvim',
     opts = {
       dashboard = {
-        config = function()
-          vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#42ff7b' })
-
-          vim.api.nvim_set_hl(0, 'WelcomeNormal', { fg = '#ffffff' })
-          vim.api.nvim_set_hl(0, 'WelcomeFindFiles', { fg = '#91cbff' })
-          vim.api.nvim_set_hl(0, 'WelcomeRecentFiles', { fg = '#b3ee8f' })
-          vim.api.nvim_set_hl(0, 'WelcomeFindText', { fg = '#eebf38' })
-          vim.api.nvim_set_hl(0, 'WelcomeFindColor', { fg = '#c7ae84' })
-          vim.api.nvim_set_hl(0, 'WelcomeMason', { fg = '#bbbbbb' })
-          vim.api.nvim_set_hl(0, 'WelcomeLazy', { fg = '#5a85cc' })
-
-          vim.api.nvim_set_hl(0, 'WelcomeShortcut', { fg = '#ffc0cb' })
-        end,
         enabled = true,
         preset = {
           header = [[
@@ -26,70 +13,14 @@ return {
 _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
 "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-']],
           keys = {
-            {
-              text = {
-                { '  New File', hl = 'WelcomeNormal', width = 49 },
-                { 'N', hl = 'WelcomeShortcut' },
-              },
-              key = 'N',
-              action = '<Cmd>enew <Bar> startinsert<CR>',
-            },
-            {
-              text = {
-                { '  Find Files', hl = 'WelcomeFindFiles', width = 49 },
-                { 'f', hl = 'WelcomeShortcut' },
-              },
-              key = 'f',
-              action = function() Snacks.picker.smart() end,
-            },
-            {
-              text = {
-                { '  Recent Files', hl = 'WelcomeRecentFiles', width = 49 },
-                { 'r', hl = 'WelcomeShortcut' },
-              },
-              key = 'r',
-              action = function() Snacks.picker.recent() end,
-            },
-            {
-              text = {
-                { '󰦨  Find Text', hl = 'WelcomeFindText', width = 49 },
-                { 'g', hl = 'WelcomeShortcut' },
-              },
-              key = 'g',
-              action = function() Snacks.picker.grep() end,
-            },
-            {
-              text = {
-                { '  Colorschemes', hl = 'WelcomeFindColor', width = 49 },
-                { 'c', hl = 'WelcomeShortcut' },
-              },
-              key = 'c',
-              action = function() Snacks.picker.colorschemes() end,
-            },
-            {
-              text = {
-                { '󰢛  Mason', hl = 'WelcomeMason', width = 49 },
-                { 'm', hl = 'WelcomeShortcut' },
-              },
-              key = 'm',
-              action = '<Cmd>Mason<CR>',
-            },
-            {
-              text = {
-                { '󰒲  Lazy', hl = 'WelcomeLazy', width = 49 },
-                { 'l', hl = 'WelcomeShortcut' },
-              },
-              key = 'l',
-              action = '<Cmd>Lazy<CR>',
-            },
-            {
-              text = {
-                { '  Quit', hl = 'WelcomeNormal', width = 49 },
-                { 'q', hl = 'WelcomeShortcut' },
-              },
-              key = 'q',
-              action = '<Cmd>qa<CR>',
-            },
+            { icon = ' ', key = 'N', desc = 'New File', align = 'left', action = '<Cmd>enew <Bar> startinsert<CR>' },
+            { icon = ' ', key = 'f', desc = 'Find Files', align = 'left', action = function() Snacks.picker.smart() end },
+            { icon = ' ', key = 'r', desc = 'Recent Files', align = 'left', action = function() Snacks.picker.recent() end },
+            { icon = '󰦨 ', key = 'g', desc = 'Find Text', align = 'left', action = function() Snacks.picker.grep() end },
+            { icon = ' ', key = 'c', desc = 'Colorschemes', align = 'left', action = function() Snacks.picker.colorschemes() end },
+            { icon = '󰢛 ', key = 'm', desc = 'Mason', align = 'left', action = '<Cmd>Mason<CR>' },
+            { icon = '󰒲 ', key = 'l', desc = 'Lazy', align = 'left', action = '<Cmd>Lazy<CR>' },
+            { icon = ' ', key = 'q', desc = 'Quit', align = 'left', action = '<Cmd>qa<CR>' },
           },
         },
         sections = {
@@ -98,6 +29,28 @@ _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
           { section = 'startup', padding = 1 },
           { footer = '☕️ Enjoy your day.' },
         },
+      },
+    },
+  },
+  {
+    'ayu',
+    opts = {
+      overrides = {
+        SnacksDashboardHeader = { fg = '#d5ff80' },
+        SnacksDashboardIcon = { fg = '#ffad66' },
+        SnacksDashboardDesc = { fg = '#ffdfb3' },
+        SnacksDashboardKey = { fg = '#f28779' },
+      },
+    },
+  },
+  {
+    'rose-pine',
+    opts = {
+      highlight_groups = {
+        SnacksDashboardHeader = { fg = 'pine' },
+        SnacksDashboardIcon = { fg = 'foam' },
+        SnacksDashboardDesc = { fg = '#555555' },
+        SnacksDashboardKey = { fg = 'love' },
       },
     },
   },
