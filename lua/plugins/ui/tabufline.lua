@@ -17,6 +17,7 @@ return {
           local icon = level:match('error') and ' ' or ' '
           return ' ' .. icon .. count
         end,
+        close_command = 'lua Snacks.bufdelete(%d)',
         offsets = {
           {
             filetype = 'neo-tree',
