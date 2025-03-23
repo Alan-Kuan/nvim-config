@@ -35,6 +35,12 @@ return {
             filetype = 'dapui_scopes',
             separator = true,
           },
+          {
+            filetype = 'vimtex-toc',
+            text = 'Table of Content',
+            text_align = 'center',
+            separator = true,
+          }
         },
       },
       highlights = {
