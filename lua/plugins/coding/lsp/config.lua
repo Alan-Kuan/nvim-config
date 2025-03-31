@@ -88,6 +88,8 @@ return {
     config = function()
       local lspconfig = require('lspconfig')
 
+      vim.diagnostic.config({ virtual_text = true })
+
       local on_attach = function(_, buffer)
         local set_map = function(lhs, rhs, desc)
           vim.keymap.set('n', lhs, rhs, {
