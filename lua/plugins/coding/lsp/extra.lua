@@ -12,15 +12,9 @@ return {
       },
     },
   },
+  -- used by nvim-lspconfig
   {
     'barreiroleo/ltex_extra.nvim',
-    ft = {
-      'text',
-      'tex',
-      'bib',
-      'markdown',
-      'html',
-      'gitcommit',
-    },
+    lazy = true,
   },
 }
