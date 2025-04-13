@@ -3,7 +3,7 @@ return {
   {
     's1n7ax/nvim-window-picker',
     version = '2.*',
-    event = 'VeryLazy',
+    lazy = true,
     opts = {
       filter_rules = {
         autoselect_one = true,
