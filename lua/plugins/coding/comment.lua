@@ -1,7 +1,7 @@
 return {
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = function()
       vim.g.skip_ts_context_commentstring_module = true
 

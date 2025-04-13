@@ -1,7 +1,7 @@
 return {
   {
     'echasnovski/mini.cursorword',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     init = function()
       vim.api.nvim_create_augroup('MiniCursorWord', { clear = true })
       vim.api.nvim_create_autocmd('Filetype', {
@@ -37,12 +37,12 @@ return {
   },
   {
     'echasnovski/mini.trailspace',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {},
   },
   {
     'echasnovski/mini.surround',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     keys = {
       {
         'S',
@@ -82,7 +82,7 @@ return {
   },
   {
     'echasnovski/mini.splitjoin',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       mappings = {
         toggle = '<Leader>s',
@@ -91,7 +91,7 @@ return {
   },
   {
     'echasnovski/mini.move',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       mappings = {
         left = '<S-Tab>',

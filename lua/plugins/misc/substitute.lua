@@ -1,7 +1,7 @@
 return {
   {
     'gbprod/substitute.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       highlight_substituted_text = {
         enabled = false,

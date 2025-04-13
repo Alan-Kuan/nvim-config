@@ -1,7 +1,7 @@
 return {
   {
     'b0o/incline.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     keys = {
       {
         '<Leader>ui',

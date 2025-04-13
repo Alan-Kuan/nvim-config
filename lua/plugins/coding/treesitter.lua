@@ -49,7 +49,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       mode = 'topline',
     },

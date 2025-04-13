@@ -1,7 +1,7 @@
 return {
   {
     'dstein64/nvim-scrollview',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     keys = {
       { '<Leader>us', '<Cmd>ScrollViewToggle<Cr>', desc = 'Toggle ScrollView' },
     },
