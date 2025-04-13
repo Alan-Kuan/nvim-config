@@ -61,6 +61,8 @@ return {
     -- temporarily switched to mcauley-penney's version with a fix
     -- to the issue https://github.com/gaoDean/autolist.nvim/issues/79
     'mcauley-penney/autolist.nvim',
+    -- disable it due to an unsolved issue, https://github.com/gaoDean/autolist.nvim/issues/85
+    enabled = false,
     ft = {
       'markdown',
       'tex',
