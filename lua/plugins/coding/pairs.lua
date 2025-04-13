@@ -13,12 +13,12 @@ return {
       -- refs:
       --  - https://github.com/gaoDean/autolist.nvim/issues/77#issuecomment-1627898407
       --  - https://github.com/windwp/nvim-autopairs/issues/445#issuecomment-2033012353
-      vim.keymap.set('i', '<CR>', function()
-        vim.uv
-          .new_timer()
-          :start(0, 0, vim.schedule_wrap(function() require('autolist').new_bullet() end))
-        return vim.api.nvim_feedkeys(require('nvim-autopairs').autopairs_cr(), 'in', true)
-      end, { expr = true, noremap = true })
+      -- vim.keymap.set('i', '<CR>', function()
+      --   vim.uv
+      --     .new_timer()
+      --     :start(0, 0, vim.schedule_wrap(function() require('autolist').new_bullet() end))
+      --   return vim.api.nvim_feedkeys(require('nvim-autopairs').autopairs_cr(), 'in', true)
+      -- end, { expr = true, noremap = true })
 
       -- ==== Custom Rules ====
       -- Ref: https://github.com/windwp/nvim-autopairs/wiki/Custom-rules
