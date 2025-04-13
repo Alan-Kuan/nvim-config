@@ -23,3 +23,10 @@ nnoremap('<leader>p', '"+p', 'Paste from the system clipboard')
 vnoremap('<leader>p', '"+p', 'Paste from the system clipboard')
 nnoremap('<leader>P', '"+P', 'Paste from the system clipboard')
 vnoremap('<leader>P', '"+P', 'Paste from the system clipboard')
+
+-- remove default LSP-related mappings
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'gO')

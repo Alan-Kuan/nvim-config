@@ -101,11 +101,11 @@ return {
         set_map('gd', vim.lsp.buf.definition, 'Go to definition')
         set_map('gi', vim.lsp.buf.implementation, 'Go to implementation')
         set_map('gr', vim.lsp.buf.references, 'Go to references')
-        set_map('<leader>k', vim.lsp.buf.signature_help, 'Show the signature')
         set_map('<leader>r', vim.lsp.buf.rename, 'Rename the symbol')
         set_map('<leader>ca', vim.lsp.buf.code_action, 'Show code actions')
       end
 
+      -- overrides default options from lspconfig
       local server_opts = {
         ['clangd'] = {
           cmd = { 'clangd', '--background-index', '--header-insertion=never' },
@@ -172,7 +172,8 @@ return {
         end
         server_opt.capabilities = require('blink.cmp').get_lsp_capabilities(server_opt.capabilities)
 
-        lspconfig[server].setup(server_opt)
+        vim.lsp.enable(server)
+        vim.lsp.config(server, server_opt)
       end
     end,
   },
