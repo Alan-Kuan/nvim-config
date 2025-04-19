@@ -134,7 +134,7 @@ return {
           end,
           root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
         },
-        ['tsserver'] = {
+        ['ts_ls'] = {
           root_dir = lspconfig.util.root_pattern('package.json'),
         },
         ['volar'] = {
@@ -170,7 +170,6 @@ return {
         if server_opt.on_attach == nil then
           server_opt.on_attach = on_attach
         end
-        server_opt.capabilities = require('blink.cmp').get_lsp_capabilities(server_opt.capabilities)
 
         vim.lsp.enable(server)
         vim.lsp.config(server, server_opt)

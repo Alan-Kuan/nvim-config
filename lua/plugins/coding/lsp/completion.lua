@@ -1,5 +1,4 @@
 return {
-  -- used by nvim-lspconfig
   {
     'saghen/blink.cmp',
     version = '*',
