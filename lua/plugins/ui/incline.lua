@@ -2,13 +2,6 @@ return {
   {
     'b0o/incline.nvim',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
-    keys = {
-      {
-        '<Leader>ui',
-        function() require('incline').toggle() end,
-        desc = 'Toggle Incline',
-      },
-    },
     config = function()
       local helpers = require('incline.helpers')
       local devicons = require('nvim-web-devicons')
@@ -38,6 +31,18 @@ return {
           }
         end,
       }
+
+      Snacks.toggle({
+        name = 'Incline',
+        get = function() return require('incline').is_enabled() end,
+        set = function(state)
+          if state then
+            require('incline').enable()
+          else
+            require('incline').disable()
+          end
+        end,
+      }):map('<Leader>ti')
     end,
   },
 }
