@@ -2,9 +2,6 @@ return {
   {
     'dstein64/nvim-scrollview',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
-    keys = {
-      { '<Leader>us', '<Cmd>ScrollViewToggle<Cr>', desc = 'Toggle ScrollView' },
-    },
     opts = {
       winblend = 25,
       hide_on_cursor_intersect = true,
@@ -36,6 +33,18 @@ return {
     config = function(_, opts)
       require('scrollview').setup(opts)
       require('scrollview.contrib.gitsigns').setup()
+
+      Snacks.toggle({
+        name = 'Scroll View',
+        get = function() return vim.g.scrollview_enabled end,
+        set = function(state)
+          if state then
+            vim.cmd('ScrollViewEnable')
+          else
+            vim.cmd('ScrollViewDisable')
+          end
+        end,
+      }):map('<leader>ts')
     end,
   },
 }
