@@ -36,7 +36,6 @@ return {
     config = function(_, opts)
       require('scrollview').setup(opts)
       require('scrollview.contrib.gitsigns').setup()
-      vim.api.nvim_set_hl(0, 'ScrollViewSearch', { fg = 'orange' })
     end,
   },
 }

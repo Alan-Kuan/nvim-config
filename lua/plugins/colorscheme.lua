@@ -15,6 +15,8 @@ return {
         -- mini
         MiniCursorword = { bg = '#334257' },
         MiniTrailspace = { bg = '#e6a583' },
+        -- scrollview
+        ScrollViewSearch = { fg = 'orange' },
       },
     },
   },
@@ -39,6 +41,8 @@ return {
         MiniCursorword = { bg = 'iris', blend = 12, underline = false, inherit = false },
         MiniCursorwordCurrent = { underline = false, inherit = false },
         MiniTrailspace = { bg = '#e6a583', inherit = false },
+        -- scrollview
+        ScrollViewSearch = { fg = 'orange' },
       },
     },
   },
