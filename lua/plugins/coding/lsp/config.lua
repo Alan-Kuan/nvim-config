@@ -134,9 +134,6 @@ return {
           end,
           root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
         },
-        ['ts_ls'] = {
-          root_dir = lspconfig.util.root_pattern('package.json'),
-        },
         ['vue_ls'] = {
           init_options = {
             typescript = {
