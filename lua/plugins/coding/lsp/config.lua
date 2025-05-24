@@ -76,7 +76,7 @@ return {
         'svelte',
         'tinymist',  -- typst
         'ts_ls',
-        'volar',
+        'vue_ls',
         'yamlls',
       },
     },
@@ -137,7 +137,7 @@ return {
         ['ts_ls'] = {
           root_dir = lspconfig.util.root_pattern('package.json'),
         },
-        ['volar'] = {
+        ['vue_ls'] = {
           init_options = {
             typescript = {
               tsdk = vim.env.HOME
