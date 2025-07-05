@@ -7,6 +7,7 @@ return {
     opts = {
       zen = {
         toggles = {
+          dim = false,
           diagnostics = false,
         },
       },
