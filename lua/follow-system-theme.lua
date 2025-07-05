@@ -12,7 +12,7 @@ local function set_background()
   local mode = job:result()[1] == "'default'" and 'light' or 'dark'
 
   vim.o.background = mode
-  vim.cmd.colorscheme(_G.NvimConfig.colorscheme[mode])
+  vim.cmd.colorscheme(_G.MyConfig.colorscheme[mode])
 end
 
 -- Call immediatly to set initially
