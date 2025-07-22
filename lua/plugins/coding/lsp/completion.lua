@@ -5,9 +5,6 @@ return {
     event = 'InsertEnter',
     opts = {
       completion = {
-        list = {
-          selection = { preselect = false, auto_insert = true },
-        },
         menu = {
           auto_show = function(ctx)
             return ctx.mode ~= 'cmdline' or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
