@@ -22,3 +22,5 @@ opt.shiftwidth = 4
 opt.scrolloff = 3
 opt.splitbelow = true
 opt.splitright = true
+
+vim.o.winborder = 'rounded'
