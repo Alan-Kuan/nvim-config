@@ -17,6 +17,10 @@ return {
         MiniTrailspace = { bg = '#e6a583' },
         -- scrollview
         ScrollViewSearch = { fg = 'orange' },
+        -- blink.cmp
+        BlinkCmpMenu = { bg = '#1c212b' },
+        BlinkCmpMenuSelection = { bg = '#272d3c' },
+        BlinkCmpMenuBorder = { fg = '#6c7a8b' },
       },
     },
   },
