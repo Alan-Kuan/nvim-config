@@ -23,7 +23,7 @@ return {
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
+    ft = { 'markdown', 'mdx' },
     opts = {
       completions = {
         blink = { enabled = true },
