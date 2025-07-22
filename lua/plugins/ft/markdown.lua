@@ -24,38 +24,41 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     ft = 'markdown',
-    opts = function()
-      vim.api.nvim_set_hl(0, 'RMdH1', { fg = '#8ebf6b', bg = '#486335' })
-      vim.api.nvim_set_hl(0, 'RMdH2', { fg = '#6abfb5', bg = '#36635e' })
-      vim.api.nvim_set_hl(0, 'RMdH3', { fg = '#6893bf', bg = '#354c63' })
-      vim.api.nvim_set_hl(0, 'RMdH4', { fg = '#bf8267', bg = '#634335' })
-      vim.api.nvim_set_hl(0, 'RMdH5', { fg = '#bf6969', bg = '#643636' })
-      vim.api.nvim_set_hl(0, 'RMdH6', { fg = '#be687d', bg = '#623540' })
-      vim.api.nvim_set_hl(0, 'RMdCodeBlock', { bg = '#434343' })
-
-      return {
-        heading = {
-          sign = false,
-          icons = { '✱ ', '✲ ', '✤ ', '✣ ', '✸ ', '✳ ' },
-          backgrounds = {
-            'RMdH1',
-            'RMdH2',
-            'RMdH3',
-            'RMdH4',
-            'RMdH5',
-            'RMdH6',
+    opts = {
+      completions = {
+        blink = { enabled = true },
+      },
+      code = {
+        width = 'block',
+        min_width = 45,
+        left_pad = 1,
+        right_pad = 1,
+      },
+      heading = {
+        width = 'block',
+        min_width = 60,
+        position = 'inline',
+        left_pad = 1,
+        icons = ' ',
+      },
+      indent = {
+        enabled = true,
+        skip_heading = true,
+      },
+      pipe_table = {
+        preset = 'round',
+        alignment_indicator = '',
+      },
+      quote = { icon = '┃' },
+      sign = { enabled = false },
+      overrides = {
+        buftype = {
+          nofile = {
+            code = { left_pad = 0, right_pad = 0 },
           },
         },
-        code = {
-          sign = false,
-          left_pad = 1,
-          highlight = 'RMdCodeBlock',
-        },
-        quote = {
-          icon = '┃',
-        },
-      }
-    end,
+      },
+    },
   },
   {
     -- temporarily switched to mcauley-penney's version with a fix

@@ -21,6 +21,13 @@ return {
         BlinkCmpMenu = { bg = '#1c212b' },
         BlinkCmpMenuSelection = { bg = '#272d3c' },
         BlinkCmpMenuBorder = { fg = '#6c7a8b' },
+        -- render-markdown
+        RenderMarkdownH1Bg = { fg = '#ffdfb3', bg = '#404044', bold = true },
+        RenderMarkdownH2Bg = { fg = '#d5ff80', bg = '#3a453c', bold = true },
+        RenderMarkdownH3Bg = { fg = '#73d0ff', bg = '#2b3e4f', bold = true },
+        RenderMarkdownH4Bg = { fg = '#ffd173', bg = '#403e3a', bold = true },
+        RenderMarkdownH5Bg = { fg = '#ffad66', bg = '#403938', bold = true },
+        RenderMarkdownH6Bg = { fg = '#f28779', bg = '#3e333b', bold = true },
       },
     },
   },
