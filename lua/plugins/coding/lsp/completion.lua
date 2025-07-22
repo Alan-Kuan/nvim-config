@@ -3,7 +3,12 @@ return {
     'saghen/blink.cmp',
     version = '1.*',
     event = 'InsertEnter',
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
+      appearance = {
+        use_nvim_cmp_as_default = true,
+      },
       completion = {
         menu = {
           auto_show = function(ctx)
@@ -36,9 +41,7 @@ return {
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
       },
-      appearance = {
-        use_nvim_cmp_as_default = true,
-      },
+      signature = { enabled = true },
       sources = {
         default = { 'lazydev', 'lsp', 'omni', 'path', 'snippets', 'buffer' },
         providers = {
