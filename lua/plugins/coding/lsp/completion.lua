@@ -11,21 +11,10 @@ return {
       },
       completion = {
         menu = {
-          auto_show = function(ctx)
-            return ctx.mode ~= 'cmdline' or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
-          end,
           draw = {
-            columns = function(ctx)
-              if ctx.mode == 'cmdline' then
-                return {
-                  { 'label' },
-                }
-              else
-                return {
-                  { 'kind_icon', 'label', gap = 1 },
-                }
-              end
-            end,
+            columns = {
+              { 'kind_icon', 'label', gap = 1 },
+            },
           },
         },
       },
@@ -49,6 +38,21 @@ return {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
+          },
+        },
+      },
+      -- Extra Modes
+      cmdline = {
+        completion = {
+          menu = {
+            auto_show = function ()
+              return not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+            end,
+            draw = {
+              columns = {
+                { 'label' },
+              },
+            },
           },
         },
       },
