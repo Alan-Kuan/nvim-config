@@ -1,0 +1,20 @@
+{
+  "<script setup>": {
+    "prefix": "<script setup>",
+    "body": [
+      "<script setup>",
+      "$1",
+      "</script>"
+    ],
+    "description": "Vue <script setup> block"
+  },
+  "<script setup lang=\"ts\">": {
+    "prefix": "<script setup lang=\"ts\">",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "$1",
+      "</script>"
+    ],
+    "description": "Vue <script setup lang=\"ts\"> block"
+  }
+}
