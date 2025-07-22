@@ -12,7 +12,7 @@ return {
       {
         '<leader>xX',
         '<Cmd>Trouble diagnostics toggle<CR>',
-        'Show diagnostics of current workspace',
+        desc = 'Show diagnostics of current workspace',
       },
     },
     opts = {
