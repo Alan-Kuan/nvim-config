@@ -124,14 +124,13 @@ return {
             },
           },
         },
+        ['ts_ls'] = {
+          workspace_required = true,
+          root_markers = { 'package.json' },
+        },
         ['denols'] = {
-          on_attach = function(client, buffer)
-            on_attach(client, buffer)
-            for _, other_client in pairs(vim.lsp.get_clients()) do
-              if other_client.name == 'ts_ls' then other_client.stop() end
-            end
-          end,
-          root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+          workspace_required = true,
+          root_markers = { 'deno.json', 'deno.jsonc' },
         },
         ['vue_ls'] = {
           init_options = {
