@@ -29,6 +29,7 @@ return {
         },
         git_status = {
           symbols = {
+            added = ' 󰐕',
             modified = ' 󱈸',
             renamed = ' 󰘎 ',
             deleted = '  ',
