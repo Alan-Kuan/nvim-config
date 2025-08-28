@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.cursorword',
+    'nvim-mini/mini.cursorword',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     init = function()
       vim.api.nvim_create_augroup('MiniCursorWord', { clear = true })
@@ -36,12 +36,12 @@ return {
     opts = {},
   },
   {
-    'echasnovski/mini.trailspace',
+    'nvim-mini/mini.trailspace',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {},
   },
   {
-    'echasnovski/mini.surround',
+    'nvim-mini/mini.surround',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     keys = {
       {
@@ -81,7 +81,7 @@ return {
     end,
   },
   {
-    'echasnovski/mini.splitjoin',
+    'nvim-mini/mini.splitjoin',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       mappings = {
@@ -90,7 +90,7 @@ return {
     },
   },
   {
-    'echasnovski/mini.move',
+    'nvim-mini/mini.move',
     event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
     opts = {
       mappings = {
