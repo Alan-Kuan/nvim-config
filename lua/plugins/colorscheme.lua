@@ -15,6 +15,9 @@ return {
         -- mini
         MiniCursorword = { bg = '#334257' },
         MiniTrailspace = { bg = '#e6a583' },
+        -- incline
+        InclineNormal = { bg = '#171b24' },
+        InclineNormalNC = { bg = '#171b24' },
         -- scrollview
         ScrollViewSearch = { fg = 'orange' },
         -- blink.cmp
@@ -52,6 +55,9 @@ return {
         MiniCursorword = { bg = 'iris', blend = 12, underline = false, inherit = false },
         MiniCursorwordCurrent = { underline = false, inherit = false },
         MiniTrailspace = { bg = '#e6a583', inherit = false },
+        -- incline
+        InclineNormal = { bg = '#dcd6d0' },
+        InclineNormalNC = { bg = '#dcd6d0' },
         -- scrollview
         ScrollViewSearch = { fg = 'orange' },
       },
