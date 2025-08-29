@@ -30,6 +30,19 @@ return {
             ' ',
           }
         end,
+        ignore = {
+          -- because zen mode is a floating window
+          floating_wins = false,
+          wintypes = function (winid, wintype)
+            -- display incline in Snacks zen mode window
+            local zen = package.loaded['snacks'].zen
+            if zen.win and not zen.win.closed then
+              return winid ~= zen.win.win
+            end
+            -- default behavior
+            return wintype ~= ''
+          end
+        },
       }
 
       Snacks.toggle({
