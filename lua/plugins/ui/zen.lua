@@ -2,7 +2,7 @@ return {
   {
     'snacks.nvim',
     keys = {
-      { '<Leader>z', function () Snacks.zen() end, desc = 'Open zen mode' }
+      { '<Leader>z', function () Snacks.zen() end, desc = 'Toggle zen mode' }
     },
     opts = {
       zen = {
