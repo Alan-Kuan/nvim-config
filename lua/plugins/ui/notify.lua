@@ -4,8 +4,8 @@ return {
     keys = {
       {
         '<Leader>n',
-        function() Snacks.notifier.show_history() end,
-        desc = 'Show notification history',
+        function() Snacks.picker.notifications() end,
+        desc = 'Show notification history'
       },
     },
     ---@type snacks.Config
