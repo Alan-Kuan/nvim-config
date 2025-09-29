@@ -85,8 +85,6 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = 'mason-lspconfig.nvim',
     config = function()
-      local lspconfig = require('lspconfig')
-
       local on_attach = function(_, buffer)
         local set_map = function(lhs, rhs, desc)
           vim.keymap.set('n', lhs, rhs, {
