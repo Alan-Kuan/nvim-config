@@ -94,12 +94,12 @@ return {
           })
         end
 
-        set_map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-        set_map('gd', vim.lsp.buf.definition, 'Go to definition')
-        set_map('gi', vim.lsp.buf.implementation, 'Go to implementation')
-        set_map('gr', vim.lsp.buf.references, 'Go to references')
-        set_map('<leader>r', vim.lsp.buf.rename, 'Rename the symbol')
-        set_map('<leader>ca', vim.lsp.buf.code_action, 'Show code actions')
+        set_map('gD', function() Snacks.picker.lsp_declarations() end, 'Go to declaration')
+        set_map('gd', function() Snacks.picker.lsp_definitions() end, 'Go to definition')
+        set_map('gi', function() Snacks.picker.lsp_implementations() end, 'Go to implementation')
+        set_map('gr', function() Snacks.picker.lsp_references() end, 'Go to references')
+        set_map('<leader>r', function() vim.lsp.buf.rename() end, 'Rename the symbol')
+        set_map('<leader>ca', function() vim.lsp.buf.code_action() end, 'Show code actions')
       end
 
       -- overrides default options from lspconfig
