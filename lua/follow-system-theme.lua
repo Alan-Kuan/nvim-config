@@ -1,6 +1,8 @@
 -- Change dark/light mode on receiving SIGUSR1
 -- Ref: https://mnts.dev/configure-neovim-to-follow-gnome/
 
+local settings = require('config.settings')
+
 -- Create a job to detect current gnome color scheme and set background
 local function set_background()
   ---@diagnostic disable-next-line: missing-fields
@@ -12,7 +14,7 @@ local function set_background()
   local mode = job:result()[1] == "'default'" and 'light' or 'dark'
 
   vim.o.background = mode
-  vim.cmd.colorscheme(_G.MyConfig.colorscheme[mode])
+  vim.cmd.colorscheme(settings.colorscheme[mode])
 end
 
 -- Call immediatly to set initially
