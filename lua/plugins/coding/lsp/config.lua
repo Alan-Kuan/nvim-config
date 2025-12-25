@@ -1,3 +1,5 @@
+local settings = require('config.settings')
+
 return {
   -- used by mason-null-ls.nvim
   {
@@ -16,20 +18,21 @@ return {
   {
     'jay-babu/mason-null-ls.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    opts = {
-      ensure_installed = {
-        -- LSPs
-        'cmake-language-server',
-        'unocss-language-server',
-        -- Linters
-        'actionlint',
-        'checkmake',
-        'editorconfig_checker',
-        -- Formatters
-        'clang-format',
-        'stylua',
-      },
-    },
+    opts = function ()
+      local ensure_installed = {}
+
+      for _, opt in pairs(settings.langs) do
+        if opt and opt.enabled and opt.null_ls then
+          if type(opt.null_ls) == 'table' then
+            vim.list_extend(ensure_installed, opt.null_ls --[[@as table]])
+          else
+            table.insert(ensure_installed, opt.null_ls)
+          end
+        end
+      end
+
+      return { ensure_installed = ensure_installed }
+    end,
   },
   -- used by mason-null-ls.nvim
   {
@@ -58,28 +61,21 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = 'mason.nvim',
     lazy = true,
-    opts = {
-      ensure_installed = {
-        -- LSPs
-        'bashls',
-        'clangd',
-        'cssls',
-        'denols',
-        'dockerls',
-        'gopls',
-        'html',
-        'jsonls',
-        'lua_ls',
-        'marksman',
-        'ruff',
-        'rust_analyzer',
-        'svelte',
-        'tinymist',  -- typst
-        'ts_ls',
-        'vue_ls',
-        'yamlls',
-      },
-    },
+    opts = function ()
+      local ensure_installed = {}
+
+      for _, opt in pairs(settings.langs) do
+        if opt and opt.enabled and opt.lsp then
+          if type(opt.lsp) == 'table' then
+            vim.list_extend(ensure_installed, opt.lsp --[[@as table]])
+          else
+            table.insert(ensure_installed, opt.lsp)
+          end
+        end
+      end
+
+      return { ensure_installed = ensure_installed }
+    end,
   },
   {
     'neovim/nvim-lspconfig',

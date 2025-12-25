@@ -1,6 +1,9 @@
+local settings = require('config.settings')
+
 return {
   {
     'lervag/vimtex',
+    enabled = settings.langs.latex.enabled,
     lazy = false,
     init = function()
       vim.g.vimtex_view_method = 'zathura'

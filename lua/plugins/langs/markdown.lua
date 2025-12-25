@@ -1,6 +1,9 @@
+local settings = require('config.settings')
+
 return {
   {
     'toppair/peek.nvim',
+    enabled = settings.langs.markdown.enabled,
     build = 'deno task --quiet build:fast',
     ft = 'markdown',
     keys = {
@@ -23,6 +26,7 @@ return {
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    enabled = settings.langs.markdown.enabled,
     ft = { 'markdown', 'mdx' },
     opts = {
       completions = {
