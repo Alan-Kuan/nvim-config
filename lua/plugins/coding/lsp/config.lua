@@ -3,7 +3,7 @@ local settings = require('config.settings')
 return {
   -- used by mason-null-ls.nvim
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     cmd = 'Mason',
     opts = {
       ui = {
@@ -58,7 +58,7 @@ return {
     end,
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     dependencies = 'mason.nvim',
     lazy = true,
     opts = function ()
