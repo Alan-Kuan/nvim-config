@@ -121,6 +121,23 @@ return {
         ['ts_ls'] = {
           workspace_required = true,
           root_markers = { 'package.json' },
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vim.fn.expand('$MASON/packages') .. '/vue-language-server/node_modules/@vue/language-server',
+                languages = { 'vue' },
+                configNamespace = 'typescript',
+              }
+            },
+          },
+          filetypes = {
+            'javascript',
+            'typescript',
+            'javascriptreact',
+            'typescriptreact',
+            'vue',
+          },
         },
         ['denols'] = {
           workspace_required = true,
