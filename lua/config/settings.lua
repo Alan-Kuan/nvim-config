@@ -10,7 +10,10 @@ local M = {
     HINT = '󰌵 ',
   },
   langs = {
-    astro = { enabled = false },
+    astro = {
+      enabled = false,
+      null_ls = 'astro-language-server',
+    },
     awk = { enabled = true },
     bash = {
       enabled = true,
