@@ -26,8 +26,10 @@ vnoremap('<leader>P', '"+P', 'Paste from the system clipboard')
 
 -- remove default LSP-related mappings
 vim.keymap.del({'n', 'v'}, 'gra')
+vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grn')
 vim.keymap.del('n', 'grr')
-vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grt')
+vim.keymap.del('n', 'grx')
 vim.keymap.del('n', 'gO')
+vim.keymap.del('n', 'gx')
